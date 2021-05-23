@@ -1,6 +1,8 @@
 # portfolio
 
-A new Flutter project.
+A new Flutter Web project.
+
+Trying to use flutter web
 
 ## Getting Started
 
