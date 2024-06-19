@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
+
+import {getCollection} from "astro:content";
+
+import ProjectCard from "../components/projects/ProjectCard.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -10,69 +11,69 @@ const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
-    <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+    <div class="pb-12 mt-5">
+        <div class="text-xl py-1">Hey there 👋</div>
+        <div class="text-5xl font-bold">I'm Shashank S Mayya</div>
+        <div class="text-3xl py-3 font-bold">Freelance Software Developer</div>
+        <div class="py-2">
+            <text class="text-lg">
+                I am a software developer based in India. I love to build things that make a difference. I am passionate
+                about app development and well versed with Flutter. Worked with more than 10 clients on building various
+                apps.
+                If you want to build robust and scalable apps, I am your guy. Let's connect and build something amazing.
+            </text>
+        </div>
+        <div class="mt-8">
+            <a class="btn" href="https://twitter.com/ShashankMayya" target="_blank"> Let's connect!</a>
+        </div>
     </div>
-    <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
-      </a>
+
+    <div>
+        <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
     </div>
-  </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
-  </div>
+    <ProjectCard
+            title="Indy App"
+            img="/post_img.webp"
+            desc="Developing a Fintech app for a client in Flutter. The app has various features like UPI payments, Wallet, and more. The app is currently being developed."
+            badge="CURRENT"
+            tags={["Flutter", "Fintech",]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Pragati ERP"
+            img="/post_img.webp"
+            desc="An ERP tablet app built using Flutter for a Jewellery Client used for billing and inventory management. Currently in production and maintained by me."
+            badge="MAINTANENCE"
+            tags={["Flutter", "ERP",]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Mello"
+            img="/post_img.webp"
+            desc="Developed 'Mello', a reel-based event discovery app targeting the Bangalore audience, enhancing local social engagement. Utilized MongoDB and Node.js for backend operations, Flutter for app development, Mixpanel for analytics, and Clevertap for push notifications."
+            playStore="https://play.google.com/store/apps/details?id=com.mello.mello"
+            appStore="https://apps.apple.com/in/app/mello-weekend-event-guide/id6450921757"
+            tags={["Flutter", "Node.js", "MongoDB", "Mixpanel", "Clevertap"]}
+    />
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
+    <!-- <div>
+         <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+     </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
-  </div>
-
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+     {
+         last_posts.map((post) => (
+                 <>
+                     <HorizontalCard
+                             title={post.data.title}
+                             img={post.data.heroImage}
+                             desc={post.data.description}
+                             url={"/blog/" + createSlug(post.data.title, post.slug)}
+                             target="_self"
+                             badge={post.data.badge}
+                     />
+                     <div class="divider my-0"/>
+                 </>
+         ))
+     }-->
 </BaseLayout>

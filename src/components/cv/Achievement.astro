@@ -1,0 +1,25 @@
+---
+const {title, subtitle, link,linkTitle} = Astro.props;
+---
+
+
+<style>
+
+    .flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+</style>
+
+<div class="flex">
+    <li>
+        <h3 class="font-semibold mb-1">{title}</h3>
+        <span class="font-light text-sm">{subtitle} {link &&
+                <a href={link} class="text-blue-500">{linkTitle}</a>}</span>
+        <p class="my-2 text-justify">
+    </li>
+
+</div>
+

@@ -1,51 +1,74 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
+import ProjectCard from "../components/projects/ProjectCard.astro";
 ---
 
-<BaseLayout title = "Projects" sideBarActiveItemID="projects">
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Projects Header</div>
-  </div>
+<BaseLayout title="Projects" sideBarActiveItemID="projects">
+    <div>
+        <div class="text-3xl w-full font-bold mb-5">Projects</div>
+    </div>
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
+    <ProjectCard
+            title="Indy App"
+            img="/post_img.webp"
+            desc="Developing a Fintech app for a client in Flutter. The app has various features like UPI payments, Wallet, and more. The app is currently being developed."
+            url="#"
+            badge="CURRENT"
+            tags={["Flutter", "Fintech", "Client", "Flutter Bloc"]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Pragati ERP"
+            img="/post_img.webp"
+            desc="An ERP tablet app built using Flutter for a Jewellery Client used for billing and inventory management. Currently in production and maintained by me."
+            badge="MAINTANENCE"
+            url="#"
+            tags={["Flutter", "ERP", "Client", "Flutter Bloc"]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Mello"
+            img="/post_img.webp"
+            desc="Developed 'Mello', a reel-based event discovery app targeting the Bangalore audience, enhancing local social engagement. Utilized MongoDB and Node.js for backend operations, Flutter for app development, Mixpanel for analytics, and Clevertap for push notifications."
+            playStore="https://play.google.com/store/apps/details?id=com.mello.mello"
+            appStore="https://apps.apple.com/in/app/mello-weekend-event-guide/id6450921757"
+            tags={["Flutter", "Flutter Bloc", "Node.js", "MongoDB", "Mixpanel", "Clevertap", "Client", "Event Management", "Social"]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Auto Finance Canada"
+            img="/post_img.webp"
+            desc="Spearheaded the development of a comprehensive CRM web application for Auto Finance Canada, built with Flutter Web and backed by Supabase, to streamline automotive financing operations."
+            tags={["Flutter", "Flutter Bloc", "Flutter Web", "Supabase", "CRM", "Client"]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Rosette"
+            img="/post_img.webp"
+            desc="Innovated a health monitoring app, 'Rosette'. incorporating smart data syncing and local storage solutions using Isar, aimed at enhancing patient care and data management,"
+            tags={["Flutter", "Flutter Bloc", "IOT", "Health", "Client"]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Haqdarshak Wallet App"
+            img="/post_img.webp"
+            desc="Developed a web application for Haqdarshak, enabling efficient wallet and card management for their customers, leveraging Flutter Web for a responsive UI/UX design."
+            tags={["Flutter", "Flutter Bloc", "Flutter Web", "Fintech", "Client"]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="Dota 2 Soundboard App"
+            img="/post_img.webp"
+            desc="Built a music board for a game I used to play called Dota2Soundboard using the Flutter UI Development Kit and GetX state management and SQFlite. MAU of 1.5k+ users with more than 10k+ downloads."
+            tags={["Flutter","GetX",  "Gaming", "Personal"]}
+    />
+    <div class="divider my-0"></div>
+    <ProjectCard
+            title="HR Designs"
+            img="/post_img.webp"
+            desc="Built a websitr for a client HR Designs using Bootstrap and HTML/CSS."
+            tags={["HTML", "Bootstrap", "Client"]}
+    />
+    <div class="divider my-0"></div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Projects Header</div>
-  </div>
-
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 4"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 5"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
 </BaseLayout>
