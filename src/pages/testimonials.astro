@@ -1,12 +1,49 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import TestimonialCard from "../components/testimonials/TestimonialCard.astro";
+
+
+const joshTestimonial = 'I have had the pleasure of working with Shashank on multiple projects, and his expertise and\n' +
+    'dedication have been crucial to our operations. Shashank built a comprehensive web app using\n' +
+    'Flutter that seamlessly supports all our corporate operations. His work doesn\'t stop there; he\n' +
+    'has also developed numerous small-scale tools that have been integrated into our suite of\n' +
+    'technologies under our own IP. Shashank delivers high-quality solutions consistently, along with\n' +
+    'his smart approach\'s and attention to detail, has greatly contributed to our success.\n' +
+    'We no longer search elsewhere for development needs; Shashank is our go-to expert for\n' +
+    'everything. I highly recommend Shashank for any development projects and look forward to\n' +
+    'continuing our collaboration.'
+
+const shazadTestimonial = 'Working with Shashank Mayya has been an absolute pleasure. His dedication to timely delivery, unwavering commitment to quality, and penchant for taking the lead have consistently impressed us. Shashank embodies ownership in every task he undertakes, ensuring that projects are not just completed, but completed to perfection. His attention to detail and drive for excellence have been instrumental in our successes while collaborating with him. Shashank\'s contributions have undoubtedly elevated our projects, and his professionalism sets a standard for teamwork and achievement. We highly recommend Shashank Mayya for any endeavor requiring expertise, reliability, and a steadfast commitment to excellence.';
+
+
+const abhilashTestimonial = 'Shashank was an exceptional asset to the Mello Project. His technical skills and user-centric approach were instrumental in creating a smooth and engaging app experience. He consistently impressed us with his ability to think like an end user, anticipating their needs and incorporating valuable insights into the development process. Shashank\'s expertise in Flutter development was evident throughout the project. He delivered a highly functional app with minimal bugs, ensuring a seamless user experience from day one. His excellent communication skills kept us informed and ensured a collaborative working relationship.I would also like to add that for anyone looking to work with him, he seems to be an exceptional candidate with some really good developer skills along with communication which many developers lack.';
 ---
 
 
-
 <BaseLayout>
-    <div class="items-center">
-        <h1 class="text-4xl font-bold">Coming soon...</h1>
+    <div>
+        <div class="text-3xl w-full font-bold mb-5">Testimonials</div>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-6">
+        <TestimonialCard
+                img="/testimonials/josh.webp"
+                name="Joshua Boyd"
+                company="Van Auto Credit, Vancouver, Canada"
+                testimonial={joshTestimonial}
+        />
 
+        <TestimonialCard
+                img="/testimonials/shazad.webp"
+                name="Shazad Maved"
+                company="CTO, Mindstack Technologies, Mangaluru, India"
+                testimonial={shazadTestimonial}
+        />
+
+        <TestimonialCard
+                img="/testimonials/abhilash.webp"
+                name="Abhilash"
+                company="CTO, Mello, Bengaluru, India"
+                testimonial={abhilashTestimonial}
+        />
     </div>
 </BaseLayout>

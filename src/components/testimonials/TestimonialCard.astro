@@ -1,0 +1,28 @@
+---
+const { img, name, company, testimonial } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<div class="rounded-lg bg-base-100 p-4 hover:shadow-xl transition ease-in-out hover:scale-[102%] max-w-md mx-auto">
+    <div class="flex items-center space-x-4">
+        {
+            img && (
+                        <Image
+                                src={img}
+                                width={60}
+                                height={60}
+                                format="webp"
+                                alt={name}
+                                class="rounded-full"
+                        />
+            )
+        }
+        <div>
+            <h2 class="text-lg font-semibold">{name}</h2>
+            <p class="text-sm text-gray-500">{company}</p>
+        </div>
+    </div>
+    <div class="mt-4">
+        <p class="text-base text-gray-700">{testimonial}</p>
+    </div>
+</div>
