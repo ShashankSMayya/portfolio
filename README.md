@@ -1,12 +1,12 @@
-# Astrofy | Personal Portfolio Website Template
+# Shashank S Mayya - Flutter Developer Portfolio
 
-![Astrofy | Personal Porfolio Website Template](public/social_img.webp)
+![Portfolio Website](public/social_img.webp)
 
-Astrofy is a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with a Blog, CV, Project Section, Store, and RSS Feed.
+Professional Flutter developer portfolio showcasing 5+ years of experience in mobile app development, specializing in fintech applications, trading platforms, and enterprise solutions.
 
-## Demo
+## Live Website
 
-View a live demo of [Astrofy](https://astrofy-template.netlify.app/)
+Visit the live portfolio at [https://shashanksmayya.dev](https://shashanksmayya.dev)
 
 ## Installation
 
