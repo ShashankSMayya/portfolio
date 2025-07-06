@@ -8,16 +8,88 @@ const projects = getAllProjects();
 ---
 
 <BaseLayout title="Projects" sideBarActiveItemID="projects">
-    <div>
-        <div class="text-3xl w-full font-bold mb-5">Projects</div>
+    <!-- Premium Projects Header -->
+    <div class="relative py-16 mb-16 -mx-6 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/30 to-base-100/60"></div>
+        <div class="absolute top-10 right-10 w-48 h-48 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
+        <div class="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-r from-accent/15 to-primary/15 rounded-full blur-3xl opacity-25 animate-float-medium"></div>
+        
+        <div class="relative z-10 text-center max-w-4xl mx-auto">
+            <div class="mb-6 animate-fade-in">
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm">
+                    <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+                    Portfolio Showcase
+                </span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 animate-slide-up">
+                <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                    My Projects
+                </span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-base-content/70 max-w-3xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+                A curated collection of enterprise-grade Flutter applications that showcase innovation, performance, and exceptional user experiences
+            </p>
+        </div>
     </div>
     
-    {projects.map((project, index) => (
-        <>
-            <ProjectCard project={project} />
-            {index < projects.length - 1 && <div class="divider my-0"></div>}
-        </>
-    ))}
+    <!-- Projects Grid -->
+    <div class="space-y-12">
+        {projects.map((project, index) => (
+            <>
+                <div class="opacity-0 translate-y-8 project-card-container" style={`animation-delay: ${index * 0.1}s`}>
+                    <ProjectCard project={project} />
+                </div>
+                {index < projects.length - 1 && <div class="divider opacity-20 my-8"></div>}
+            </>
+        ))}
+    </div>
+    
+    <!-- Premium CTA Section -->
+    <div class="py-20 mt-20 -mx-6 px-6 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent animate-glow"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Ready to Build Your Next Project?
+            </h2>
+            
+            <p class="text-lg md:text-xl text-base-content/70 mb-10 leading-relaxed">
+                Let's collaborate to bring your vision to life with professional Flutter development
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="mailto:shashank@example.com" class="btn btn-primary btn-lg px-10 py-3 rounded-full shadow-xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 hover:scale-105 group">
+                    <span class="mr-2 font-semibold">Start a Project</span>
+                    <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+                
+                <a href="/cv" class="btn btn-outline btn-lg px-10 py-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105">
+                    View Experience
+                </a>
+            </div>
+        </div>
+    </div>
     
     <ProjectDialog />
+    
+    <!-- Animation Styles -->
+    <style>
+        .project-card-container {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </BaseLayout>

@@ -12,60 +12,246 @@ const recentProjects = getRecentProjects(3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-    <div class="pb-12 mt-5">
-        <div class="text-xl py-1">Hey there 👋</div>
-        <div class="text-5xl font-bold">I'm Shashank S Mayya</div>
-        <div class="text-3xl py-3 font-bold">Freelance Software Developer</div>
-        <div class="py-2">
-            <text class="text-lg">
-                I am a software developer based in India. I love to build things that make a difference. I am passionate
-                about app development and well versed with Flutter. Worked with more than 10 clients on building various
-                apps.
-                If you want to build robust and scalable apps, I am your guy. Let's connect and build something amazing.
-            </text>
+    <!-- Hero Section with Premium Design -->
+    <div class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5"></div>
+        <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/50 to-base-100"></div>
+        
+        <!-- Enhanced Floating Elements with Multiple Orbs -->
+        <div class="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl animate-float-slow opacity-30"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl animate-float-slow opacity-20" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-secondary/15 to-accent/15 rounded-full blur-2xl animate-float-medium opacity-25 -translate-x-1/2 -translate-y-1/2" style="animation-delay: -1.5s;"></div>
+        <div class="absolute top-32 right-1/3 w-48 h-48 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-xl animate-float-fast opacity-20" style="animation-delay: -4.5s;"></div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 text-center px-6 max-w-6xl mx-auto">
+            <!-- Greeting with Animation -->
+            <div class="mb-8 animate-fade-in">
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm mb-6">
+                    <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+                    Available for New Projects
+                </span>
+            </div>
+            
+            <!-- Main Heading with Gradient -->
+            <div class="space-y-6 mb-12 animate-slide-up">
+                <h1 class="text-6xl md:text-8xl font-bold font-display leading-tight">
+                    <span class="block text-base-content">Shashank S</span>
+                    <span class="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-glow">
+                        Mayya
+                    </span>
+                </h1>
+                
+                <div class="text-2xl md:text-3xl font-light text-base-content/80 max-w-4xl mx-auto leading-relaxed">
+                    Professional <span class="font-semibold text-primary">Flutter Development</span> for 
+                    <span class="font-semibold text-secondary">Enterprise</span> & 
+                    <span class="font-semibold text-accent">Business</span> Applications
+                </div>
+            </div>
+            
+            <!-- Value Proposition -->
+            <div class="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+                Transforming complex business requirements into sophisticated, scalable mobile solutions. 
+                Trusted by <span class="font-semibold text-primary">multiple enterprise clients</span> to deliver 
+                mission-critical applications that drive growth and innovation.
+            </div>
+            
+            <!-- Enhanced CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in" style="animation-delay: 0.6s;">
+                <a href="/projects" class="btn btn-primary btn-lg px-8 py-4 rounded-full shadow-2xl shadow-primary/25 hover:shadow-primary/50 hover:shadow-2xl transition-all duration-500 hover:scale-110 group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 transition-opacity duration-500 animate-shimmer bg-[length:200%_100%]"></div>
+                    <span class="relative mr-2 font-semibold">Explore My Work</span>
+                    <svg class="relative w-5 h-5 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+                
+                <a href="https://twitter.com/ShashankMayya" target="_blank" class="btn btn-outline btn-lg px-8 py-4 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary transition-all duration-500 hover:scale-110 group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <span class="relative font-semibold">Let's Connect</span>
+                    <svg class="relative w-5 h-5 ml-2 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Enhanced Trust Indicators -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.9s;">
+                <div class="text-center group hover:scale-110 transition-all duration-500 cursor-default">
+                    <div class="text-3xl font-bold text-primary mb-2 animate-bounce-gentle group-hover:text-4xl transition-all duration-300">3+</div>
+                    <div class="text-sm text-base-content/60 uppercase tracking-wider group-hover:text-base-content/80 transition-colors duration-300">Years Experience</div>
+                </div>
+                <div class="text-center group hover:scale-110 transition-all duration-500 cursor-default">
+                    <div class="text-3xl font-bold text-secondary mb-2 animate-bounce-gentle group-hover:text-4xl transition-all duration-300" style="animation-delay: 0.5s;">5+</div>
+                    <div class="text-sm text-base-content/60 uppercase tracking-wider group-hover:text-base-content/80 transition-colors duration-300">Apps Delivered</div>
+                </div>
+                <div class="text-center group hover:scale-110 transition-all duration-500 cursor-default">
+                    <div class="text-3xl font-bold text-accent mb-2 animate-bounce-gentle group-hover:text-4xl transition-all duration-300" style="animation-delay: 1s;">100%</div>
+                    <div class="text-sm text-base-content/60 uppercase tracking-wider group-hover:text-base-content/80 transition-colors duration-300">Project Success</div>
+                </div>
+                <div class="text-center group hover:scale-110 transition-all duration-500 cursor-default">
+                    <div class="text-3xl font-bold text-primary mb-2 animate-bounce-gentle group-hover:text-4xl transition-all duration-300" style="animation-delay: 1.5s;">24/7</div>
+                    <div class="text-sm text-base-content/60 uppercase tracking-wider group-hover:text-base-content/80 transition-colors duration-300">Support Available</div>
+                </div>
+            </div>
         </div>
-        <div class="mt-8">
-            <a class="btn" href="https://twitter.com/ShashankMayya" target="_blank"> Let's connect!</a>
+    </div>
+
+    <!-- Expertise Section -->
+    <div class="py-24 bg-gradient-to-b from-base-100 to-base-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Flutter Expertise
+                </h2>
+                <p class="text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
+                    Specialized in crafting high-performance, enterprise-grade Flutter applications that scale with your business growth
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group p-8 rounded-2xl bg-gradient-to-br from-base-100 to-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/20 hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 animate-glow-pulse">
+                            <svg class="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-base-content group-hover:text-primary transition-all duration-300">Enterprise Apps</h3>
+                        <p class="text-base-content/70 leading-relaxed group-hover:text-base-content/90 transition-colors duration-300">Complex business logic, advanced integrations, and scalable architecture for mission-critical applications</p>
+                    </div>
+                </div>
+                
+                <div class="group p-8 rounded-2xl bg-gradient-to-br from-base-100 to-secondary/5 border border-secondary/10 hover:border-secondary/30 transition-all duration-700 hover:shadow-2xl hover:shadow-secondary/20 hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-gradient-to-br from-secondary to-secondary/60 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 animate-glow-pulse" style="animation-delay: 0.5s;">
+                            <svg class="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-base-content group-hover:text-secondary transition-all duration-300">Fintech Solutions</h3>
+                        <p class="text-base-content/70 leading-relaxed group-hover:text-base-content/90 transition-colors duration-300">Secure payment systems, trading platforms, and financial apps with bank-grade security and compliance</p>
+                    </div>
+                </div>
+                
+                <div class="group p-8 rounded-2xl bg-gradient-to-br from-base-100 to-accent/5 border border-accent/10 hover:border-accent/30 transition-all duration-700 hover:shadow-2xl hover:shadow-accent/20 hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent/60 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 animate-glow-pulse" style="animation-delay: 1s;">
+                            <svg class="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-base-content group-hover:text-accent transition-all duration-300">Performance Optimization</h3>
+                        <p class="text-base-content/70 leading-relaxed group-hover:text-base-content/90 transition-colors duration-300">Advanced optimization techniques, custom widgets, and performance monitoring for seamless user experiences</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <TechStackMarquee />
-
-    <div>
-        <div class="text-3xl w-full font-bold mb-2">Recent projects {"</>"}</div>
-    </div>
-    
-    {recentProjects.map((project, index) => (
-        <>
-            <ProjectCard project={project} />
-            {index < recentProjects.length - 1 && <div class="divider my-0"></div>}
-        </>
-    ))}
-    
-    <div class="mt-8 text-center">
-        <a href="/projects" class="btn btn-primary">View All Projects</a>
+    <!-- Technology Stack -->
+    <div class="py-16 bg-base-200">
+        <TechStackMarquee />
     </div>
 
-    <!-- Blog section commented out for now -->
-    <!-- <div>
-         <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
-     </div>
+    <!-- Featured Projects Section -->
+    <div class="py-24 bg-gradient-to-b from-base-200 to-base-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+                    Featured Projects
+                </h2>
+                <p class="text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
+                    A showcase of applications built for industry leaders and innovative startups
+                </p>
+            </div>
+            
+            <div class="space-y-8">
+                {recentProjects.map((project, index) => (
+                    <>
+                        <div class="opacity-0 translate-y-8 project-card-container" style={`animation-delay: ${index * 0.1}s`}>
+                            <ProjectCard project={project} />
+                        </div>
+                        {index < recentProjects.length - 1 && <div class="divider opacity-20"></div>}
+                    </>
+                ))}
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="/projects" class="btn btn-primary btn-lg px-12 py-4 rounded-full shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105 group">
+                    <span class="mr-2">View All Projects</span>
+                    <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
 
-     {
-         last_posts.map((post) => (
-                 <>
-                     <HorizontalCard
-                             title={post.data.title}
-                             img={post.data.heroImage}
-                             desc={post.data.description}
-                             url={"/blog/" + createSlug(post.data.title, post.slug)}
-                             target="_self"
-                             badge={post.data.badge}
-                     />
-                     <div class="divider my-0"/>
-                 </>
-         ))
-     }-->
-     
+    <!-- Call to Action Section -->
+    <div class="py-24 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent animate-glow"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold font-display mb-8 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Ready to Build Something Extraordinary?
+            </h2>
+            
+            <p class="text-xl md:text-2xl text-base-content/80 mb-12 leading-relaxed">
+                Let's transform your vision into a professional Flutter application that drives real business results
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                <a href="mailto:shashank@example.com" class="btn btn-primary btn-lg px-12 py-4 rounded-full shadow-2xl shadow-primary/30 hover:shadow-primary/60 hover:shadow-3xl transition-all duration-500 hover:scale-110 group relative overflow-hidden animate-glow-pulse">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 transition-opacity duration-500 animate-shimmer bg-[length:200%_100%]"></div>
+                    <span class="relative mr-3 font-bold text-lg">Start Your Project</span>
+                    <svg class="relative w-6 h-6 transition-all duration-300 group-hover:scale-125 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </a>
+                
+                <a href="https://cal.com/shashank" target="_blank" class="btn btn-outline btn-lg px-12 py-4 rounded-full border-2 border-primary/40 hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary transition-all duration-500 hover:scale-110 group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <span class="relative font-bold text-lg mr-3">Schedule Consultation</span>
+                    <svg class="relative w-6 h-6 transition-all duration-300 group-hover:scale-125 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <ProjectDialog />
+
+    <!-- Enhanced Animation Styles -->
+    <style>
+        .project-card-container {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Premium scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced focus states for accessibility */
+        .btn:focus {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+        }
+    </style>
 </BaseLayout>

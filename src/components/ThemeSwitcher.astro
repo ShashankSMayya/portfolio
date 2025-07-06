@@ -20,12 +20,12 @@
       const sunIcon = button.querySelector('.swap-off');
       const moonIcon = button.querySelector('.swap-on');
       
-      if (currentTheme === 'dark') {
+      if (currentTheme === 'premium-dark') {
         // In dark mode, show moon icon (to switch to light)
         sunIcon?.classList.add('hidden');
         moonIcon?.classList.remove('hidden');
       } else {
-        // In light/lofi mode, show sun icon (to switch to dark)
+        // In light mode, show sun icon (to switch to dark)
         sunIcon?.classList.remove('hidden');
         moonIcon?.classList.add('hidden');
       }
@@ -42,13 +42,13 @@
   // Function to toggle theme
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'lofi' : 'dark';
+    const newTheme = currentTheme === 'premium-dark' ? 'premium' : 'premium-dark';
     setTheme(newTheme);
   }
 
   // Initialize theme on page load
   function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedTheme = localStorage.getItem('theme') || 'premium-dark';
     setTheme(savedTheme);
   }
 
