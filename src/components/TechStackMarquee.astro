@@ -52,54 +52,48 @@ const tripleArray = [...technologies, ...technologies, ...technologies];
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 100px;
+    width: 120px;
     z-index: 10;
     pointer-events: none;
   }
 
   .marquee-wrapper::before {
     left: 0;
-    background: linear-gradient(
-      to right,
-      rgb(var(--b1) / 1),
-      rgb(var(--b1) / 0.8) 20%,
-      rgb(var(--b1) / 0.5) 40%,
-      rgb(var(--b1) / 0.2) 60%,
-      transparent
-    );
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(0px) blur(1px) blur(2px) blur(3px) blur(4px);
+    -webkit-backdrop-filter: blur(0px) blur(1px) blur(2px) blur(3px) blur(4px);
+    background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
   }
 
   .marquee-wrapper::after {
     right: 0;
-    background: linear-gradient(
-      to left,
-      rgb(var(--b1) / 1),
-      rgb(var(--b1) / 0.8) 20%,
-      rgb(var(--b1) / 0.5) 40%,
-      rgb(var(--b1) / 0.2) 60%,
-      transparent
-    );
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px) blur(3px) blur(2px) blur(1px) blur(0px);
+    -webkit-backdrop-filter: blur(4px) blur(3px) blur(2px) blur(1px) blur(0px);
+    background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
   }
 
   /* Additional mask for smooth fade */
   .marquee-content {
     mask-image: linear-gradient(
       to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
+      transparent 0%,
+      rgba(0,0,0,0.2) 5%,
+      rgba(0,0,0,0.6) 10%,
+      black 15%,
+      black 85%,
+      rgba(0,0,0,0.6) 90%,
+      rgba(0,0,0,0.2) 95%,
+      transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
+      transparent 0%,
+      rgba(0,0,0,0.2) 5%,
+      rgba(0,0,0,0.6) 10%,
+      black 15%,
+      black 85%,
+      rgba(0,0,0,0.6) 90%,
+      rgba(0,0,0,0.2) 95%,
+      transparent 100%
     );
   }
 
@@ -108,7 +102,7 @@ const tripleArray = [...technologies, ...technologies, ...technologies];
   }
 
   .marquee-track {
-    animation: scroll-infinite 60s linear infinite;
+    animation: scroll-infinite 30s linear infinite;
     width: fit-content;
   }
 
@@ -147,7 +141,7 @@ const tripleArray = [...technologies, ...technologies, ...technologies];
     }
     
     .marquee-track {
-      animation-duration: 45s;
+      animation-duration: 20s;
       gap: 1rem;
     }
 
