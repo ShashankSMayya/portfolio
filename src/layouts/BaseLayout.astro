@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SideBar from "../components/SideBar.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 import { ViewTransitions } from "astro:transitions";
 
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
@@ -18,8 +19,13 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="lofi">
+<html lang="en" data-theme="dark">
   <head>
+    <script is:inline>
+      // Apply saved theme before page renders to prevent flash
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/J+vjWIhLr7e7DdOZilFfN1RVYwAYqBUvC7Fjq2PugVXWciYXKcDs0sbjWnWl3KmjJ8fa0QzvQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <BaseHead title={title} description={description} image={image} , ogType={ogType} />
     {TRANSITION_API && <ViewTransitions />}
@@ -29,6 +35,10 @@ const {
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content bg-base-100">
         <Header title={SITE_TITLE} />
+        <!-- Desktop theme switcher -->
+        <div class="hidden lg:block fixed top-4 right-4 z-50">
+          <ThemeSwitcher />
+        </div>
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
             <slot />
