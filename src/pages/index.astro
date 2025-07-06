@@ -11,9 +11,13 @@ const last_posts = posts.slice(0, 3);
 const recentProjects = getRecentProjects(3);
 ---
 
-<BaseLayout sideBarActiveItemID="home">
+<BaseLayout 
+  sideBarActiveItemID="home"
+  title="Shashank S Mayya | Expert Flutter Developer & Mobile App Freelancer"
+  description="Professional Flutter developer with 5+ years experience in fintech, trading apps & enterprise solutions. 10+ apps delivered. Available for freelance projects worldwide."
+>
     <!-- Hero Section with Premium Design -->
-    <div class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero section - Flutter Developer Introduction">
         <!-- Background Effects -->
         <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5"></div>
         <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/50 to-base-100"></div>
@@ -96,10 +100,10 @@ const recentProjects = getRecentProjects(3);
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Expertise Section -->
-    <div class="py-24 bg-gradient-to-b from-base-100 to-base-200">
+    <section class="py-24 bg-gradient-to-b from-base-100 to-base-200" aria-label="Flutter development expertise">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -151,15 +155,15 @@ const recentProjects = getRecentProjects(3);
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Technology Stack -->
-    <div class="py-16 bg-base-200">
+    <section class="py-16 bg-base-200" aria-label="Technology stack showcase">
         <TechStackMarquee />
-    </div>
+    </section>
 
     <!-- Featured Projects Section -->
-    <div class="py-24 bg-gradient-to-b from-base-200 to-base-100">
+    <section class="py-24 bg-gradient-to-b from-base-200 to-base-100" aria-label="Featured Flutter projects portfolio">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
@@ -190,10 +194,10 @@ const recentProjects = getRecentProjects(3);
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Call to Action Section -->
-    <div class="py-24 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
+    <section class="py-24 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden" aria-label="Contact and consultation call-to-action">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent animate-glow"></div>
@@ -226,7 +230,7 @@ const recentProjects = getRecentProjects(3);
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
     <ProjectDialog />
 

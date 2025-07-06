@@ -11,6 +11,7 @@ export interface Props {
 }
 
 const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!-- Global Metadata -->
@@ -18,6 +19,36 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+
+<!-- SEO Enhancement Meta Tags -->
+<meta name="author" content="Shashank S Mayya" />
+<meta name="keywords" content="Flutter developer, mobile app developer, fintech apps, trading app development, Flutter freelancer, cross-platform development, iOS Android apps, Bangalore developer, enterprise apps" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={Astro.url} />
+
+<!-- Language and Location -->
+<meta name="language" content="English" />
+<meta name="geo.region" content="IN-KA" />
+<meta name="geo.placename" content="Bangalore, India" />
+<meta name="geo.position" content="12.9716;77.5946" />
+<meta name="ICBM" content="12.9716, 77.5946" />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="theme-color" content="#3B82F6" />
+<meta name="msapplication-navbutton-color" content="#3B82F6" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<!-- Freelancer and Service Keywords -->
+<meta name="subject" content="Flutter Development Services" />
+<meta name="classification" content="Technology, Software Development, Mobile Apps" />
+<meta name="category" content="Software Development" />
+<meta name="coverage" content="Worldwide" />
+<meta name="distribution" content="Global" />
+<meta name="target" content="all" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -37,3 +68,57 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:site" content="@ShashankMayya" />
+<meta property="twitter:creator" content="@ShashankMayya" />
+
+<!-- Structured Data for Personal Profile -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shashank S Mayya",
+  "url": "{Astro.site}",
+  "image": "{new URL('/profile.webp', Astro.url)}",
+  "sameAs": [
+    "https://twitter.com/ShashankMayya",
+    "https://github.com/ShashankSMayya",
+    "https://www.linkedin.com/in/shashank-mayya"
+  ],
+  "jobTitle": "Flutter Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bangalore",
+    "addressRegion": "Karnataka",
+    "addressCountry": "India"
+  },
+  "alumniOf": "Engineering",
+  "knowsAbout": [
+    "Flutter Development",
+    "Mobile App Development",
+    "Cross-platform Development",
+    "Fintech Applications",
+    "Trading Applications",
+    "Enterprise Solutions",
+    "iOS Development",
+    "Android Development",
+    "Dart Programming",
+    "Firebase",
+    "REST APIs",
+    "WebSockets",
+    "State Management",
+    "BLoC Pattern",
+    "GetX",
+    "Performance Optimization"
+  ],
+  "description": "Expert Flutter developer with 5+ years of experience specializing in fintech, trading applications, and enterprise solutions. Available for freelance projects."
+}
+</script>
+
+<!-- Performance and Optimization -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />

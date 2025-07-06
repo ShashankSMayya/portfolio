@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://shashanksmayya.netlify.app/sitemap-index.xml
+
+# Optimize crawling for important pages
+Allow: /projects
+Allow: /services
+Allow: /cv
+Allow: /testimonials
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1
