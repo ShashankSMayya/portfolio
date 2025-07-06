@@ -2,17 +2,16 @@
 // Define technologies with their logos (using popular icon libraries or SVGs)
 const technologies = [
   { name: 'Flutter', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
-  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-  { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' },
-  { name: 'WebSockets', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg' },
   { name: 'Dart', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg' },
+  { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
+  { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' },
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
   { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'WebSockets', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg' },
   { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-  { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
+  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+  { name: 'Astro', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg' },
 ];
 
 // Triple the array to ensure smooth infinite scroll
@@ -45,57 +44,7 @@ const tripleArray = [...technologies, ...technologies, ...technologies];
     position: relative;
   }
 
-  /* Blur effect on edges */
-  .marquee-wrapper::before,
-  .marquee-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 120px;
-    z-index: 10;
-    pointer-events: none;
-  }
-
-  .marquee-wrapper::before {
-    left: 0;
-    backdrop-filter: blur(0px) blur(1px) blur(2px) blur(3px) blur(4px);
-    -webkit-backdrop-filter: blur(0px) blur(1px) blur(2px) blur(3px) blur(4px);
-    background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
-  }
-
-  .marquee-wrapper::after {
-    right: 0;
-    backdrop-filter: blur(4px) blur(3px) blur(2px) blur(1px) blur(0px);
-    -webkit-backdrop-filter: blur(4px) blur(3px) blur(2px) blur(1px) blur(0px);
-    background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
-  }
-
-  /* Additional mask for smooth fade */
-  .marquee-content {
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0,0,0,0.2) 5%,
-      rgba(0,0,0,0.6) 10%,
-      black 15%,
-      black 85%,
-      rgba(0,0,0,0.6) 90%,
-      rgba(0,0,0,0.2) 95%,
-      transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0,0,0,0.2) 5%,
-      rgba(0,0,0,0.6) 10%,
-      black 15%,
-      black 85%,
-      rgba(0,0,0,0.6) 90%,
-      rgba(0,0,0,0.2) 95%,
-      transparent 100%
-    );
-  }
+  /* Clean marquee without blur effects */
 
   .marquee-content {
     overflow: hidden;
@@ -145,10 +94,6 @@ const tripleArray = [...technologies, ...technologies, ...technologies];
       gap: 1rem;
     }
 
-    /* Smaller blur width on mobile */
-    .marquee-wrapper::before,
-    .marquee-wrapper::after {
-      width: 50px;
-    }
+    /* Mobile responsiveness */
   }
 </style>
