@@ -42,18 +42,63 @@ const tripleArray = [...technologies, ...technologies, ...technologies];
 
 <style>
   .marquee-wrapper {
+    position: relative;
+  }
+
+  /* Blur effect on edges */
+  .marquee-wrapper::before,
+  .marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      rgb(var(--b1) / 1),
+      rgb(var(--b1) / 0.8) 20%,
+      rgb(var(--b1) / 0.5) 40%,
+      rgb(var(--b1) / 0.2) 60%,
+      transparent
+    );
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      rgb(var(--b1) / 1),
+      rgb(var(--b1) / 0.8) 20%,
+      rgb(var(--b1) / 0.5) 40%,
+      rgb(var(--b1) / 0.2) 60%,
+      transparent
+    );
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* Additional mask for smooth fade */
+  .marquee-content {
     mask-image: linear-gradient(
       to right,
       transparent,
-      black 5%,
-      black 95%,
+      black 8%,
+      black 92%,
       transparent
     );
     -webkit-mask-image: linear-gradient(
       to right,
       transparent,
-      black 5%,
-      black 95%,
+      black 8%,
+      black 92%,
       transparent
     );
   }
@@ -104,6 +149,12 @@ const tripleArray = [...technologies, ...technologies, ...technologies];
     .marquee-track {
       animation-duration: 45s;
       gap: 1rem;
+    }
+
+    /* Smaller blur width on mobile */
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+      width: 50px;
     }
   }
 </style>
