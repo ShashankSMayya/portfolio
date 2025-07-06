@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
 import {getCollection} from "astro:content";
-
 import ProjectCard from "../components/projects/ProjectCard.astro";
+import ProjectDialog from "../components/projects/ProjectDialog.astro";
 import TechStackMarquee from "../components/TechStackMarquee.astro";
+import { getRecentProjects } from "../data/projects";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
 const last_posts = posts.slice(0, 3);
+const recentProjects = getRecentProjects(3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -34,42 +34,19 @@ const last_posts = posts.slice(0, 3);
     <div>
         <div class="text-3xl w-full font-bold mb-2">Recent projects {"</>"}</div>
     </div>
-    <ProjectCard
-            title="Zontix"
-            img="/projects/zontix.webp"
-            desc="Developing an event management app that uses blockchain under the hood to issue NFT tickets."
-            url="zontix.com"
-            tags={["Flutter", "Fintech", "Client", "Flutter Bloc", "Crypto", "Event Management"]}
-    />
-    <div class="divider my-0"></div>
-    <ProjectCard
-            title="Firstock Trading App"
-            img="/projects/firstock_trading.webp"
-            desc="Developing a stock market app for a client using Flutter. The app has various features like stock trading, portfolio management, and more."
-            url="#"
-            playStore="https://play.google.com/store/apps/details?id=in.firstock.mobile"
-            appStore="https://apps.apple.com/us/app/firstock-trade-invest/id6746480444"
-            tags={["Flutter", "Fintech", "Client", "Flutter Bloc", "Websockets", "Trading"]}
-    />
-    <div class="divider my-0"></div>
-    <ProjectCard
-            title="Indy App"
-            img="/projects/indy_consumer.webp"
-            desc="Developed a Fintech app for a client in Flutter. The app has various features like UPI payments, Wallet, and more."
-            url="#"
-            tags={["Flutter", "Fintech", "Client", "Flutter Bloc"]}
-    />
-    <div class="divider my-0"></div>
-    <ProjectCard
-            title="Mello"
-            img="/projects/mello.webp"
-            desc="Developed 'Mello', a reel-based event discovery app targeting the Bangalore audience, enhancing local social engagement. Utilized MongoDB and Node.js for backend operations, Flutter for app development, Mixpanel for analytics, and Clevertap for push notifications."
-            playStore="https://play.google.com/store/apps/details?id=com.mello.mello"
-            appStore="https://apps.apple.com/in/app/mello-weekend-event-guide/id6450921757"
-            tags={["Flutter", "Flutter Bloc", "Node.js", "MongoDB", "Mixpanel", "Clevertap", "Client", "Event Management", "Social"]}
-    />
-    <div class="divider my-0"></div>
+    
+    {recentProjects.map((project, index) => (
+        <>
+            <ProjectCard project={project} />
+            {index < recentProjects.length - 1 && <div class="divider my-0"></div>}
+        </>
+    ))}
+    
+    <div class="mt-8 text-center">
+        <a href="/projects" class="btn btn-primary">View All Projects</a>
+    </div>
 
+    <!-- Blog section commented out for now -->
     <!-- <div>
          <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
      </div>
@@ -89,4 +66,6 @@ const last_posts = posts.slice(0, 3);
                  </>
          ))
      }-->
+     
+    <ProjectDialog />
 </BaseLayout>

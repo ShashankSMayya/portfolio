@@ -1,0 +1,401 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div id="project-dialog-container" class="hidden">
+  <!-- Dialog backdrop with blur -->
+  <div id="project-dialog-backdrop" class="fixed inset-0 bg-base-300/20 backdrop-blur-sm z-50 opacity-0 transition-all duration-300 ease-out"></div>
+  
+  <!-- Dialog content -->
+  <dialog id="project-dialog" class="modal">
+    <div class="modal-box max-w-4xl bg-base-100/95 backdrop-blur-md border border-base-content/10 shadow-2xl transform transition-all duration-300 ease-out scale-95 opacity-0">
+      <!-- Close button positioned outside the image area -->
+      <div class="sticky top-0 z-10 flex justify-end mb-4">
+        <button class="btn btn-sm btn-circle btn-ghost bg-base-100/80 backdrop-blur-sm hover:scale-110 transition-transform duration-200" onclick="closeProjectDialog()">✕</button>
+      </div>
+      
+      <!-- Dialog content wrapper -->
+      <div id="dialog-content" class="space-y-6 -mt-14">
+        <!-- This will be populated dynamically -->
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<style>
+  #project-dialog {
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-height: 90vh;
+    overflow: visible;
+  }
+
+  #project-dialog::backdrop {
+    background: transparent;
+  }
+
+  #project-dialog .modal-box {
+    max-height: calc(90vh - 2rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--bc) / 0.3) transparent;
+  }
+
+  #project-dialog .modal-box::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #project-dialog .modal-box::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #project-dialog .modal-box::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--bc) / 0.3);
+    border-radius: 3px;
+  }
+
+  #project-dialog .modal-box::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--bc) / 0.5);
+  }
+
+  .dialog-open {
+    overflow: hidden;
+  }
+
+  /* Image gallery styles */
+  .image-gallery {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--bc) / 0.3) transparent;
+  }
+
+  .image-gallery::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .image-gallery::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .image-gallery::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--bc) / 0.3);
+    border-radius: 3px;
+  }
+
+  .gallery-image {
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+  }
+
+  .gallery-image:hover {
+    transform: scale(1.05);
+  }
+
+  .gallery-image.active {
+    transform: scale(1.05);
+  }
+
+  /* Smooth image transitions */
+  #main-image {
+    transition: opacity 0.3s ease-out;
+  }
+
+  /* Dialog states */
+  .modal-box.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Content fade-in animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-content > * {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .fade-in-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in-content > *:nth-child(2) { animation-delay: 0.15s; }
+  .fade-in-content > *:nth-child(3) { animation-delay: 0.2s; }
+  .fade-in-content > *:nth-child(4) { animation-delay: 0.25s; }
+  .fade-in-content > *:nth-child(5) { animation-delay: 0.3s; }
+  .fade-in-content > *:nth-child(6) { animation-delay: 0.35s; }
+  .fade-in-content > *:nth-child(7) { animation-delay: 0.4s; }
+</style>
+
+<script>
+  import type { Project } from '../../data/projects';
+
+  declare global {
+    interface Window {
+      openProjectDialog: (project: Project) => void;
+      closeProjectDialog: () => void;
+    }
+  }
+
+  let currentImageIndex = 0;
+  let isAnimating = false;
+
+  window.openProjectDialog = (project: Project) => {
+    if (isAnimating) return;
+    
+    const dialog = document.getElementById('project-dialog') as HTMLDialogElement;
+    const modalBox = dialog?.querySelector('.modal-box');
+    const backdrop = document.getElementById('project-dialog-backdrop');
+    const container = document.getElementById('project-dialog-container');
+    const content = document.getElementById('dialog-content');
+    
+    if (!dialog || !content || !backdrop || !container || !modalBox) return;
+
+    isAnimating = true;
+
+    // Reset image index
+    currentImageIndex = 0;
+
+    // Combine main image with additional images
+    const allImages = [project.img, ...(project.images || [])].filter(Boolean);
+
+    // Build content HTML
+    const contentHTML = `
+      <!-- Hero Section with Image Gallery -->
+      <div class="space-y-4">
+        <!-- Main Image Display -->
+        <div class="relative rounded-lg overflow-hidden bg-base-200">
+          <img id="main-image" src="${allImages[0]}" alt="${project.title}" class="w-full h-64 md:h-80 object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-base-100/90 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 p-6 pointer-events-none">
+            <h2 class="text-3xl font-bold text-base-content mb-2">${project.title}</h2>
+            ${project.badge ? `<span class="badge badge-secondary">${project.badge}</span>` : ''}
+          </div>
+        </div>
+
+        <!-- Image Gallery Thumbnails -->
+        ${allImages.length > 1 ? `
+          <div class="image-gallery">
+            ${allImages.map((img, index) => `
+              <img 
+                src="${img}" 
+                alt="${project.title} ${index + 1}" 
+                class="gallery-image w-20 h-20 rounded-lg object-cover ${index === 0 ? 'ring-2 ring-primary active' : ''}"
+                onclick="changeMainImage('${img}', ${index})"
+              />
+            `).join('')}
+          </div>
+        ` : ''}
+      </div>
+
+      <!-- Main Description -->
+      <div class="prose prose-base max-w-none">
+        <p class="text-base-content/90">${project.longDesc || project.desc}</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-3 my-6">
+        ${project.url && project.url !== '#' ? `
+          <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary hover:scale-105 transition-transform">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+            Visit Site
+          </a>
+        ` : ''}
+        ${project.playStore ? `
+          <a href="${project.playStore}" target="_blank" rel="noopener noreferrer" class="btn bg-black hover:bg-gray-800 text-white border-0 hover:scale-105 transition-transform">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+            </svg>
+            Play Store
+          </a>
+        ` : ''}
+        ${project.appStore ? `
+          <a href="${project.appStore}" target="_blank" rel="noopener noreferrer" class="btn bg-blue-600 hover:bg-blue-700 text-white border-0 hover:scale-105 transition-transform">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
+            </svg>
+            App Store
+          </a>
+        ` : ''}
+        ${project.github ? `
+          <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline hover:scale-105 transition-transform">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            GitHub
+          </a>
+        ` : ''}
+      </div>
+
+      <!-- Features Section -->
+      ${project.features && project.features.length > 0 ? `
+        <div class="mt-8">
+          <h3 class="text-xl font-bold mb-4 text-base-content">Key Features</h3>
+          <ul class="space-y-2">
+            ${project.features.map(feature => `
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-success mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-base-content/80">${feature}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      ` : ''}
+
+      <!-- Technical Details -->
+      ${project.techDetails ? `
+        <div class="mt-8">
+          <h3 class="text-xl font-bold mb-4 text-base-content">Technical Implementation</h3>
+          <p class="text-base-content/80">${project.techDetails}</p>
+        </div>
+      ` : ''}
+
+      <!-- Challenges & Solutions -->
+      ${project.challenges ? `
+        <div class="mt-8">
+          <h3 class="text-xl font-bold mb-4 text-base-content">Challenges & Solutions</h3>
+          <p class="text-base-content/80">${project.challenges}</p>
+        </div>
+      ` : ''}
+
+      <!-- Outcomes -->
+      ${project.outcomes ? `
+        <div class="mt-8">
+          <h3 class="text-xl font-bold mb-4 text-base-content">Results & Impact</h3>
+          <p class="text-base-content/80">${project.outcomes}</p>
+        </div>
+      ` : ''}
+
+      <!-- Technologies -->
+      <div class="mt-8">
+        <h3 class="text-xl font-bold mb-4 text-base-content">Technologies Used</h3>
+        <div class="flex flex-wrap gap-2">
+          ${project.tags.map(tag => `<span class="badge badge-outline hover:badge-primary transition-colors">${tag}</span>`).join('')}
+        </div>
+      </div>
+    `;
+
+    content.innerHTML = contentHTML;
+    content.classList.add('fade-in-content');
+    
+    // Show container and backdrop
+    container.classList.remove('hidden');
+    document.body.classList.add('dialog-open');
+    
+    // Show dialog
+    dialog.showModal();
+    
+    // Trigger animations with slight delay for smooth effect
+    requestAnimationFrame(() => {
+      backdrop.classList.remove('opacity-0');
+      backdrop.classList.add('opacity-100');
+      
+      requestAnimationFrame(() => {
+        modalBox.classList.remove('scale-95', 'opacity-0');
+        modalBox.classList.add('show');
+        setTimeout(() => {
+          isAnimating = false;
+        }, 300);
+      });
+    });
+  };
+
+  window.closeProjectDialog = () => {
+    if (isAnimating) return;
+    
+    const dialog = document.getElementById('project-dialog') as HTMLDialogElement;
+    const modalBox = dialog?.querySelector('.modal-box');
+    const backdrop = document.getElementById('project-dialog-backdrop');
+    const container = document.getElementById('project-dialog-container');
+    const content = document.getElementById('dialog-content');
+    
+    if (!dialog || !backdrop || !container || !modalBox) return;
+
+    isAnimating = true;
+
+    // Remove fade-in class
+    content?.classList.remove('fade-in-content');
+
+    // Start close animations
+    modalBox.classList.remove('show');
+    modalBox.classList.add('scale-95', 'opacity-0');
+    backdrop.classList.remove('opacity-100');
+    backdrop.classList.add('opacity-0');
+    
+    // Close dialog after animations complete
+    setTimeout(() => {
+      dialog.close();
+      container.classList.add('hidden');
+      document.body.classList.remove('dialog-open');
+      modalBox.classList.remove('scale-95', 'opacity-0');
+      isAnimating = false;
+    }, 300);
+  };
+
+  // Function to change main image with smooth transition
+  (window as any).changeMainImage = (imgSrc: string, index: number) => {
+    const mainImage = document.getElementById('main-image') as HTMLImageElement;
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    
+    if (mainImage && currentImageIndex !== index) {
+      // Fade out current image
+      mainImage.style.opacity = '0';
+      
+      setTimeout(() => {
+        mainImage.src = imgSrc;
+        currentImageIndex = index;
+        
+        // Update active thumbnail
+        galleryImages.forEach((img, i) => {
+          if (i === index) {
+            img.classList.add('ring-2', 'ring-primary', 'active');
+          } else {
+            img.classList.remove('ring-2', 'ring-primary', 'active');
+          }
+        });
+        
+        // Fade in new image
+        mainImage.style.opacity = '1';
+      }, 150);
+    }
+  };
+
+  // Close on backdrop click
+  document.getElementById('project-dialog-backdrop')?.addEventListener('click', () => {
+    window.closeProjectDialog();
+  });
+
+  // Close on clicking outside the modal box
+  document.getElementById('project-dialog')?.addEventListener('click', (e) => {
+    const modalBox = document.querySelector('.modal-box');
+    if (modalBox && !modalBox.contains(e.target as Node)) {
+      window.closeProjectDialog();
+    }
+  });
+
+  // Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const dialog = document.getElementById('project-dialog') as HTMLDialogElement;
+      if (dialog?.open) {
+        e.preventDefault();
+        window.closeProjectDialog();
+      }
+    }
+  });
+</script>
