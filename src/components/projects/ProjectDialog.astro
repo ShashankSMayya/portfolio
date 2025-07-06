@@ -151,8 +151,15 @@ import { Image } from "astro:assets";
   let currentImageIndex = 0;
   let isAnimating = false;
 
+  console.log('Project dialog script loaded');
+
   window.openProjectDialog = (project: Project) => {
-    if (isAnimating) return;
+    console.log('openProjectDialog called with project:', project.title);
+    
+    if (isAnimating) {
+      console.log('Animation in progress, skipping');
+      return;
+    }
     
     const dialog = document.getElementById('project-dialog') as HTMLDialogElement;
     const modalBox = dialog?.querySelector('.modal-box');
@@ -160,8 +167,18 @@ import { Image } from "astro:assets";
     const container = document.getElementById('project-dialog-container');
     const content = document.getElementById('dialog-content');
     
-    if (!dialog || !content || !backdrop || !container || !modalBox) return;
+    if (!dialog || !content || !backdrop || !container || !modalBox) {
+      console.error('Dialog elements not found:', {
+        dialog: !!dialog,
+        content: !!content,
+        backdrop: !!backdrop,
+        container: !!container,
+        modalBox: !!modalBox
+      });
+      return;
+    }
 
+    console.log('Opening dialog for project:', project.title);
     isAnimating = true;
 
     // Reset image index
@@ -316,7 +333,12 @@ import { Image } from "astro:assets";
   };
 
   window.closeProjectDialog = () => {
-    if (isAnimating) return;
+    console.log('closeProjectDialog called');
+    
+    if (isAnimating) {
+      console.log('Animation in progress, skipping close');
+      return;
+    }
     
     const dialog = document.getElementById('project-dialog') as HTMLDialogElement;
     const modalBox = dialog?.querySelector('.modal-box');
@@ -324,8 +346,12 @@ import { Image } from "astro:assets";
     const container = document.getElementById('project-dialog-container');
     const content = document.getElementById('dialog-content');
     
-    if (!dialog || !backdrop || !container || !modalBox) return;
+    if (!dialog || !backdrop || !container || !modalBox) {
+      console.error('Dialog elements not found for closing');
+      return;
+    }
 
+    console.log('Closing dialog');
     isAnimating = true;
 
     // Remove fade-in class
@@ -398,4 +424,19 @@ import { Image } from "astro:assets";
       }
     }
   });
+
+  // Initialize and verify dialog functions are available
+  function initializeDialog() {
+    console.log('Initializing dialog, functions available:', {
+      openProjectDialog: typeof window.openProjectDialog,
+      closeProjectDialog: typeof window.closeProjectDialog
+    });
+  }
+
+  // Initialize immediately
+  initializeDialog();
+
+  // Re-initialize after page swaps
+  document.addEventListener('astro:after-swap', initializeDialog);
+  document.addEventListener('astro:page-load', initializeDialog);
 </script>
