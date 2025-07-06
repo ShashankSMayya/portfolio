@@ -1,29 +1,222 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
+import ServiceCard from "../components/services/ServiceCard.astro";
+
+const services = [
+  {
+    title: "Flutter App Development",
+    icon: "📱",
+    desc: "Build high-performance, cross-platform mobile applications using Flutter. From concept to deployment, I deliver pixel-perfect apps that users love.",
+    features: [
+      "iOS & Android from single codebase",
+      "Native performance & smooth animations",
+      "Implementation from provided UI designs",
+      "App Store & Play Store deployment",
+      "Post-launch maintenance & updates"
+    ],
+    badge: "MOST POPULAR",
+    highlighted: true
+  },
+  {
+    title: "Enterprise Mobile Apps",
+    icon: "🏢",
+    desc: "Develop scalable enterprise-grade mobile applications with complex business logic, advanced features, and seamless user experiences.",
+    features: [
+      "Complex business logic implementation",
+      "Third-party API integrations",
+      "Real-time data synchronization",
+      "Advanced security & authentication",
+      "Performance optimization at scale"
+    ],
+    badge: "ENTERPRISE"
+  },
+  {
+    title: "Web Development",
+    icon: "🌐",
+    desc: "Create modern, responsive web applications using cutting-edge frameworks. Perfect for landing pages, portfolios, and progressive web applications.",
+    features: [
+      "Responsive design for all devices",
+      "SEO optimization & performance",
+      "Modern framework implementation (Astro, React)",
+      "Static site generation",
+      "Analytics & tracking setup"
+    ],
+    badge: "NEW"
+  },
+  {
+    title: "Code Optimization",
+    icon: "⚡",
+    desc: "Improve existing Flutter applications with performance optimization, code refactoring, and best practices implementation.",
+    features: [
+      "Performance analysis & optimization",
+      "Code refactoring & clean architecture",
+      "Memory leak detection & fixes",
+      "UI/UX implementation improvements",
+      "Testing & quality assurance"
+    ]
+  },
+  {
+    title: "Technical Consulting",
+    icon: "💡",
+    desc: "Leverage my Flutter expertise to make informed decisions about your mobile app architecture, technology choices, and development roadmap.",
+    features: [
+      "Flutter architecture review",
+      "Technology stack recommendations",
+      "Code quality audits",
+      "Performance optimization strategies",
+      "Development best practices guidance"
+    ]
+  },
+  {
+    title: "Maintenance & Support",
+    icon: "🛠️",
+    desc: "Keep your Flutter applications running smoothly with ongoing maintenance, updates, and technical support when you need it most.",
+    features: [
+      "Bug fixes & issue resolution",
+      "Flutter version upgrades",
+      "Performance monitoring",
+      "Feature enhancements",
+      "Technical support & troubleshooting"
+    ]
+  }
+];
 ---
 
-<BaseLayout title="Projects" sideBarActiveItemID="services">
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Services</div>
+<BaseLayout title="Services" sideBarActiveItemID="services">
+  <!-- Premium Services Header -->
+  <div class="relative py-16 mb-16 -mx-6 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/30 to-base-100/60"></div>
+    <div class="absolute top-10 right-10 w-48 h-48 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
+    <div class="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-r from-accent/15 to-primary/15 rounded-full blur-3xl opacity-25 animate-float-medium"></div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <div class="mb-6 animate-fade-in">
+        <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm">
+          <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+          Professional Services
+        </span>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 animate-slide-up">
+        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+          Services Offered
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-base-content/70 max-w-3xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+        Specialized Flutter development services to bring your mobile app ideas to life with expert implementation
+      </p>
+    </div>
   </div>
 
-  <HorizontalCard
-    title="Website Development"
-    img="/web_development.webp"
-    desc="Develop landing pages, blogs and more using Astro framework for your next project."
-    badge="NEW"
-    url="#"
-    alt="Website Development"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="App Development"
-    img="/app_development.webp"
-    desc="Develop mobile apps for both Android and iOS using Flutter. Look no further for your next app project."
-    url="#"
-    badge="TRENDING"
-    alt="App Development"
-  />
-  <div class="divider my-0"></div>
+  <!-- Services Grid -->
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {services.map((service, index) => (
+        <div class="opacity-0 translate-y-8 service-card-container" style={`animation-delay: ${index * 0.1}s`}>
+          <ServiceCard
+            title={service.title}
+            icon={service.icon}
+            desc={service.desc}
+            features={service.features}
+            badge={service.badge}
+            highlighted={service.highlighted}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Process Section -->
+  <div class="py-20 mt-20 bg-gradient-to-b from-base-100 to-base-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          My Development Process
+        </h2>
+        <p class="text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
+          A proven Flutter development methodology that ensures successful project delivery every time
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center group">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl font-bold text-primary">1</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Discovery</h3>
+          <p class="text-sm text-base-content/70">Understanding your requirements and goals</p>
+        </div>
+        
+        <div class="text-center group">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl font-bold text-secondary">2</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Planning</h3>
+          <p class="text-sm text-base-content/70">Architecture planning and technical specifications</p>
+        </div>
+        
+        <div class="text-center group">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-accent/20 to-accent/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl font-bold text-accent">3</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Development</h3>
+          <p class="text-sm text-base-content/70">Flutter implementation with best practices and clean code</p>
+        </div>
+        
+        <div class="text-center group">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl font-bold text-primary">4</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Delivery</h3>
+          <p class="text-sm text-base-content/70">Testing, deployment, and ongoing support</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="py-20 mt-20 -mx-6 px-6 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent animate-glow"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+        Ready to Start Your Project?
+      </h2>
+      
+      <p class="text-lg md:text-xl text-base-content/70 mb-10 leading-relaxed">
+        Let's discuss how I can help bring your mobile app ideas to life with expert Flutter development
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <a href="mailto:shashank@example.com" class="btn btn-primary btn-lg px-10 py-3 rounded-full shadow-xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 hover:scale-105 group">
+          <span class="mr-2 font-semibold">Get a Quote</span>
+          <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+        
+        <a href="/projects" class="btn btn-outline btn-lg px-10 py-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105">
+          View Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animation Styles -->
+  <style>
+    .service-card-container {
+      animation: slideInUp 0.6s ease-out forwards;
+    }
+    
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </BaseLayout>

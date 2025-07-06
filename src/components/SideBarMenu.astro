@@ -1,25 +1,154 @@
 ---
 const { sideBarActiveItemID } = Astro.props;
-const activeClass = "bg-base-300"; // For primary color replace with `active` class
+const activeClass = "premium-active";
+
+const menuItems = [
+    { id: "home", href: "/", label: "Home", icon: "home" },
+    { id: "projects", href: "/projects", label: "Projects", icon: "briefcase" },
+    { id: "services", href: "/services", label: "Services", icon: "cog" },
+    { id: "testimonials", href: "/testimonials", label: "Testimonials", icon: "chat" },
+    { id: "cv", href: "/cv", label: "CV", icon: "document" },
+    { id: "contact", href: "mailto:shashanksmayya@gmail.com", label: "Contact", icon: "mail", external: true }
+];
 ---
 
-<ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-    <li><a class="py-3 text-base" id="projects" href="/projects">Projects</a></li>
-    <li><a class="py-3 text-base" id="services" href="/services">Services</a></li>
-    <li><a class="py-3 text-base" id="testimonials" href="/testimonials">Testimonials</a></li>
-    <li><a class="py-3 text-base" id="cv" href="/cv">CV</a></li>
-    <li>
-        <a
-            class="py-3 text-base"
-            href="mailto:shashanksmayya@gmail.com"
-            target="_blank"
-            referrerpolicy="no-referrer-when-downgrade">Contact</a
-        >
-    </li>
-</ul>
+<nav class="premium-menu py-2">
+    <ul class="space-y-1">
+        {menuItems.map((item) => (
+            <li>
+                <a 
+                    class="premium-menu-item group flex items-center px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/20 hover:shadow-lg hover:shadow-primary/10"
+                    id={item.id}
+                    href={item.href}
+                    {...(item.external && { 
+                        target: "_blank", 
+                        "referrerpolicy": "no-referrer-when-downgrade" 
+                    })}
+                >
+                    <!-- Icon -->
+                    <span class="mr-3 group-hover:scale-110 transition-transform duration-300">
+                        {item.icon === "home" && (
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        )}
+                        {item.icon === "briefcase" && (
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0V8a2 2 0 01-2 2H10a2 2 0 01-2-2V6"></path>
+                            </svg>
+                        )}
+                        {item.icon === "cog" && (
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        )}
+                        {item.icon === "chat" && (
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        )}
+                        {item.icon === "document" && (
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        )}
+                        {item.icon === "mail" && (
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        )}
+                    </span>
+                    
+                    <!-- Label -->
+                    <span class="flex-1 group-hover:translate-x-1 transition-transform duration-300">
+                        {item.label}
+                    </span>
+                    
+                    <!-- Arrow indicator -->
+                    <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    
+                    <!-- External link indicator -->
+                    {item.external && (
+                        <svg class="w-3 h-3 ml-1 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    )}
+                </a>
+            </li>
+        ))}
+    </ul>
+</nav>
+
+<style>
+    .premium-menu-item {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .premium-menu-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 3px;
+        background: linear-gradient(to bottom, 
+            rgba(var(--p), 1), 
+            rgba(var(--s), 1)
+        );
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+        border-radius: 0 6px 6px 0;
+    }
+    
+    .premium-menu-item:hover::before {
+        transform: scaleY(1);
+    }
+    
+    .premium-active {
+        background: linear-gradient(135deg, 
+            rgba(var(--p), 0.15) 0%, 
+            rgba(var(--s), 0.1) 100%
+        ) !important;
+        border-color: rgba(var(--p), 0.3) !important;
+        color: rgb(var(--p)) !important;
+        box-shadow: 
+            0 4px 12px rgba(var(--p), 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .premium-active::before {
+        transform: scaleY(1) !important;
+    }
+    
+    .premium-active .opacity-0 {
+        opacity: 1 !important;
+    }
+    
+    .premium-active span:first-of-type {
+        transform: scale(1.1);
+    }
+    
+    .premium-active span:nth-of-type(2) {
+        transform: translateX(4px);
+    }
+</style>
 
 <script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
 const activeItemElem = document.getElementById(sideBarActiveItemID);
-activeItemElem && activeItemElem.classList.add(activeClass);
+if (activeItemElem) {
+    activeItemElem.classList.add(activeClass);
+    
+    // Add active state to icon and text
+    const icon = activeItemElem.querySelector('span:first-of-type');
+    const text = activeItemElem.querySelector('span:nth-of-type(2)');
+    const arrow = activeItemElem.querySelector('svg');
+    
+    if (icon) icon.style.transform = 'scale(1.1)';
+    if (text) text.style.transform = 'translateX(4px)';
+    if (arrow) arrow.style.opacity = '1';
+}
 </script>
