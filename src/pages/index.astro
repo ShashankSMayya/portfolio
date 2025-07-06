@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import {getCollection} from "astro:content";
 
 import ProjectCard from "../components/projects/ProjectCard.astro";
+import TechStackMarquee from "../components/TechStackMarquee.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -27,6 +28,8 @@ const last_posts = posts.slice(0, 3);
             <a class="btn" href="https://twitter.com/ShashankMayya" target="_blank"> Let's connect!</a>
         </div>
     </div>
+
+    <TechStackMarquee />
 
     <div>
         <div class="text-3xl w-full font-bold mb-2">Recent projects {"</>"}</div>
