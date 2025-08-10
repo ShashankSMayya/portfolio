@@ -7,34 +7,29 @@ const projectData: Project = project;
 ---
 
 <div
-  class="project-card group relative rounded-2xl bg-gradient-to-br from-base-100 to-base-200/50 border border-base-content/10 hover:border-primary/30 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:scale-[1.02] hover:-translate-y-2 cursor-pointer overflow-hidden"
+  class="project-card group rounded-lg bg-base-100 border border-base-content/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg cursor-pointer overflow-hidden"
   data-project={JSON.stringify(projectData)}
 >
-  <!-- Background gradient overlay on hover -->
-  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-  
-  <div class="relative p-8">
-    <div class="flex flex-col lg:flex-row gap-8 items-start">
+  <div class="p-6">
+    <div class="flex flex-col lg:flex-row gap-6 items-start">
       <!-- Image Section -->
       {
         projectData.img && (
-          <div class="relative flex-shrink-0 w-full lg:w-80 group/image">
-            <div class="relative rounded-xl overflow-hidden bg-base-300/50 aspect-video lg:aspect-square">
+          <div class="relative flex-shrink-0 w-full lg:w-72">
+            <div class="relative rounded-lg overflow-hidden bg-base-200 aspect-video">
               <Image
                 src={projectData.img}
                 width={750}
                 height={422}
                 format="webp"
                 alt={projectData.title}
-                class="w-full h-full object-cover group-hover/image:scale-105 transition-transform duration-700"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <!-- Subtle overlay gradient -->
-              <div class="absolute inset-0 bg-gradient-to-t from-base-content/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              <!-- Project type indicator -->
+              <!-- Project type badge -->
               {projectData.badge && (
-                <div class="absolute top-4 left-4">
-                  <span class="badge badge-primary shadow-lg border-0 font-semibold text-primary-content">{projectData.badge}</span>
+                <div class="absolute top-3 left-3">
+                  <span class="badge badge-primary badge-sm font-medium">{projectData.badge}</span>
                 </div>
               )}
             </div>
@@ -43,13 +38,13 @@ const projectData: Project = project;
       }
       
       <!-- Content Section -->
-      <div class="flex-1 space-y-6">
+      <div class="flex-1 space-y-4">
         <!-- Header -->
-        <div class="space-y-3">
-          <h2 class="text-2xl lg:text-3xl font-bold font-display text-base-content group-hover:text-primary transition-colors duration-300 leading-tight">
+        <div>
+          <h3 class="text-xl lg:text-2xl font-bold text-base-content group-hover:text-primary transition-colors duration-200">
             {projectData.title}
-          </h2>
-          <p class="text-base-content/70 leading-relaxed text-lg group-hover:text-base-content/90 transition-colors duration-300">
+          </h3>
+          <p class="mt-2 text-base-content/70 leading-relaxed">
             {projectData.desc}
           </p>
         </div>
@@ -58,123 +53,100 @@ const projectData: Project = project;
         <div class="flex flex-wrap gap-2">
           {
             projectData.tags &&
-            projectData.tags.slice(0, 6).map((tag) => (
-              <span class="px-3 py-1 text-sm font-medium bg-base-200/80 hover:bg-primary/10 text-base-content/70 hover:text-primary rounded-full border border-base-content/10 hover:border-primary/30 transition-all duration-300">
+            projectData.tags.slice(0, 5).map((tag) => (
+              <span class="px-2.5 py-1 text-xs font-medium bg-base-200 text-base-content/70 rounded-md">
                 {tag}
               </span>
             ))
           }
-          {projectData.tags && projectData.tags.length > 6 && (
-            <span class="px-3 py-1 text-sm font-medium bg-base-200/80 text-base-content/50 rounded-full border border-base-content/10">
-              +{projectData.tags.length - 6} more
+          {projectData.tags && projectData.tags.length > 5 && (
+            <span class="px-2.5 py-1 text-xs font-medium bg-base-200 text-base-content/50 rounded-md">
+              +{projectData.tags.length - 5}
             </span>
           )}
         </div>
 
-        <!-- Visual indicator and action buttons -->
+        <!-- Action buttons and indicator -->
         <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
-          <div class="flex items-center text-sm text-base-content/50 group-hover:text-primary/70 transition-colors duration-300">
-            <svg class="w-4 h-4 mr-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          <div class="flex items-center text-sm text-base-content/50 group-hover:text-primary transition-colors duration-200">
+            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
-            <span class="font-medium">Click to view details</span>
+            <span>View Details</span>
           </div>
           
           <div class="flex gap-2">
-          
-          {projectData.playStore && (
-            <a href={projectData.playStore} target="_blank" rel="noopener noreferrer" class="store-link">
-              <button class="btn btn-sm bg-gray-900 hover:bg-black text-white border-0 rounded-full px-4 shadow-lg hover:shadow-lg hover:scale-105 transition-all duration-300 group/store">
-                <svg class="w-4 h-4 sm:mr-2" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                </svg>
-                <span class="hidden sm:inline">Play Store</span>
-              </button>
-            </a>
-          )}
-          
-          {projectData.appStore && (
-            <a href={projectData.appStore} target="_blank" rel="noopener noreferrer" class="store-link">
-              <button class="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white border-0 rounded-full px-4 shadow-lg hover:shadow-lg hover:scale-105 transition-all duration-300 group/store">
-                <svg class="w-4 h-4 sm:mr-2" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
-                </svg>
-                <span class="hidden sm:inline">App Store</span>
-              </button>
-            </a>
-          )}
+            {projectData.playStore && (
+              <a href={projectData.playStore} target="_blank" rel="noopener noreferrer" class="store-link">
+                <button class="btn btn-xs bg-slate-900 hover:bg-slate-800 text-white border-0 gap-1">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                  </svg>
+                  <span class="hidden sm:inline">Play</span>
+                </button>
+              </a>
+            )}
+            
+            {projectData.appStore && (
+              <a href={projectData.appStore} target="_blank" rel="noopener noreferrer" class="store-link">
+                <button class="btn btn-xs bg-blue-600 hover:bg-blue-700 text-white border-0 gap-1">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
+                  </svg>
+                  <span class="hidden sm:inline">App</span>
+                </button>
+              </a>
+            )}
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- Subtle animated border gradient -->
-  <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-    <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 blur-sm"></div>
-  </div>
 </div>
 
 <script>
-  // Improved event handling for better reliability
+  // Event handling for project cards
   function setupProjectCardListeners() {
-    console.log('Setting up project card listeners');
-    
-    // Remove existing listeners to prevent duplicates
     document.removeEventListener('click', handleProjectCardClick);
-    
-    // Add single event listener with delegation
     document.addEventListener('click', handleProjectCardClick);
   }
 
   function handleProjectCardClick(e: Event) {
     const target = e.target as HTMLElement;
     
-    // Ignore clicks on store links and their children
+    // Ignore clicks on store links
     if (target.closest('.store-link')) {
-      console.log('Store link clicked, ignoring');
       return;
     }
     
-    // Check if click is on a project card or its children
+    // Check if click is on a project card
     const projectCard = target.closest('.project-card');
     if (projectCard) {
       e.preventDefault();
       e.stopPropagation();
       
-      console.log('Project card clicked');
-      
       const projectData = projectCard.getAttribute('data-project');
       if (projectData) {
         try {
           const project = JSON.parse(projectData);
-          console.log('Opening dialog for project:', project.title);
           
-          // Check if the dialog function exists
           if (typeof window.openProjectDialog === 'function') {
             window.openProjectDialog(project);
           } else {
-            console.error('openProjectDialog function not found');
-            // Retry after a short delay in case it's not loaded yet
             setTimeout(() => {
               if (typeof window.openProjectDialog === 'function') {
                 window.openProjectDialog(project);
-              } else {
-                console.error('openProjectDialog function still not available');
               }
             }, 100);
           }
         } catch (error) {
           console.error('Error parsing project data:', error);
         }
-      } else {
-        console.error('No project data found');
       }
     }
   }
 
-  // Initialize immediately if DOM is ready
+  // Initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupProjectCardListeners);
   } else {
@@ -182,14 +154,6 @@ const projectData: Project = project;
   }
 
   // Re-initialize after Astro page transitions
-  document.addEventListener('astro:after-swap', () => {
-    console.log('Page swapped, re-initializing project card listeners');
-    setupProjectCardListeners();
-  });
-
-  // Also handle astro:page-load for better compatibility
-  document.addEventListener('astro:page-load', () => {
-    console.log('Page loaded, re-initializing project card listeners');
-    setupProjectCardListeners();
-  });
+  document.addEventListener('astro:after-swap', setupProjectCardListeners);
+  document.addEventListener('astro:page-load', setupProjectCardListeners);
 </script>

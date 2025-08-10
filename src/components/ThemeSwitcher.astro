@@ -20,14 +20,14 @@
       const sunIcon = button.querySelector('.swap-off');
       const moonIcon = button.querySelector('.swap-on');
       
-      if (currentTheme === 'premium-dark') {
-        // In dark mode, show moon icon (to switch to light)
-        sunIcon?.classList.add('hidden');
-        moonIcon?.classList.remove('hidden');
-      } else {
-        // In light mode, show sun icon (to switch to dark)
+      if (currentTheme === 'warm-dark') {
+        // In dark mode, show sun icon (to switch to light)
         sunIcon?.classList.remove('hidden');
         moonIcon?.classList.add('hidden');
+      } else {
+        // In light mode, show moon icon (to switch to dark)
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
       }
     });
   }
@@ -42,13 +42,13 @@
   // Function to toggle theme
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'premium-dark' ? 'premium' : 'premium-dark';
+    const newTheme = currentTheme === 'warm-dark' ? 'warm-light' : 'warm-dark';
     setTheme(newTheme);
   }
 
   // Initialize theme on page load
   function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'premium-dark';
+    const savedTheme = localStorage.getItem('theme') || 'warm-dark';
     setTheme(savedTheme);
   }
 
@@ -85,5 +85,13 @@
   }
   .hidden {
     display: none !important;
+  }
+  
+  .theme-toggle {
+    transition: transform 0.2s ease;
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.1);
   }
 </style>
