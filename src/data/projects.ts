@@ -26,8 +26,7 @@ export const projects: Project[] = [
         title: "TacticX",
         img: "/projects/tacticx.webp",
         desc: "A crypto options trading platform built with Flutter Web (WASM) featuring real-time market data, visual strategy builder, and advanced position analysis.",
-        longDesc: "TacticX is a professional-grade crypto options trading platform designed for derivatives traders. Built as a Progressive Web App using Flutter's WASM compilation for near-native performance, it enables traders to analyze options chains, construct multi-leg strategies visually, and monitor positions
-       with real-time Greeks calculations. The platform connects to crypto exchanges via a unified WebSocket backend, providing seamless market data streaming with sub-second latency.",
+        longDesc: "TacticX is a professional-grade crypto options trading platform designed for derivatives traders. Built as a Progressive Web App using Flutter's WASM compilation for near-native performance, it enables traders to analyze options chains, construct multi-leg strategies visually, and monitor positions with real-time Greeks calculations. The platform connects to crypto exchanges via a unified WebSocket backend, providing seamless market data streaming with sub-second latency.",
         features: [
           "Real-time options chain with live bid/ask spreads and open interest",
           "Visual strategy builder using node-based interface for multi-leg positions",
@@ -37,32 +36,46 @@ export const projects: Project[] = [
           "Light/dark theme support with custom design system",
           "Session management with inactivity monitoring"
         ],
-        techDetails: "Built with Flutter Web compiled to WASM for optimal performance. Architecture follows a pragmatic 3-layer pattern (Screens → Cubits → Repositories → Services) with Flutter Bloc for state management. Uses dart_mappable for JSON serialization, auto_route for type-safe navigation, and
-      injectable/get_it for dependency injection. WebSocket service implements reference-counted subscriptions with auto-reconnect and exponential backoff. Background message parsing via Dart isolates ensures UI responsiveness during high-frequency market updates.",
-        challenges: "Handling high-frequency WebSocket data without blocking the UI required implementing isolate-based message parsing. Building a flexible visual strategy builder that supports arbitrary option leg combinations while maintaining accurate payoff calculations. Ensuring consistent styling across web
-      platforms with a custom theme extension system.",
+        techDetails: "Built with Flutter Web compiled to WASM for optimal performance. Architecture follows a pragmatic 3-layer pattern (Screens → Cubits → Repositories → Services) with Flutter Bloc for state management. Uses dart_mappable for JSON serialization, auto_route for type-safe navigation, and injectable/get_it for dependency injection. WebSocket service implements reference-counted subscriptions with auto-reconnect and exponential backoff. Background message parsing via Dart isolates ensures UI responsiveness during high-frequency market updates.",
+        challenges: "Handling high-frequency WebSocket data without blocking the UI required implementing isolate-based message parsing. Building a flexible visual strategy builder that supports arbitrary option leg combinations while maintaining accurate payoff calculations. Ensuring consistent styling across web platforms with a custom theme extension system.",
         outcomes: "Delivered a production-ready trading platform with professional-grade UX. The WASM compilation provides smooth 60fps interactions even during volatile market conditions with heavy data streaming.",
         badge: "IN DEVELOPMENT",
         tags: ["Flutter", "Flutter Web", "WASM", "Flutter Bloc", "Crypto", "Trading", "Fintech", "WebSockets", "Personal"],
         date: new Date("2025-01-11"),
+        url:"https://tacticx.trade",
         featured: true
-      }
-  {
-    id: "zontix",
-    title: "Zontix",
-    img: "/projects/zontix.webp",
-    desc: "Developing an event management app that uses blockchain under the hood to issue NFT tickets.",
-    url: "https://zontix.com",
-    tags: ["Flutter", "Fintech", "Client", "Flutter Bloc", "Crypto", "Event Management"],
-    date: new Date("2024-01-15"),
-    featured: true,
-    // Extended details to be added later
-    longDesc: "",
-    features: [],
-    techDetails: "",
-    challenges: "",
-    outcomes: ""
-  },
+      },
+   {
+      id: "zontix",
+      title: "Zontix",
+      img: "/projects/zontix.webp",
+      desc: "A cross-platform event management app leveraging MultiversX blockchain to issue NFT-based tickets, featuring secure wallet management, QR/NFC-based check-ins, and integrated payment processing.",
+      url: "https://zontix.com",
+      tags: ["Flutter", "Fintech", "Client", "Flutter Bloc", "Crypto", "Event Management", "MultiversX", "NFT", "Firebase", "NFC"],
+      date: new Date("2024-01-15"),
+      featured: true,
+
+      longDesc: "Zontix is a comprehensive event management and ticketing platform that bridges Web2 convenience with Web3 innovation. The app enables event organizers to create, manage, and monetize events while issuing blockchain-backed NFT tickets on the MultiversX network. Attendees benefit from secure, tamper-proof digital tickets stored in non-custodial wallets, with seamless check-in via QR codes or NFC badges. The platform supports multiple payment methods including Google Pay, Apple Pay, and traditional card payments, making blockchain ticketing accessible to mainstream users.",
+
+      features: [
+        "NFT ticket issuance on MultiversX blockchain with XOXNO SDK integration",
+        "Non-custodial wallet management with BIP44 HD wallet generation and Shamir's Secret Sharing for secure seed phrase backup",
+        "Multi-method event check-in: QR code scanning and NFC badge support (Android NFC Reader + iOS NFC/Peer modes)",
+        "Comprehensive event management dashboard with guest lists, team roles, referral programs, and voucher systems",
+        "Integrated payment processing via Google Pay, Apple Pay, and card payments with XMoneyPay gateway",
+        "Firebase authentication with Google Sign-In and biometric (fingerprint/Face ID) security",
+        "Offline-first architecture with intelligent caching and graceful degradation",
+        "Multi-language support (German, English, Spanish, French, Romanian)",
+        "Real-time push notifications via Firebase Cloud Messaging",
+        "Dynamic QR badge generation with 30-second auto-refresh for security"
+      ],
+
+      techDetails: "Built with Flutter using a feature-first architecture and 75+ Cubits for granular state management via flutter_bloc. The app implements a clean layered architecture (UI → State Management → Repository → Data Sources) with GetIt and Injectable for dependency injection. Blockchain integration uses multiversx_sdk and multiversx_crypto for wallet operations, with XOXNO SDK for NFT marketplace functionality. Security is handled through flutter_secure_storage, AES-GCM encryption, and PBKDF2 key derivation. The app uses auto_route for type-safe navigation, dart_mappable for serialization, and implements platform-specific NFC handling for Android and iOS. Payment processing integrates the 'pay' package for native wallet support alongside WebView-based card payment flows.",
+
+      challenges: "Key challenges included implementing non-custodial wallet security without compromising UX—solved by using Shamir's Secret Sharing to split seed phrases into encrypted shards. The QR/NFC dual check-in system required platform-specific implementations with Android's HCE/NFC-F reader mode and iOS's CoreNFC framework, coordinated through a unified BadgeScannerService. Ensuring offline functionality for blockchain-dependent features required building an intelligent caching layer with TTL-based invalidation and offline wallet generation fallbacks. Managing 75+ Cubits across the app was streamlined using a strict feature-first structure with shared repositories and services.",
+
+      outcomes: "Delivered a production-ready cross-platform app targeting Android, iOS, Web, macOS, Windows, and Linux. The architecture enables seamless onboarding for non-crypto users while providing full Web3 capabilities for experienced users. The offline-first design ensures reliability in venue environments with poor connectivity. The modular codebase supports rapid feature iteration with clear separation of concerns."
+    },
    {
       id: "firstock",
       title: "Firstock Trading App",
@@ -73,8 +86,7 @@ export const projects: Project[] = [
       tags: ["Flutter", "Fintech", "Client", "Flutter Bloc", "WebSockets", "Trading", "Clean Architecture", "Firebase"],
       date: new Date("2024-01-10"),
       featured: true,
-      longDesc: "Developed a comprehensive stock trading application for Firstock, a SEBI-registered stockbroker in India. The app enables users to trade across multiple asset classes including equities, futures & options, IPOs, and mutual funds. Features real-time market data streaming via WebSockets,
-    advanced order types, portfolio analytics, and a full-featured options strategy builder. The app follows clean architecture principles with 123+ screens organized into feature modules, serving thousands of active traders.",
+      longDesc: "Developed a comprehensive stock trading application for Firstock, a SEBI-registered stockbroker in India. The app enables users to trade across multiple asset classes including equities, futures & options, IPOs, and mutual funds. Features real-time market data streaming via WebSockets, advanced order types, portfolio analytics, and a full-featured options strategy builder. The app follows clean architecture principles with 123+ screens organized into feature modules, serving thousands of active traders.",
       features: [
         "Real-time market data streaming with live price updates and order book depth",
         "Multi-asset trading: Equities, F&O derivatives, IPO bidding, and Mutual Funds",
@@ -89,14 +101,10 @@ export const projects: Project[] = [
         "Push notifications for order updates, price alerts, and market news",
         "Fund management with multiple payment gateway integrations"
       ],
-      techDetails: "Built with Flutter using feature-based clean architecture (Data/Domain/Presentation layers). State management via Flutter Bloc (Cubit pattern) with sealed classes for type-safe states. Real-time data handled through custom WebSocket service with heartbeat mechanism, binary exponential
-    backoff reconnection (100ms to 128s), and automatic lifecycle management. Networking via Dio with custom AuthInterceptor for token injection and request queuing. Functional error handling using dartz Either pattern. Code generation with dart_mappable for JSON serialization, injectable for DI, and
-    auto_route for type-safe navigation. Firebase integration for Analytics, Crashlytics, Remote Config (feature flags), and FCM notifications. Multi-flavor builds (dev/qa/staging/prod) with separate Firebase configurations. Request cancellation system with per-feature cancel tokens.",
-      challenges: "Key challenges included implementing reliable real-time data streaming for volatile market conditions, managing complex state across 123+ screens with interdependent data, handling token refresh without interrupting active WebSocket connections, and ensuring consistent performance with
-    high-frequency price updates. Solved WebSocket reliability through heartbeat monitoring and exponential backoff reconnection. Addressed state complexity using feature-scoped Cubits with shared mixins for common behaviors. Implemented queued interceptor pattern for seamless token refresh.",
-      outcomes: "Successfully launched on both Play Store and App Store. The app handles real-time streaming for thousands of concurrent users during peak market hours. Clean architecture enabled rapid feature development with the team adding IPO bidding and Mutual Funds modules without disrupting existing
-    trading functionality. Remote Config-based feature flags allow controlled rollouts of new features to user segments."
-    }
+      techDetails: "Built with Flutter using feature-based clean architecture (Data/Domain/Presentation layers). State management via Flutter Bloc (Cubit pattern) with sealed classes for type-safe states. Real-time data handled through custom WebSocket service with heartbeat mechanism, binary exponential backoff reconnection (100ms to 128s), and automatic lifecycle management. Networking via Dio with custom AuthInterceptor for token injection and request queuing. Functional error handling using dartz Either pattern. Code generation with dart_mappable for JSON serialization, injectable for DI, and auto_route for type-safe navigation. Firebase integration for Analytics, Crashlytics, Remote Config (feature flags), and FCM notifications. Multi-flavor builds (dev/qa/staging/prod) with separate Firebase configurations. Request cancellation system with per-feature cancel tokens.",
+      challenges: "Key challenges included implementing reliable real-time data streaming for volatile market conditions, managing complex state across 123+ screens with interdependent data, handling token refresh without interrupting active WebSocket connections, and ensuring consistent performance with high-frequency price updates. Solved WebSocket reliability through heartbeat monitoring and exponential backoff reconnection. Addressed state complexity using feature-scoped Cubits with shared mixins for common behaviors. Implemented queued interceptor pattern for seamless token refresh.",
+      outcomes: "Successfully launched on both Play Store and App Store. The app handles real-time streaming for thousands of concurrent users during peak market hours. Clean architecture enabled rapid feature development with the team adding IPO bidding and Mutual Funds modules without disrupting existing trading functionality. Remote Config-based feature flags allow controlled rollouts of new features to user segments."
+    },
   {
     id: "indy",
     title: "Indy App",
