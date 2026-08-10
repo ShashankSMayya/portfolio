@@ -2,6 +2,80 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ServiceCard from "../components/services/ServiceCard.astro";
 
+const packages = [
+  {
+    name: "Flutter App Audit",
+    tagline: "Fixed scope, about 1 week",
+    icon: "🔍",
+    desc: "A deep review of your existing Flutter app: architecture, performance, security, and code quality. You get a written report with prioritized fixes you can act on immediately, whether or not we work together after.",
+    forWho: "Teams with an app that feels slow, buggy, or hard to change, or founders who inherited a codebase and want to know what they're sitting on.",
+    includes: [
+      "Architecture and state management review",
+      "Performance profiling of real problem screens",
+      "Security and data handling check",
+      "Written report with prioritized, actionable fixes",
+      "A call to walk through the findings together"
+    ]
+  },
+  {
+    name: "MVP Sprint",
+    tagline: "4 to 6 weeks, idea to both stores",
+    icon: "🚀",
+    desc: "Your product idea turned into a working app on the App Store and Play Store. Weekly demo builds so you see progress every week, with analytics and crash reporting wired in from day one.",
+    forWho: "Founders who need to validate a product with real users, without hiring a team or waiting six months.",
+    includes: [
+      "Scope definition and technical planning",
+      "Flutter app for iOS and Android from one codebase",
+      "Weekly demo builds you can put in testers' hands",
+      "Analytics and crash reporting from the first release",
+      "App Store and Play Store submission handled"
+    ],
+    badge: "MOST POPULAR",
+    highlighted: true
+  },
+  {
+    name: "Ongoing Development",
+    tagline: "Monthly retainer",
+    icon: "🔄",
+    desc: "Dedicated development capacity for a product that's already live. This is how I work with Outfit Formulas today: continuous features, releases, and maintenance as the product grows.",
+    forWho: "Products with real users that need a reliable senior developer without the overhead of a full-time hire.",
+    includes: [
+      "Feature development on a steady cadence",
+      "Store releases, monitoring, and crash triage",
+      "Flutter and dependency upgrades handled",
+      "Direct async access, no account managers",
+      "Priority response when something breaks"
+    ]
+  }
+];
+
+const faqs = [
+  {
+    q: "How do you charge?",
+    a: "We start with a short call about scope, then I send a fixed quote for audits and MVP sprints, or a monthly rate for ongoing work. No surprises mid-project: if scope changes, we agree on the change before I build it."
+  },
+  {
+    q: "What timezone do you work in?",
+    a: "I'm based in India (IST) and work with clients in the US, Canada, and Europe. My working hours overlap with European mornings and US evenings, and most communication is async anyway, so timezone has never been a blocker for my clients."
+  },
+  {
+    q: "Who owns the code?",
+    a: "You do, always. Code lives in your repositories, accounts stay in your name, and everything I build is your IP. If we stop working together, you lose nothing."
+  },
+  {
+    q: "Do you sign NDAs?",
+    a: "Yes. Send yours over before the first call if you prefer, or I can work with a standard mutual NDA."
+  },
+  {
+    q: "What happens after launch?",
+    a: "Nothing ships and disappears. Every MVP sprint includes a handover, and most clients move to a maintenance arrangement or retainer so the app keeps improving after release."
+  },
+  {
+    q: "How will I know what's happening during the project?",
+    a: "Weekly demo builds you can actually open on your phone, plus short async updates. You'll never wonder what you're paying for."
+  }
+];
+
 const services = [
   {
     title: "Flutter App Development",
@@ -82,9 +156,9 @@ const services = [
 ];
 ---
 
-<BaseLayout 
-  title="Flutter Development Services | Expert Mobile App Developer"
-  description="Professional Flutter development services: mobile apps, enterprise solutions, web development, optimization & consulting. 5+ years experience. Get a quote today."
+<BaseLayout
+  title="Flutter Development Services | App Audit, MVP Sprint & Retainer"
+  description="Three ways to work with me: a fixed-scope Flutter App Audit, a 4-6 week MVP Sprint from idea to both stores, or ongoing development on retainer. Book a call to discuss your project."
   sideBarActiveItemID="services"
 >
   <!-- Premium Services Header -->
@@ -114,8 +188,67 @@ const services = [
     </div>
   </div>
 
+  <!-- Engagement Packages -->
+  <div class="max-w-7xl mx-auto px-6 mb-24">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold font-display mb-4">Three Ways to Work With Me</h2>
+      <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
+        Every engagement starts with a call. You tell me what you're building, I tell you honestly what it takes.
+      </p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-3">
+      {packages.map((pkg) => (
+        <div class={`card bg-base-100 border transition-all duration-300 hover:shadow-xl relative ${pkg.highlighted ? 'border-primary/40 shadow-lg shadow-primary/10' : 'border-base-content/10 hover:border-primary/30'}`}>
+          {pkg.badge && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="badge badge-primary font-semibold px-4">{pkg.badge}</span>
+            </div>
+          )}
+          <div class="card-body">
+            <div class="text-4xl mb-2">{pkg.icon}</div>
+            <h3 class="text-2xl font-bold">{pkg.name}</h3>
+            <p class="text-sm font-medium text-primary mb-3">{pkg.tagline}</p>
+            <p class="text-base-content/70 mb-4">{pkg.desc}</p>
+
+            <div class="mb-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-base-content/50 mb-2">Who it's for</p>
+              <p class="text-sm text-base-content/70">{pkg.forWho}</p>
+            </div>
+
+            <div class="mb-6">
+              <p class="text-xs font-semibold uppercase tracking-wide text-base-content/50 mb-2">What's included</p>
+              <ul class="space-y-2">
+                {pkg.includes.map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-4 h-4 text-success mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-base-content/80">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="card-actions mt-auto">
+              <a href="/contact" class={`btn w-full ${pkg.highlighted ? 'btn-primary' : 'btn-outline'}`}>
+                Book a Call
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
   <!-- Services Grid -->
   <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Everything I Cover</h2>
+      <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
+        The full range of what these engagements can include
+      </p>
+    </div>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {services.map((service, index) => (
         <div class="opacity-0 translate-y-8 service-card-container" style={`animation-delay: ${index * 0.1}s`}>
@@ -177,6 +310,28 @@ const services = [
           <p class="text-sm text-base-content/70">Testing, deployment, and ongoing support</p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="max-w-3xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Questions Clients Ask</h2>
+      <p class="text-lg text-base-content/70">
+        The practical stuff, answered upfront
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq) => (
+        <div class="collapse collapse-arrow bg-base-100 border border-base-content/10 rounded-xl">
+          <input type="radio" name="services-faq" />
+          <div class="collapse-title text-lg font-semibold">{faq.q}</div>
+          <div class="collapse-content">
+            <p class="text-base-content/70 leading-relaxed">{faq.a}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
