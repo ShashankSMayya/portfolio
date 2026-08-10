@@ -22,6 +22,36 @@ export interface Project {
 export const projects: Project[] = [
 
       {
+        id: "outfit-formulas",
+        title: "Outfit Formulas",
+        img: "/projects/outfit_formulas.webp",
+        desc: "A subscription-based outfit planning and personal styling app for iOS and Android, built around an AI stylist named ALI. Features closet tools, an outfit calendar, a community feed, and experiment-driven onboarding.",
+        url: "https://outfitformulas.com",
+        playStore: "https://play.google.com/store/apps/details?id=com.outfit.mobile.app",
+        appStore: "https://apps.apple.com/app/id6447664832",
+        badge: "ACTIVE",
+        tags: ["Flutter", "Flutter Bloc", "Firebase", "AI", "RevenueCat", "PostHog", "Client", "Consumer App"],
+        date: new Date("2026-08-10"),
+        featured: true,
+        longDesc: "Outfit Formulas is a wardrobe system app that helps women plan what to wear every day. At its core is ALI, an AI stylist users can chat with using text, photos of their clothes, or voice input. The app combines daily outfit formulas, a monthly outfit calendar, closet management tools, a 14-day style challenge, a closet cleanout assistant, packing lists, and a full community with posts, polls, and saved collections. The product runs on a subscription model with free trials, and growth is driven by experiment-based onboarding flows measured in PostHog. Alongside the consumer app, I work on an internal Flutter Web admin panel that the operations team uses to manage outfits, catalog items, content, and moderation, including PDF export of outfit plans.",
+        features: [
+          "ALI, an AI stylist chat with image uploads, voice input, and outfit suggestions",
+          "Daily outfit formulas with weather-aware recommendations via location and forecast data",
+          "Monthly outfit calendar with personal outfit recording and weekly planning flows",
+          "Closet tools: wardrobe, wishlist, closet staples, cleanout assistant, and packing lists",
+          "Community feed with posts, polls, comments, bookmarks, and moderation",
+          "14-day style challenge and guided education content",
+          "Subscription paywall with free trials, powered by RevenueCat and Stripe",
+          "Multi-arm, experiment-driven onboarding measured with PostHog funnels",
+          "Deep linking and attribution via Branch and universal links",
+          "English and Spanish localization"
+        ],
+        techDetails: "Built with Flutter using a Cubit-only flutter_bloc architecture, get_it and injectable for dependency injection, auto_route with auth and subscription guards, and dart_mappable for serialization, with repositories returning Either-based results for functional error handling. Backend runs on Firebase (Auth, Firestore, Cloud Functions in TypeScript, Storage, Remote Config, Messaging) with dev and prod flavors, plus a custom AI backend behind CloudFront for chat, transcription, and personalization. Payments run through RevenueCat with Stripe on the server side. Analytics spans PostHog, Firebase Analytics, and Braze for lifecycle messaging. Shared functionality is split into local packages for authentication, payments, storage, and TikTok integration. The admin panel is a separate Flutter Web app on Firebase Hosting with background-isolate PDF generation.",
+        challenges: "The largest effort was a full V2 rewrite, migrating the app from Riverpod and go_router to a Bloc and auto_route architecture without disrupting active subscribers. Building reliable AI chat with image and voice input required a robust upload and transcription pipeline with graceful error handling. Onboarding is a living experiment surface, so flows are structured as independent arms with frozen analytics contracts to keep PostHog funnels comparable across versions.",
+        outcomes: "The app is live on both stores and in active development with thousands of commits across the mobile app and admin panel. The experiment-driven onboarding system lets the team test and ship new acquisition flows quickly, and the shared architecture between the consumer app and admin panel keeps the whole product surface maintainable by a small team."
+      },
+
+      {
         id: "tacticx",
         title: "TacticX",
         img: "/projects/tacticx.webp",
@@ -72,7 +102,7 @@ export const projects: Project[] = [
 
       techDetails: "Built with Flutter using a feature-first architecture and 75+ Cubits for granular state management via flutter_bloc. The app implements a clean layered architecture (UI → State Management → Repository → Data Sources) with GetIt and Injectable for dependency injection. Blockchain integration uses multiversx_sdk and multiversx_crypto for wallet operations, with XOXNO SDK for NFT marketplace functionality. Security is handled through flutter_secure_storage, AES-GCM encryption, and PBKDF2 key derivation. The app uses auto_route for type-safe navigation, dart_mappable for serialization, and implements platform-specific NFC handling for Android and iOS. Payment processing integrates the 'pay' package for native wallet support alongside WebView-based card payment flows.",
 
-      challenges: "Key challenges included implementing non-custodial wallet security without compromising UX—solved by using Shamir's Secret Sharing to split seed phrases into encrypted shards. The QR/NFC dual check-in system required platform-specific implementations with Android's HCE/NFC-F reader mode and iOS's CoreNFC framework, coordinated through a unified BadgeScannerService. Ensuring offline functionality for blockchain-dependent features required building an intelligent caching layer with TTL-based invalidation and offline wallet generation fallbacks. Managing 75+ Cubits across the app was streamlined using a strict feature-first structure with shared repositories and services.",
+      challenges: "Key challenges included implementing non-custodial wallet security without compromising UX, solved by using Shamir's Secret Sharing to split seed phrases into encrypted shards. The QR/NFC dual check-in system required platform-specific implementations with Android's HCE/NFC-F reader mode and iOS's CoreNFC framework, coordinated through a unified BadgeScannerService. Ensuring offline functionality for blockchain-dependent features required building an intelligent caching layer with TTL-based invalidation and offline wallet generation fallbacks. Managing 75+ Cubits across the app was streamlined using a strict feature-first structure with shared repositories and services.",
 
       outcomes: "Delivered a production-ready cross-platform app targeting Android, iOS, Web, macOS, Windows, and Linux. The architecture enables seamless onboarding for non-crypto users while providing full Web3 capabilities for experienced users. The offline-first design ensures reliability in venue environments with poor connectivity. The modular codebase supports rapid feature iteration with clear separation of concerns."
     },
@@ -195,17 +225,29 @@ export const projects: Project[] = [
   },
   {
     id: "dota2-soundboard",
-    title: "Dota 2 Soundboard App",
+    title: "Dota 2 Soundboard",
     img: "/projects/dota2sounboard.webp",
-    desc: "Built a music board for a game I used to play called Dota2Soundboard using the Flutter UI Development Kit and GetX state management and SQFlite. MAU of 1.5k+ users with more than 10k+ downloads.",
-    tags: ["Flutter", "GetX", "Gaming", "Personal"],
-    date: new Date("2022-11-20"),
-    // Extended details to be added later
-    longDesc: "",
-    features: [],
-    techDetails: "",
-    challenges: "",
-    outcomes: ""
+    desc: "A fan-made soundboard app with 10k+ downloads that puts every Dota 2 sound in one place: voice lines for 120+ heroes, ability sounds, announcer packs, TI crowd moments, and a Guess the Hero quiz. Recently rebuilt from the ground up for its 3.0 release.",
+    playStore: "https://play.google.com/store/apps/details?id=com.shashankmayya.dota2soundboard",
+    badge: "3.0 RELEASE",
+    tags: ["Flutter", "Flutter Bloc", "Drift", "Firebase", "Gaming", "Personal"],
+    date: new Date("2026-08-09"),
+    featured: true,
+    longDesc: "Dota 2 Soundboard started as one of my first Flutter apps and has grown into a polished product with 10k+ downloads and 1.5k+ monthly active users. The 3.0 release was a complete rebuild: the original GetX and SQFlite codebase was rewritten with a layered Cubit architecture, a pre-bundled SQLite catalog powered by Drift, and an over-the-air content delivery system that ships new sound packs from a CDN without app updates. The app covers chat-wheel voice lines for 120+ heroes, ability cast sounds, meme classics, announcer kill-streak calls, The International crowd and caster moments from 2017 to 2023, seasonal event packs, and pro-team chants.",
+    features: [
+      "Sound library spanning 120+ heroes, ability sounds, announcer packs, TI moments, and seasonal events",
+      "Over-the-air content packs delivered from a Cloudflare R2 CDN, so new sounds ship without app updates",
+      "Guess the Hero quiz mode with rounds, stats, and score summaries",
+      "Set any sound as a ringtone, notification, or alarm tone",
+      "Share sounds as audio files with app attribution",
+      "Favourites with most-played and recently-played shelves",
+      "Radiant and Dire themes with edge-to-edge UI and entrance animations",
+      "Wrong-sound reporting backed by Firestore with Play Integrity App Check",
+      "Play Store in-app updates with configurable update priority"
+    ],
+    techDetails: "Built with Flutter using a feature-first layered architecture (Screen, Cubit, Repository, Service) with a Result-based error contract across the data layer. State management via flutter_bloc with sealed states and Equatable value equality. Dependency injection with get_it and injectable, navigation with auto_route, models with dart_mappable, and theming with theme_tailor. The sound catalog lives in a pre-bundled SQLite database accessed through Drift, while audio playback uses just_audio with the entire library re-encoded to Opus for smaller downloads. Content is served as hash-named OTA packs from a Cloudflare R2 CDN. Firebase provides Analytics, Crashlytics, and Firestore, and monetization runs on a single adaptive AdMob banner.",
+    challenges: "Migrating years of legacy user data (favourites from the original GetX version) without losing anything required a dedicated migration layer. Moving the sound library off the app bundle and onto a CDN meant designing a content sync pipeline with download progress, stale-catalog recovery, and graceful offline behavior. Re-encoding the full library to Opus cut download sizes significantly while keeping audio quality.",
+    outcomes: "The app maintains 1.5k+ monthly active users with more than 10k downloads. The OTA content system now lets new sound packs (TI 2022, TI 2023, Crownfall) ship without a store release, and the 3.0 rebuild turned a hobby project into a maintainable, production-grade codebase."
   },
   {
     id: "bridgeman",

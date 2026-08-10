@@ -20,3 +20,8 @@ pnpm-debug.log*
 
 # Astro
 .astro/
+
+# IDE
+.idea/
+.vscode/
+*.iml
