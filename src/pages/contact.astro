@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact | Book a Call with Shashank S Mayya - Flutter Developer"
+  description="Schedule a free intro call or send a message to discuss your Flutter project. Fintech, trading, and subscription app development. Quick response guaranteed."
+  sideBarActiveItemID="contact"
+>
+  <!-- Contact Header -->
+  <div class="relative py-16 mb-12 -mx-6 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/30 to-base-100/60"></div>
+    <div class="absolute top-10 right-10 w-48 h-48 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
+
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <div class="mb-6 animate-fade-in">
+        <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm">
+          <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+          Currently Available
+        </span>
+      </div>
+
+      <h1 class="text-5xl md:text-6xl font-bold font-display mb-6">
+        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+          Let's Talk
+        </span>
+      </h1>
+
+      <p class="text-xl text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+        Pick a time that works for you. We'll go over your project, and I'll give you a straight answer on scope, timeline, and whether I'm the right fit.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cal.com Inline Embed -->
+  <section class="mb-16" aria-label="Schedule a call">
+    <div id="cal-booking" class="w-full rounded-2xl overflow-hidden" style="min-height: 640px;"></div>
+    <p class="text-center text-sm text-base-content/50 mt-4">
+      Booking not loading?{" "}
+      <a href="https://cal.com/shashank-s-mayya" target="_blank" rel="noopener" class="link link-primary">Open my calendar directly</a>
+    </p>
+  </section>
+
+  <!-- Divider -->
+  <div class="flex items-center gap-4 mb-12 max-w-3xl mx-auto">
+    <div class="flex-1 h-px bg-base-content/10"></div>
+    <span class="text-base-content/50 text-sm font-medium">Prefer to write instead?</span>
+    <div class="flex-1 h-px bg-base-content/10"></div>
+  </div>
+
+  <!-- Contact Form -->
+  <section class="max-w-2xl mx-auto mb-16" aria-label="Contact form">
+    <div id="form-success" class="alert alert-success mb-6 hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span>Thanks for reaching out! I'll get back to you within 24 hours.</span>
+    </div>
+
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/contact?sent=true"
+      class="card bg-base-100 shadow-soft border border-base-content/10"
+    >
+      <div class="card-body gap-4">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="form-control">
+            <label class="label" for="name"><span class="label-text font-medium">Name</span></label>
+            <input type="text" id="name" name="name" required placeholder="Your name" class="input input-bordered w-full" />
+          </div>
+          <div class="form-control">
+            <label class="label" for="email"><span class="label-text font-medium">Email</span></label>
+            <input type="email" id="email" name="email" required placeholder="you@company.com" class="input input-bordered w-full" />
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label class="label" for="budget"><span class="label-text font-medium">Budget range</span></label>
+          <select id="budget" name="budget" class="select select-bordered w-full">
+            <option value="" selected>Not sure yet</option>
+            <option>Under $2,000</option>
+            <option>$2,000 – $5,000</option>
+            <option>$5,000 – $15,000</option>
+            <option>$15,000+</option>
+            <option>Ongoing / retainer</option>
+          </select>
+        </div>
+
+        <div class="form-control">
+          <label class="label" for="message"><span class="label-text font-medium">What are you building?</span></label>
+          <textarea id="message" name="message" required rows="5" placeholder="Tell me about your project, timeline, and what you need help with." class="textarea textarea-bordered w-full"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg mt-2">
+          Send Message
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <p class="text-center text-base-content/60 mt-8">
+      Or email me directly at{" "}
+      <a href="mailto:shashanksmayya@gmail.com" class="link link-primary font-medium">shashanksmayya@gmail.com</a>
+      · <a href="https://www.linkedin.com/in/shashank-mayya" target="_blank" rel="noopener" class="link link-primary font-medium">LinkedIn</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<!-- Cal.com embed loader: data-astro-rerun so it re-executes after view transitions -->
+<script is:inline data-astro-rerun>
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["initNamespace", namespace]);
+        } else p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  // Match the embed to the site's DaisyUI theme (warm-dark / warm-light)
+  var calThemeFor = function () {
+    return document.documentElement.getAttribute("data-theme") === "warm-light" ? "light" : "dark";
+  };
+
+  Cal("init", { origin: "https://cal.com" });
+  Cal("inline", {
+    elementOrSelector: "#cal-booking",
+    calLink: "shashank-s-mayya",
+    config: { layout: "month_view", theme: calThemeFor() },
+  });
+  Cal("ui", {
+    theme: calThemeFor(),
+    cssVarsPerTheme: {
+      light: { "cal-brand": "#f97316" },
+      dark: { "cal-brand": "#fb923c" },
+    },
+    hideEventTypeDetails: false,
+    layout: "month_view",
+  });
+
+  // Live-sync when the visitor uses the theme toggle
+  if (window.__calThemeObserver) window.__calThemeObserver.disconnect();
+  window.__calThemeObserver = new MutationObserver(function () {
+    Cal("ui", { theme: calThemeFor() });
+  });
+  window.__calThemeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+</script>
+
+<!-- Show success message after Netlify form submission -->
+<script is:inline data-astro-rerun>
+  if (new URLSearchParams(window.location.search).get("sent") === "true") {
+    const el = document.getElementById("form-success");
+    if (el) {
+      el.classList.remove("hidden");
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+</script>
