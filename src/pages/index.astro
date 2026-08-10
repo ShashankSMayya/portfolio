@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {getCollection} from "astro:content";
 import ProjectCard from "../components/projects/ProjectCard.astro";
-import ProjectDialog from "../components/projects/ProjectDialog.astro";
 import TechStackMarquee from "../components/TechStackMarquee.astro";
 import { getRecentProjects } from "../data/projects";
 
@@ -206,5 +205,4 @@ const recentProjects = getRecentProjects(3);
         </div>
     </section>
 
-    <ProjectDialog />
 </BaseLayout>

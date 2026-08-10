@@ -4,13 +4,16 @@ import {Image} from "astro:assets";
 import type { Project } from '../../data/projects';
 
 const projectData: Project = project;
+const caseStudyUrl = `/projects/${projectData.id}`;
 ---
 
 <div
-  class="project-card group rounded-lg bg-base-100 border border-base-content/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg cursor-pointer overflow-hidden"
-  data-project={JSON.stringify(projectData)}
+  class="project-card group relative rounded-lg bg-base-100 border border-base-content/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg overflow-hidden"
 >
-  <div class="p-6">
+  <!-- Stretched link: makes the whole card navigate to the case study -->
+  <a href={caseStudyUrl} class="absolute inset-0 z-0" aria-label={`${projectData.title} case study`}></a>
+
+  <div class="p-6 pointer-events-none">
     <div class="flex flex-col lg:flex-row gap-6 items-start">
       <!-- Image Section -->
       {
@@ -25,7 +28,7 @@ const projectData: Project = project;
                 alt={projectData.title}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              
+
               <!-- Project type badge -->
               {projectData.badge && (
                 <div class="absolute top-3 left-3">
@@ -36,7 +39,7 @@ const projectData: Project = project;
           </div>
         )
       }
-      
+
       <!-- Content Section -->
       <div class="flex-1 space-y-4">
         <!-- Header -->
@@ -72,10 +75,10 @@ const projectData: Project = project;
             <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
-            <span>View Details</span>
+            <span>View Case Study</span>
           </div>
-          
-          <div class="flex gap-2">
+
+          <div class="flex gap-2 relative z-10 pointer-events-auto">
             {projectData.playStore && (
               <a href={projectData.playStore} target="_blank" rel="noopener noreferrer" class="store-link">
                 <button class="btn btn-xs bg-slate-900 hover:bg-slate-800 text-white border-0 gap-1">
@@ -86,7 +89,7 @@ const projectData: Project = project;
                 </button>
               </a>
             )}
-            
+
             {projectData.appStore && (
               <a href={projectData.appStore} target="_blank" rel="noopener noreferrer" class="store-link">
                 <button class="btn btn-xs bg-blue-600 hover:bg-blue-700 text-white border-0 gap-1">
@@ -103,57 +106,3 @@ const projectData: Project = project;
     </div>
   </div>
 </div>
-
-<script>
-  // Event handling for project cards
-  function setupProjectCardListeners() {
-    document.removeEventListener('click', handleProjectCardClick);
-    document.addEventListener('click', handleProjectCardClick);
-  }
-
-  function handleProjectCardClick(e: Event) {
-    const target = e.target as HTMLElement;
-    
-    // Ignore clicks on store links
-    if (target.closest('.store-link')) {
-      return;
-    }
-    
-    // Check if click is on a project card
-    const projectCard = target.closest('.project-card');
-    if (projectCard) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const projectData = projectCard.getAttribute('data-project');
-      if (projectData) {
-        try {
-          const project = JSON.parse(projectData);
-          
-          if (typeof window.openProjectDialog === 'function') {
-            window.openProjectDialog(project);
-          } else {
-            setTimeout(() => {
-              if (typeof window.openProjectDialog === 'function') {
-                window.openProjectDialog(project);
-              }
-            }, 100);
-          }
-        } catch (error) {
-          console.error('Error parsing project data:', error);
-        }
-      }
-    }
-  }
-
-  // Initialize
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupProjectCardListeners);
-  } else {
-    setupProjectCardListeners();
-  }
-
-  // Re-initialize after Astro page transitions
-  document.addEventListener('astro:after-swap', setupProjectCardListeners);
-  document.addEventListener('astro:page-load', setupProjectCardListeners);
-</script>

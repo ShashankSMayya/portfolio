@@ -1,8 +1,7 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/projects/ProjectCard.astro";
-import ProjectDialog from "../components/projects/ProjectDialog.astro";
-import { getAllProjects } from "../data/projects";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/projects/ProjectCard.astro";
+import { getAllProjects } from "../../data/projects";
 
 const projects = getAllProjects();
 ---
@@ -80,8 +79,6 @@ const projects = getAllProjects();
             </div>
         </div>
     </div>
-    
-    <ProjectDialog />
     
     <!-- Animation Styles -->
     <style>
