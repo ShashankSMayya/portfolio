@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SideBar from "../components/SideBar.astro";
 import ThemeSwitcher from "../components/ThemeSwitcher.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
 
@@ -28,7 +28,7 @@ const {
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/J+vjWIhLr7e7DdOZilFfN1RVYwAYqBUvC7Fjq2PugVXWciYXKcDs0sbjWnWl3KmjJ8fa0QzvQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <BaseHead title={title} description={description} image={image} , ogType={ogType} />
-    {TRANSITION_API && <ViewTransitions />}
+    {TRANSITION_API && <ClientRouter />}
   </head>
   <body>
     <div class="bg-base-100 drawer lg:drawer-open">

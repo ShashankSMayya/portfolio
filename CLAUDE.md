@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website built with Astro 4.0.2, featuring blog functionality, project showcases, CV/resume display, and testimonials. The site is deployed at https://shashanksmayya.netlify.app.
+This is a personal portfolio website built with Astro 7, featuring blog functionality, project showcases, CV/resume display, and testimonials. The site is deployed at https://shashanksmayya.netlify.app.
 
 ## Development Commands
 
@@ -35,16 +35,17 @@ bun preview
 ### Project Structure
 - `src/pages/` - Route-based pages (index, blog, cv, projects, services, testimonials)
 - `src/components/` - Reusable components organized by feature (cv/, projects/, testimonials/)
-- `src/content/` - Content collections for blog posts and store items
+- `src/content/blog/` - Blog post content files
+- `src/content.config.ts` - Content collection definitions (Content Layer API with glob loaders)
 - `src/layouts/` - Page layout templates
 - `src/config.ts` - Central site configuration
 - `astro.config.mjs` - Astro configuration with plugins and integrations
 
 ### Content Management
-- Blog posts: Add MDX files to `src/content/blog/`
-- Blog posts require frontmatter with: title, description, pubDate, image (optional), tags (optional)
-- Content collections are defined in `src/content/config.ts`
-- Automatic slug generation from titles is enabled
+- Blog posts: Add MD/MDX files to `src/content/blog/`
+- Blog posts require frontmatter with: title, description, pubDate; optional: updatedDate, heroImage, badge, tags
+- Content collections are defined in `src/content.config.ts` using the Content Layer API (entries have `id`, not `slug`; render with `render(entry)` from `astro:content`)
+- Automatic slug generation from titles is enabled (`GENERATE_SLUG_FROM_TITLE` in `src/config.ts`, via `src/lib/createSlug.ts`)
 
 ### Key Components
 - `BaseLayout.astro` - Main layout wrapper
@@ -63,5 +64,5 @@ bun preview
 2. **Image Optimization**: Place images in `public/` directory
 3. **RSS Feed**: Automatically generated at `/rss.xml`
 4. **Sitemap**: Automatically generated for SEO
-5. **View Transitions**: Enabled for smoother navigation between pages
+5. **View Transitions**: Enabled via `<ClientRouter />` in `BaseLayout.astro` (toggled by `TRANSITION_API` in `src/config.ts`)
 6. **No Testing Setup**: Project doesn't include test configuration
