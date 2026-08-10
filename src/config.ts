@@ -1,7 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Shashank S Mayya | Expert Flutter Developer & Mobile App Freelancer';
-export const SITE_DESCRIPTION = 'Professional Flutter developer with 5+ years experience. Specialized in fintech, trading apps, and enterprise solutions. 10+ apps delivered for global clients. Available for freelance projects.';
+export const SITE_TITLE = 'Shashank S Mayya | Flutter Developer for Fintech, Trading & AI Apps';
+export const SITE_DESCRIPTION = 'Flutter developer specializing in fintech, trading, and AI consumer apps. Built a SEBI-registered broker\'s trading platform serving thousands of live traders. 5+ years, 10+ apps shipped for global clients.';
 export const GENERATE_SLUG_FROM_TITLE = true
 export const TRANSITION_API = true
