@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website built with Astro 7, featuring blog functionality, project showcases, CV/resume display, and testimonials. The site is deployed at https://shashanksmayya.netlify.app.
+This is a personal portfolio website built with Astro 7, featuring blog functionality, project showcases, CV/resume display, and testimonials. The site is deployed at https://shashanksmayya.dev.
 
 ## Development Commands
 
