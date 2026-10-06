@@ -126,7 +126,7 @@ function buildHtml(): string {
 <meta charset="utf-8" />
 <title>${esc(cv.name)} — Resume</title>
 <style>
-  @page { size: A4; margin: 13mm 14mm; }
+  @page { size: A4; margin: 11mm 13mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root { --accent: #0f4c81; --ink: #1a1a1a; --muted: #555; --line: #d9d9d9; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -134,7 +134,7 @@ function buildHtml(): string {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: var(--ink);
     font-size: 9.6pt;
-    line-height: 1.45;
+    line-height: 1.4;
   }
   a { color: var(--accent); text-decoration: none; }
 

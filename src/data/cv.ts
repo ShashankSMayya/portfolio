@@ -30,7 +30,7 @@ export interface Achievement {
 
 export const cv = {
   name: "Shashank S Mayya",
-  role: "Senior Flutter Developer & Mobile App Specialist",
+  role: "Full-Stack Mobile Engineer · Flutter, Firebase & AI",
   location: "Mangalore, India",
   email: "shashanksmayya@gmail.com",
   website: "https://shashanksmayya.dev",
@@ -40,28 +40,28 @@ export const cv = {
   resumeProjectIds: ["firstock", "outfit-formulas", "zontix", "tacticx", "dota2-soundboard"],
 
   summary:
-    "Flutter developer with 5+ years of experience building apps where reliability matters. " +
-    "Specialized in fintech, trading platforms, and AI consumer apps, including a stock trading " +
-    "platform for a SEBI-registered broker that serves thousands of live traders. 10+ apps shipped " +
-    "for clients across India, Canada, Ireland, and the US.",
+    "Full-stack mobile engineer with 5+ years across Flutter apps, backend, and system architecture, " +
+    "designing with the user's experience in mind. Specialized in fintech, trading, and AI consumer apps, " +
+    "including a trading platform for a SEBI-registered broker serving thousands of live traders. " +
+    "10+ apps shipped for clients across India, Canada, Ireland, and the US.",
 
   experience: [
     {
-      title: "Freelance Flutter Developer",
+      title: "Freelance Full-Stack Mobile Engineer",
       company: "Self-Employed",
       period: "Apr 2023 - Present",
       summary:
-        "Freelance Flutter development for clients across fintech, consumer, and enterprise. " +
-        "Currently the lead mobile developer on Outfit Formulas, an AI-powered outfit planning app.",
+        "Freelance product engineering across fintech, consumer, and enterprise; lead engineer on Outfit Formulas.",
       highlights: [
         "Delivered 10+ production apps end-to-end for clients across India, Canada, Ireland, and the US",
         "Built a stock trading platform for a SEBI-registered broker, serving thousands of live traders during market hours",
-        "Lead mobile developer on Outfit Formulas, an AI-powered styling app with subscriptions and experiment-driven onboarding",
+        "Lead engineer on Outfit Formulas across the Flutter app, Firebase backend, community feature, and OpenAI-powered features",
         "Wrote unit and widget test suites for Outfit Formulas and unit tests for the Pragati ERP client app",
         "Shipped blockchain ticketing with non-custodial wallet security and QR/NFC check-in for a European events client",
         "Integrated AI backends, real-time WebSocket pipelines, payments (RevenueCat, Stripe), and analytics (PostHog, Braze)",
+        "Daily AI-assisted workflows: Claude Code with custom project skills, shared agent rules, and cross-repo code indexing",
       ],
-      tech: ["Flutter", "Dart", "Firebase", "Supabase", "BLoC", "WebSockets", "RevenueCat", "PostHog"],
+      tech: ["Flutter", "Dart", "Firebase", "Cloud Functions", "TypeScript", "OpenAI", "Supabase", "BLoC", "WebSockets", "RevenueCat", "PostHog"],
     },
     {
       title: "Software Engineer",
@@ -102,11 +102,15 @@ export const cv = {
     },
     {
       category: "Backend & Database",
-      skills: ["Firebase", "Supabase", "TypeScript", "Hive DB", "Isar DB"],
+      skills: ["Firebase", "Firestore Modeling", "Cloud Functions", "Security Rules", "Supabase", "TypeScript", "Hive / Isar"],
+    },
+    {
+      category: "AI Integration",
+      skills: ["OpenAI API", "Gemini", "Prompt Design", "LLM Output Validation", "Python / FastAPI", "AI-Assisted Development"],
     },
     {
       category: "Architecture & Tools",
-      skills: ["BLoC Pattern", "Clean Architecture", "Unit & Widget Testing", "Git & CI/CD", "REST APIs", "WebSockets"],
+      skills: ["System Design", "BLoC Pattern", "Clean Architecture", "Unit & Widget Testing", "Git & CI/CD", "REST APIs", "WebSockets", "UX Thinking"],
     },
   ] satisfies SkillCategory[],
 

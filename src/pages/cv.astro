@@ -6,8 +6,8 @@ import { Image } from "astro:assets";
 ---
 
 <BaseLayout 
-  title="Resume & CV | Shashank S Mayya - Flutter Developer"
-  description="Professional resume of Shashank S Mayya, Flutter developer with 5+ years experience. View education, work experience, skills, and achievements in mobile app development."
+  title="Resume & CV | Shashank S Mayya - Full-Stack Mobile Engineer"
+  description="Professional resume of Shashank S Mayya, full-stack mobile engineer with 5+ years experience across Flutter, backend, system architecture, and AI. View education, work experience, skills, and achievements."
   sideBarActiveItemID="cv"
 >
     <!-- Premium CV Header -->
@@ -29,7 +29,7 @@ import { Image } from "astro:assets";
                                 width={200} 
                                 height={200} 
                                 src="/profile.webp" 
-                                alt="Shashank S Mayya - Flutter Developer" 
+                                alt="Shashank S Mayya - Full-Stack Mobile Engineer" 
                             />
                         </div>
                         <!-- Status indicator -->
@@ -48,7 +48,7 @@ import { Image } from "astro:assets";
                     </h1>
                     
                     <div class="text-xl md:text-2xl text-base-content/80 font-medium mb-4">
-                        Senior Flutter Developer & Mobile App Specialist
+                        Full-Stack Mobile Engineer · Flutter, Firebase & AI
                     </div>
                     
                     <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
@@ -90,7 +90,9 @@ import { Image } from "astro:assets";
             
             <div class="premium-content-card">
                 <p class="text-lg leading-relaxed text-base-content/80">
-                    Flutter developer with <strong>5+ years of experience</strong> building apps where reliability matters.
+                    Full-stack mobile engineer with <strong>5+ years of experience</strong> building apps where reliability matters.
+                    I work across the stack, from Flutter apps to <strong>backend, data modeling, and system architecture</strong>,
+                    and design with the user's experience in mind.
                     Specialized in <strong>fintech, trading platforms, and AI consumer apps</strong>, including a stock trading
                     platform for a SEBI-registered broker that serves thousands of live traders. <strong>10+ apps shipped</strong> for
                     clients across India, Canada, Ireland, and the US.
@@ -128,23 +130,29 @@ import { Image } from "astro:assets";
             
             <div class="premium-timeline">
                 <TimeLineElement
-                    title="Freelance Flutter Developer"
+                    title="Freelance Full-Stack Mobile Engineer"
                     subtitle="Apr 2023 - Present • Self-Employed"
                 >
                     <div class="experience-content">
-                        <p class="mb-4">Freelance Flutter development for clients across fintech, consumer, and enterprise. Currently the lead mobile developer on Outfit Formulas, an AI-powered outfit planning app.</p>
+                        <p class="mb-4">Freelance product engineering across fintech, consumer, and enterprise. Currently lead engineer on Outfit Formulas (app, backend, and AI).</p>
                         <div class="achievement-grid">
                             <div class="achievement-item">✅ Delivered 10+ production apps end-to-end for clients across India, Canada, Ireland, and the US</div>
                             <div class="achievement-item">✅ Built a stock trading platform for a SEBI-registered broker, serving thousands of live traders during market hours</div>
-                            <div class="achievement-item">✅ Lead mobile developer on Outfit Formulas: AI stylist chat, subscriptions, and experiment-driven onboarding</div>
-                            <div class="achievement-item">✅ Wrote unit and widget test suites for Outfit Formulas and unit tests for the Pragti ERP client app</div>
+                            <div class="achievement-item">✅ Lead engineer on Outfit Formulas across mobile and backend: Flutter app, Firestore data model and security rules, and TypeScript Cloud Functions</div>
+                            <div class="achievement-item">✅ Designed and built the Outfit Formulas community feature end to end, from data contracts to a staged, flag-gated rollout to every user</div>
+                            <div class="achievement-item">✅ Built OpenAI-powered features with validated, scored model output, and took over the FastAPI AI backend (ALI) in Oct 2026</div>
+                            <div class="achievement-item">✅ Wrote unit and widget test suites for Outfit Formulas and unit tests for the Pragati ERP client app</div>
                             <div class="achievement-item">✅ Shipped blockchain ticketing with non-custodial wallet security and QR/NFC check-in for a European events client</div>
                             <div class="achievement-item">✅ Integrated AI backends, real-time WebSocket pipelines, payments (RevenueCat, Stripe), and analytics (PostHog, Braze)</div>
+                            <div class="achievement-item">✅ Daily AI-assisted workflows: Claude Code with custom project skills, shared agent rules, and cross-repo code indexing</div>
                         </div>
                         <div class="tech-stack mt-4">
                             <span class="tech-badge">Flutter</span>
                             <span class="tech-badge">Dart</span>
                             <span class="tech-badge">Firebase</span>
+                            <span class="tech-badge">Cloud Functions</span>
+                            <span class="tech-badge">TypeScript</span>
+                            <span class="tech-badge">OpenAI</span>
                             <span class="tech-badge">Supabase</span>
                             <span class="tech-badge">BLoC</span>
                             <span class="tech-badge">WebSockets</span>
@@ -215,7 +223,7 @@ import { Image } from "astro:assets";
             </div>
             
             <div class="premium-content-card">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-2 gap-6">
                     <div class="skill-category">
                         <h3 class="skill-category-title">Mobile Development</h3>
                         <div class="skill-list">
@@ -231,6 +239,9 @@ import { Image } from "astro:assets";
                         <h3 class="skill-category-title">Backend & Database</h3>
                         <div class="skill-list">
                             <div class="skill-item expert">Firebase</div>
+                            <div class="skill-item advanced">Firestore Data Modeling</div>
+                            <div class="skill-item advanced">Cloud Functions</div>
+                            <div class="skill-item advanced">Security Rules</div>
                             <div class="skill-item expert">Supabase</div>
                             <div class="skill-item intermediate">TypeScript</div>
                             <div class="skill-item advanced">Hive DB</div>
@@ -239,14 +250,28 @@ import { Image } from "astro:assets";
                     </div>
                     
                     <div class="skill-category">
+                        <h3 class="skill-category-title">AI Integration</h3>
+                        <div class="skill-list">
+                            <div class="skill-item advanced">OpenAI API</div>
+                            <div class="skill-item intermediate">Gemini</div>
+                            <div class="skill-item advanced">Prompt Design</div>
+                            <div class="skill-item advanced">LLM Output Validation</div>
+                            <div class="skill-item intermediate">Python / FastAPI</div>
+                            <div class="skill-item expert">AI-Assisted Development</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
                         <h3 class="skill-category-title">Architecture & Tools</h3>
                         <div class="skill-list">
+                            <div class="skill-item advanced">System Design</div>
                             <div class="skill-item expert">BLoC Pattern</div>
                             <div class="skill-item expert">Clean Architecture</div>
                             <div class="skill-item advanced">Unit & Widget Testing</div>
                             <div class="skill-item advanced">Git & CI/CD</div>
                             <div class="skill-item advanced">REST APIs</div>
                             <div class="skill-item advanced">WebSockets</div>
+                            <div class="skill-item advanced">Product & UX Thinking</div>
                         </div>
                     </div>
                 </div>

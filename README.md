@@ -1,8 +1,8 @@
-# Shashank S Mayya - Flutter Developer Portfolio
+# Shashank S Mayya - Full-Stack Mobile Engineer Portfolio
 
 ![Portfolio Website](public/social_img.webp)
 
-Professional Flutter developer portfolio showcasing 5+ years of experience in mobile app development, specializing in fintech applications, trading platforms, and enterprise solutions.
+Portfolio of a full-stack mobile engineer with 5+ years of experience across Flutter apps, backend, system architecture, and AI, specializing in fintech applications, trading platforms, and enterprise solutions.
 
 ## Live Website
 
