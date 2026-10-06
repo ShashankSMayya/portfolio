@@ -1,0 +1,98 @@
+---
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+const { activeItemID } = Astro.props;
+
+const items = [
+  { id: "projects", href: "/projects", label: "Work" },
+  { id: "services", href: "/services", label: "Services" },
+  { id: "testimonials", href: "/testimonials", label: "Testimonials" },
+  { id: "cv", href: "/cv", label: "CV" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-base-300/70 bg-base-100/85 backdrop-blur-md">
+  <nav class="mx-auto flex h-16 max-w-[1120px] items-center justify-between px-5 sm:px-8" aria-label="Main">
+    <a href="/" class="flex items-center gap-3 font-semibold tracking-tight text-base-content">
+      <img src="/profile.webp" alt="" width="28" height="28" class="h-7 w-7 rounded-full object-cover" />
+      <span>Shashank S Mayya</span>
+    </a>
+
+    <div class="hidden items-center gap-1 md:flex">
+      {items.map((item) => (
+        <a
+          href={item.href}
+          aria-current={activeItemID === item.id ? "page" : undefined}
+          class:list={[
+            "rounded-md px-3 py-2 text-sm transition-colors",
+            activeItemID === item.id
+              ? "text-base-content"
+              : "text-base-content/60 hover:text-base-content",
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="ml-3 rounded-md border border-base-300 px-3.5 py-2 text-sm font-medium text-base-content transition-colors hover:border-base-content/40"
+      >
+        Book a call
+      </a>
+      <div class="ml-1"><ThemeSwitcher /></div>
+    </div>
+
+    <div class="flex items-center gap-1 md:hidden">
+      <ThemeSwitcher />
+      <button
+        type="button"
+        class="nav-toggle inline-flex h-10 w-10 items-center justify-center rounded-md text-base-content/80 hover:text-base-content"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-nav" class="hidden border-t border-base-300/70 md:hidden">
+    <ul class="mx-auto max-w-[1120px] px-5 py-3">
+      {items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={activeItemID === item.id ? "page" : undefined}
+            class:list={[
+              "block py-3 text-base",
+              activeItemID === item.id ? "text-base-content" : "text-base-content/70",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-2 pb-1">
+        <a href="/contact" class="block rounded-md bg-base-content px-4 py-3 text-center font-medium text-base-100">Book a call</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  function setupNav() {
+    const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+    const panel = document.getElementById("mobile-nav");
+    if (!toggle || !panel) return;
+    toggle.onclick = () => {
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!open));
+      toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+      panel.classList.toggle("hidden", open);
+    };
+  }
+  setupNav();
+  document.addEventListener("astro:after-swap", setupNav);
+</script>

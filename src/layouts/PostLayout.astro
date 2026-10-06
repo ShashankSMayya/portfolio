@@ -1,43 +1,38 @@
 ---
-import { type BlogSchema } from "../content/config";
+import type { BlogSchema } from "../content.config";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import { Image } from "astro:assets";
 
 export interface Props extends BlogSchema {}
 
 const { title, description, pubDate, updatedDate, heroImage, badge, tags = [] } = Astro.props;
 dayjs.extend(localizedFormat);
-const displayDate = dayjs(pubDate).format("ll")
-import { Image } from "astro:assets";
+const displayDate = dayjs(pubDate).format("ll");
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}, ogType="article">
-  <main class="md:flex md:justify-center">
-    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
-      {heroImage && <Image width={750} height={422} format="webp" src={heroImage} alt={title} class="w-full mb-6" />}
-      <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
-      <br />
-      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
-      {
-        tags &&
-          tags.map((tag) => (
-            <a href={`/blog/tag/${tag}`} class="badge badge-outline ml-2 no-underline">
-              {tag}
-            </a>
-          ))
-      }
-      {
-        updatedDate && (
-          <div>
-            {" "}
-            Last updated on <time>{updatedDate}</time>{" "}
-          </div>
-        )
-      }
-      <div class="divider my-2"></div>
+<BaseLayout title={title} description={description} image={heroImage} ogType="article">
+  <article class="mx-auto max-w-[68ch]">
+    <a href="/blog" class="link-quiet text-sm text-base-content/60">All posts</a>
+    <header class="mt-8 border-b border-base-300 pb-8">
+      <h1 class="text-4xl font-semibold sm:text-5xl">{title}</h1>
+      <p class="mt-4 text-sm text-base-content/50">
+        {pubDate && <time datetime={dayjs(pubDate).toISOString()}>{displayDate}</time>}
+        {updatedDate && <span class="ml-3">Updated <time>{dayjs(updatedDate).format("ll")}</time></span>}
+        {badge && <span class="ml-3 rounded-md border border-base-300 px-2 py-0.5">{badge}</span>}
+      </p>
+      {tags.length > 0 && (
+        <p class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          {tags.map((tag) => <a href={`/blog/tag/${tag}`} class="link-quiet text-base-content/60">{tag}</a>)}
+        </p>
+      )}
+    </header>
+    {heroImage && (
+      <Image width={1200} height={675} format="webp" src={heroImage} alt="" class="mt-10 w-full rounded-xl border border-base-300" />
+    )}
+    <div class="prose prose-lg mt-10 max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-xl">
       <slot />
-    </article>
-  </main>
+    </div>
+  </article>
 </BaseLayout>

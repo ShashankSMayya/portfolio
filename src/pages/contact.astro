@@ -3,88 +3,72 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Contact | Book a Call with Shashank S Mayya - Full-Stack Mobile Engineer"
-  description="Schedule a free intro call or send a message to discuss your Flutter project. Fintech, trading, and subscription app development. I reply within 24 hours."
+  title="Contact | Book a Call with Shashank S Mayya"
+  description="Book a free intro call or send a message about your app, backend, or AI project. I reply within 24 hours."
   sideBarActiveItemID="contact"
 >
-  <!-- Contact Header -->
-  <div class="relative py-16 mb-12 -mx-6 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/30 to-base-100/60"></div>
-    <div class="absolute top-10 right-10 w-48 h-48 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
-
-    <div class="relative z-10 text-center max-w-4xl mx-auto">
-      <div class="mb-6 animate-fade-in">
-        <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm">
-          <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
-          Currently Available
-        </span>
-      </div>
-
-      <h1 class="text-5xl md:text-6xl font-bold font-display mb-6">
-        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-          Let's Talk
-        </span>
-      </h1>
-
-      <p class="text-xl text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-        Pick a time that works for you. We'll go over your project, and I'll give you a straight answer on scope, timeline, and whether I'm the right fit.
-      </p>
-    </div>
-  </div>
+  <header class="pb-12 pt-4">
+    <p class="mb-6 flex items-center gap-2.5 text-sm text-base-content/60">
+      <span class="signal" aria-hidden="true"></span>
+      Currently available
+    </p>
+    <h1 class="text-4xl font-semibold sm:text-5xl">Let's talk</h1>
+    <p class="mt-5 max-w-[60ch] text-lg leading-relaxed text-base-content/65 sm:text-xl">
+      Pick a time that works for you. We'll go over your project, and I'll give you a straight answer on scope, timeline, and whether I'm the right fit.
+    </p>
+  </header>
 
   <!-- Cal.com Inline Embed -->
-  <section class="mb-16" aria-label="Schedule a call">
-    <div id="cal-booking" class="w-full rounded-2xl overflow-hidden" style="min-height: 640px;"></div>
-    <p class="text-center text-sm text-base-content/50 mt-4">
+  <section aria-label="Schedule a call">
+    <div id="cal-booking" class="w-full overflow-hidden rounded-xl border border-base-300" style="min-height: 640px;"></div>
+    <p class="mt-4 text-sm text-base-content/55">
       Booking not loading?{" "}
-      <a href="https://cal.com/shashank-s-mayya" target="_blank" rel="noopener" class="link link-primary">Open my calendar directly</a>
+      <a href="https://cal.com/shashank-s-mayya" target="_blank" rel="noopener" class="link-quiet">Open my calendar directly</a>
     </p>
   </section>
 
-  <!-- Divider -->
-  <div class="flex items-center gap-4 mb-12 max-w-3xl mx-auto">
-    <div class="flex-1 h-px bg-base-content/10"></div>
-    <span class="text-base-content/50 text-sm font-medium">Prefer to write instead?</span>
-    <div class="flex-1 h-px bg-base-content/10"></div>
-  </div>
-
-  <!-- Contact Form -->
-  <section class="max-w-2xl mx-auto mb-16" aria-label="Contact form">
-    <div id="form-success" class="alert alert-success mb-6 hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      </svg>
-      <span>Thanks for reaching out! I'll get back to you within 24 hours.</span>
+  <section class="mt-24 grid gap-8 border-t border-base-300 pt-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16" aria-labelledby="write-title">
+    <div>
+      <h2 id="write-title" class="text-2xl font-semibold sm:text-3xl">Prefer to write instead?</h2>
+      <p class="mt-3 text-base-content/60">
+        Or email me directly at{" "}
+        <a href="mailto:shashanksmayya@gmail.com" class="link-quiet">shashanksmayya@gmail.com</a>{" "}
+        or find me on <a href="https://www.linkedin.com/in/shashank-mayya" target="_blank" rel="noopener" class="link-quiet">LinkedIn</a>.
+      </p>
     </div>
 
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      action="/contact?sent=true"
-      class="card bg-base-100 shadow-soft border border-base-content/10"
-    >
-      <div class="card-body gap-4">
+    <div>
+      <div id="form-success" role="status" class="mb-6 hidden rounded-lg border border-success/40 bg-success/10 px-4 py-3 text-[15px] text-base-content">
+        Thanks for reaching out! I'll get back to you within 24 hours.
+      </div>
+
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/contact?sent=true"
+        class="grid gap-5"
+      >
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden">
           <label>Don't fill this out if you're human: <input name="bot-field" /></label>
         </p>
 
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="form-control">
-            <label class="label" for="name"><span class="label-text font-medium">Name</span></label>
-            <input type="text" id="name" name="name" required placeholder="Your name" class="input input-bordered w-full" />
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-base-content" for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name" class="w-full rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-base text-base-content placeholder:text-base-content/35 transition-colors hover:border-base-content/30 focus:border-primary focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-primary/30" />
           </div>
-          <div class="form-control">
-            <label class="label" for="email"><span class="label-text font-medium">Email</span></label>
-            <input type="email" id="email" name="email" required placeholder="you@company.com" class="input input-bordered w-full" />
+          <div>
+            <label class="mb-1.5 block text-sm font-medium text-base-content" for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com" class="w-full rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-base text-base-content placeholder:text-base-content/35 transition-colors hover:border-base-content/30 focus:border-primary focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-primary/30" />
           </div>
         </div>
 
-        <div class="form-control">
-          <label class="label" for="budget"><span class="label-text font-medium">Budget range</span></label>
-          <select id="budget" name="budget" class="select select-bordered w-full">
+        <div>
+          <label class="mb-1.5 block text-sm font-medium text-base-content" for="budget">Budget range</label>
+          <select id="budget" name="budget" class="w-full rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-base text-base-content placeholder:text-base-content/35 transition-colors hover:border-base-content/30 focus:border-primary focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-primary/30">
             <option value="" selected>Not sure yet</option>
             <option>Under $2,000</option>
             <option>$2,000 – $5,000</option>
@@ -94,25 +78,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </select>
         </div>
 
-        <div class="form-control">
-          <label class="label" for="message"><span class="label-text font-medium">What are you building?</span></label>
-          <textarea id="message" name="message" required rows="5" placeholder="Tell me about your project, timeline, and what you need help with." class="textarea textarea-bordered w-full"></textarea>
+        <div>
+          <label class="mb-1.5 block text-sm font-medium text-base-content" for="message">What are you building?</label>
+          <textarea id="message" name="message" required rows="6" placeholder="Tell me about your project, timeline, and what you need help with." class="w-full rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-base text-base-content placeholder:text-base-content/35 transition-colors hover:border-base-content/30 focus:border-primary focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-primary/30 leading-relaxed"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg mt-2">
-          Send Message
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-          </svg>
-        </button>
-      </div>
-    </form>
-
-    <p class="text-center text-base-content/60 mt-8">
-      Or email me directly at{" "}
-      <a href="mailto:shashanksmayya@gmail.com" class="link link-primary font-medium">shashanksmayya@gmail.com</a>
-      · <a href="https://www.linkedin.com/in/shashank-mayya" target="_blank" rel="noopener" class="link link-primary font-medium">LinkedIn</a>
-    </p>
+        <div>
+          <button type="submit" class="rounded-lg bg-primary px-5 py-3 font-medium text-primary-content transition-opacity hover:opacity-90">
+            Send message
+          </button>
+        </div>
+      </form>
+    </div>
   </section>
 </BaseLayout>
 
@@ -143,9 +120,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     };
   })(window, "https://app.cal.com/embed/embed.js", "init");
 
-  // Match the embed to the site's DaisyUI theme (warm-dark / warm-light)
+  // Match the embed to the site's DaisyUI theme (ink / paper)
   var calThemeFor = function () {
-    return document.documentElement.getAttribute("data-theme") === "warm-light" ? "light" : "dark";
+    return document.documentElement.getAttribute("data-theme") === "paper" ? "light" : "dark";
   };
 
   Cal("init", { origin: "https://cal.com" });
@@ -157,8 +134,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   Cal("ui", {
     theme: calThemeFor(),
     cssVarsPerTheme: {
-      light: { "cal-brand": "#f97316" },
-      dark: { "cal-brand": "#fb923c" },
+      light: { "cal-brand": "#3451D1" },
+      dark: { "cal-brand": "#7C9CFF" },
     },
     hideEventTypeDetails: false,
     layout: "month_view",
@@ -174,6 +151,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     attributeFilter: ["data-theme"],
   });
 </script>
+
+<style>
+  .signal {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: oklch(var(--p));
+    box-shadow: 0 0 0 4px oklch(var(--p) / 0.15);
+  }
+</style>
 
 <!-- Show success message after Netlify form submission -->
 <script is:inline data-astro-rerun>

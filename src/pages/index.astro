@@ -1,209 +1,149 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {getCollection} from "astro:content";
-import ProjectCard from "../components/projects/ProjectCard.astro";
-import TechStackMarquee from "../components/TechStackMarquee.astro";
-import { getRecentProjects } from "../data/projects";
+import { getFeaturedProjects } from "../data/projects";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const last_posts = posts.slice(0, 3);
-const recentProjects = getRecentProjects(3);
+const work = getFeaturedProjects();
+const hiddenTags = new Set(["Client", "Personal", "Consumer App"]);
+const stackFor = (tags: string[]) => tags.filter((t) => !hiddenTags.has(t)).slice(0, 3).join(", ");
+
+const proof = [
+  {
+    title: "Trading at market open",
+    body: "Built the stock trading platform for a SEBI-registered broker. Thousands of traders use it live during market hours.",
+  },
+  {
+    title: "Paying subscribers",
+    body: "Lead engineer on Outfit Formulas, an AI styling app on iOS and Android, across the app, the backend, and the AI features.",
+  },
+  {
+    title: "10+ apps in production",
+    body: "Shipped for founders and teams in India, Canada, Ireland, and the US, from first sketch to store release.",
+  },
+];
+
+const disciplines = [
+  {
+    title: "Mobile apps",
+    body: "Flutter apps for iOS, Android, and web with clean architecture, tests where they matter, and the small UX details people notice without knowing why.",
+  },
+  {
+    title: "Backend and architecture",
+    body: "Firestore data models, security rules, Cloud Functions, and REST services. I design the contracts between app and server so features stay easy to change.",
+  },
+  {
+    title: "AI features",
+    body: "Chat, tagging, and generation built on OpenAI and Gemini, with output checked before it reaches users. I also use AI-assisted workflows daily to ship faster.",
+  },
+];
 ---
 
 <BaseLayout
   sideBarActiveItemID="home"
-  title="Shashank S Mayya | Full-Stack Mobile Engineer · Flutter, Firebase & AI"
-  description="Full-stack mobile engineer: Flutter apps, backend, system architecture, and AI features for fintech, trading, and consumer products. Built a SEBI-registered broker's trading platform serving thousands of live traders. 5+ years, 10+ apps shipped. Available for projects worldwide."
+  title="Shashank S Mayya | Full-Stack Mobile Engineer, Flutter & AI"
+  description="Full-stack mobile engineer building Flutter apps, backends, and AI features. Built a trading platform used by thousands of live traders. 10+ apps shipped."
 >
-    <!-- Hero Section - Clean and Professional -->
-    <section class="relative min-h-[90vh] flex items-center justify-center" aria-label="Hero section">
-        <!-- Subtle Background Pattern -->
-        <div class="absolute inset-0 bg-gradient-to-br from-base-200/50 via-base-100 to-base-200/30"></div>
-        <div class="absolute inset-0">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-        </div>
-        
-        <!-- Main Content -->
-        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
-            <!-- Status Badge -->
-            <div class="mb-8 animate-fade-in">
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                    <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
-                    Available for Projects
-                </span>
+  <section class="intro pb-20 pt-6 sm:pb-28 sm:pt-14" aria-labelledby="hero-title">
+    <p class="mb-8 flex items-center gap-2.5 text-sm text-base-content/60">
+      <span class="signal" aria-hidden="true"></span>
+      Taking on new projects
+    </p>
+    <h1 id="hero-title" class="hero-title max-w-[15ch] font-semibold text-base-content">
+      I build apps where bugs cost real money.
+    </h1>
+    <p class="mt-8 max-w-[60ch] text-lg leading-relaxed text-base-content/65 sm:text-xl">
+      I'm Shashank, a full-stack mobile engineer. I design and ship Flutter apps together with the backend,
+      data model, and AI features behind them, for fintech, trading, and consumer products.
+    </p>
+    <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a href="/contact" class="rounded-lg bg-primary px-5 py-3 font-medium text-primary-content transition-opacity hover:opacity-90">
+        Book a call
+      </a>
+      <a href="/projects" class="link-quiet font-medium">See my work</a>
+    </div>
+  </section>
+
+  <section class="grid gap-10 border-t border-base-300 pt-10 sm:grid-cols-3 sm:gap-8" aria-label="Track record">
+    {proof.map((item) => (
+      <div>
+        <h2 class="text-base font-medium text-base-content">{item.title}</h2>
+        <p class="mt-2 text-[15px] leading-relaxed text-base-content/60">{item.body}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="mt-28" aria-labelledby="work-title">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="work-title" class="text-2xl font-semibold sm:text-3xl">Selected work</h2>
+      <a href="/projects" class="link-quiet text-sm">All projects</a>
+    </div>
+    <ul class="mt-8 border-t border-base-300">
+      {work.map((project) => (
+        <li class="border-b border-base-300">
+          <a href={`/projects/${project.id}`} class="work-row group grid gap-1 py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8">
+            <div class="min-w-0">
+              <h3 class="text-lg font-medium text-base-content transition-colors group-hover:text-primary">{project.title}</h3>
+              <p class="mt-1 text-[15px] text-base-content/60">{project.tagline ?? project.desc}</p>
             </div>
-            
-            <!-- Main Heading -->
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 animate-fade-up">
-                <span class="text-base-content">Hi, I'm</span>
-                <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Shashank</span>
-            </h1>
-            
-            <!-- Professional Title -->
-            <p class="text-lg sm:text-xl md:text-2xl text-base-content/80 mb-6 sm:mb-8 font-light animate-fade-up" style="animation-delay: 0.1s;">
-                Full-Stack Mobile Engineer · Flutter, Firebase & AI
+            <p class="text-sm text-base-content/45 sm:text-right">
+              {stackFor(project.tags)}<span class="mx-2 text-base-content/25" aria-hidden="true">/</span>{project.date.getFullYear()}
             </p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
 
-            <!-- Value Proposition -->
-            <p class="text-base sm:text-lg text-base-content/60 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed animate-fade-up px-4 sm:px-0" style="animation-delay: 0.2s;">
-                I build apps where bugs cost real money. A stock trading platform for a SEBI-registered broker that serves thousands of live traders,
-                a crypto options platform running on Flutter WASM, and an AI styling app with paying subscribers on both stores.
-                I work across the whole product: the app, the backend and architecture behind it, and the AI features on top, built with the user's experience in mind.
-            </p>
-            
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-fade-up" style="animation-delay: 0.3s;">
-                <a href="/projects" class="btn btn-primary btn-md sm:btn-lg px-6 sm:px-8 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto max-w-xs">
-                    View My Work
-                    <svg class="w-4 sm:w-5 h-4 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
-                
-                <a href="/contact" class="btn btn-outline btn-md sm:btn-lg px-6 sm:px-8 hover:shadow-lg transition-all duration-300 w-full sm:w-auto max-w-xs">
-                    Get In Touch
-                </a>
-            </div>
-            
-            <!-- Quick Stats -->
-            <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto mt-12 sm:mt-20 animate-fade-up" style="animation-delay: 0.4s;">
-                <div class="text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-primary mb-1">5+</div>
-                    <div class="text-xs sm:text-sm text-base-content/60">Years Experience</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-secondary mb-1">10+</div>
-                    <div class="text-xs sm:text-sm text-base-content/60">Apps Shipped</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-accent mb-1">3</div>
-                    <div class="text-xs sm:text-sm text-base-content/60">Fintech & Trading Platforms</div>
-                </div>
-            </div>
+  <section class="mt-28" aria-labelledby="disciplines-title">
+    <h2 id="disciplines-title" class="text-2xl font-semibold sm:text-3xl">One person across the stack</h2>
+    <p class="mt-3 max-w-[60ch] text-base-content/60">
+      Most products slow down at the seams between app, backend, and design. I work on all three, so decisions get made once.
+    </p>
+    <div class="mt-10 grid gap-10 sm:grid-cols-3 sm:gap-8">
+      {disciplines.map((d) => (
+        <div class="border-t border-base-300 pt-5">
+          <h3 class="font-medium text-base-content">{d.title}</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-base-content/60">{d.body}</p>
         </div>
-    </section>
+      ))}
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section class="py-20 bg-base-200/50" aria-label="Services">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">What I Do</h2>
-                <p class="text-lg text-base-content/60 max-w-2xl mx-auto">
-                    Apps, backends, and AI features for products where reliability and polish actually matter
-                </p>
-            </div>
-            
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <!-- Service Card 1 -->
-                <div class="card bg-base-100 shadow-soft hover:shadow-lg transition-all duration-300 group">
-                    <div class="card-body">
-                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Fintech & Trading Apps</h3>
-                        <p class="text-base-content/60">
-                            Real-time market data, payments, and order flows. WebSockets, charts, and security done right
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Service Card 2 -->
-                <div class="card bg-base-100 shadow-soft hover:shadow-lg transition-all duration-300 group">
-                    <div class="card-body">
-                        <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-                            <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">AI & Subscription Apps</h3>
-                        <p class="text-base-content/60">
-                            Consumer apps with AI features, paywalls, and experiment-driven onboarding that converts
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Service Card 3 -->
-                <div class="card bg-base-100 shadow-soft hover:shadow-lg transition-all duration-300 group">
-                    <div class="card-body">
-                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Enterprise & Flutter Web</h3>
-                        <p class="text-base-content/60">
-                            Admin panels, CRMs, and ERP tools that back-office teams rely on every day
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="mt-28" aria-label="Client testimonial">
+    <figure class="max-w-[52rem]">
+      <blockquote class="text-2xl font-medium leading-snug tracking-tight text-base-content sm:text-[28px]">
+        “He consistently impressed us with his ability to think like an end user, anticipating their needs and
+        incorporating valuable insights into the development process.”
+      </blockquote>
+      <figcaption class="mt-6 text-sm text-base-content/55">
+        Abhilash, CTO at Mello
+        <a href="/testimonials" class="link-quiet ml-3">More from clients</a>
+      </figcaption>
+    </figure>
+  </section>
 
-    <!-- Technology Stack -->
-    <section class="py-16 bg-base-100" aria-label="Technology stack">
-        <TechStackMarquee />
-    </section>
-
-    <!-- Featured Projects Section -->
-    <section class="py-20 bg-base-200/50" aria-label="Featured projects">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Recent Projects</h2>
-                <p class="text-lg text-base-content/60 max-w-2xl mx-auto">
-                    The most recent apps I've shipped or am actively building
-                </p>
-            </div>
-            
-            <div class="space-y-6">
-                {recentProjects.map((project, index) => (
-                    <div class="animate-fade-up" style={`animation-delay: ${index * 0.1}s`}>
-                        <ProjectCard project={project} />
-                    </div>
-                ))}
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="/projects" class="btn btn-primary btn-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                    View All Projects
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="py-20 bg-gradient-to-br from-primary/10 via-base-100 to-secondary/10" aria-label="Call to action">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-6">
-                Have a Project in Mind?
-            </h2>
-
-            <p class="text-lg md:text-xl text-base-content/70 mb-10">
-                Book a call or send a message. I'll tell you what it takes and whether I'm the right person to build it.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="/contact" class="btn btn-primary btn-lg px-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    Start a Project
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                </a>
-                
-                <a href="https://cal.com/shashank-s-mayya" target="_blank" rel="noopener" class="btn btn-outline btn-lg px-8 hover:shadow-lg transition-all duration-300">
-                    Schedule a Call
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
+  <section class="mt-28 rounded-2xl border border-base-300 bg-base-200 px-6 py-12 sm:px-12 sm:py-16" aria-labelledby="cta-title">
+    <h2 id="cta-title" class="max-w-[20ch] text-3xl font-semibold sm:text-4xl">Have something to build?</h2>
+    <p class="mt-4 max-w-[52ch] text-base-content/65">
+      Tell me what you're working on. I'll tell you what it takes and whether I'm the right person to build it.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a href="/contact" class="rounded-lg bg-primary px-5 py-3 font-medium text-primary-content transition-opacity hover:opacity-90">Book a call</a>
+      <a href="mailto:shashanksmayya@gmail.com" class="link-quiet font-medium">shashanksmayya@gmail.com</a>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero-title {
+    font-size: clamp(2.75rem, 7vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+  .signal {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: oklch(var(--p));
+    box-shadow: 0 0 0 4px oklch(var(--p) / 0.15);
+  }
+</style>

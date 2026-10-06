@@ -4,40 +4,22 @@ import { Image } from "astro:assets";
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
 ---
 
-<div
-  class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
->
-  <a href={url} target={target}>
-    <div class="hero-content flex-col md:flex-row">
-      {
-        img && (
-          <Image
-            src={img}
-            width={750}
-            height={422}
-            format="webp"
-            alt={title}
-            class="max-w-full md:max-w-[13rem] rounded-lg"
-          />
-        )
-      }
-      <div class="grow w-full">
-        <h1 class="text-xl font-bold">
-          {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
-        </h1>
-        <p class="py-1 text-1xl">{desc}</p>
-        <div class="card-actions justify-end">
-          {
-            tags &&
-              tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                  {tag}
-                </a>
-              ))
-          }
-        </div>
-      </div>
+<li class="group relative grid gap-5 py-8 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-8">
+  {img ? (
+    <div class="aspect-[16/10] overflow-hidden rounded-lg border border-base-300 bg-base-200">
+      <Image src={img} width={480} height={300} format="webp" alt="" class="h-full w-full object-cover" />
     </div>
-  </a>
-</div>
+  ) : <div class="hidden sm:block" />}
+  <div class="min-w-0">
+    <h2 class="text-xl font-semibold text-base-content transition-colors group-hover:text-primary">
+      <a href={url} target={target} class="after:absolute after:inset-0">{title}</a>
+    </h2>
+    {badge && <p class="mt-1 text-sm text-base-content/45">{badge}</p>}
+    {desc && <p class="mt-2 max-w-[60ch] leading-relaxed text-base-content/65">{desc}</p>}
+    {tags && tags.length > 0 && (
+      <p class="relative z-10 mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        {tags.map((tag) => <a href={`${tag_url}/${tag}`} class="link-quiet text-base-content/55">{tag}</a>)}
+      </p>
+    )}
+  </div>
+</li>

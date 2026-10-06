@@ -48,15 +48,17 @@ bun preview
 - Automatic slug generation from titles is enabled (`GENERATE_SLUG_FROM_TITLE` in `src/config.ts`, via `src/lib/createSlug.ts`)
 
 ### Key Components
-- `BaseLayout.astro` - Main layout wrapper
+- `BaseLayout.astro` - Main layout wrapper (top nav, main, footer); `sideBarActiveItemID` prop sets the active nav item
 - `HorizontalCard.astro` - Project/content card display
-- `TimeLineElement.astro` - CV timeline items
+- `cv/TimeLine.astro` - CV timeline items
 - `TestimonialCard.astro` - Testimonial display
 
 ### Styling
-- Theme switching via DaisyUI (30+ themes available)
-- Theme stored in localStorage as "theme"
-- Responsive design with Tailwind utilities
+- "Ink & signal" design: two DaisyUI themes defined in `tailwind.config.cjs`, `ink` (dark, default) and `paper` (light)
+- One accent color (`primary`, blue), used only for the main CTA, links on hover, and the availability dot. No gradient text, glows, emoji, or entrance animations
+- Font: Geist (Google Fonts, loaded in `BaseHead.astro`). Muted text via `text-base-content/60`, hairlines via `border-base-300`, secondary links via the `link-quiet` class in `src/styles/global.css`
+- Theme stored in localStorage as "theme"; toggled by `ThemeSwitcher.astro`
+- Layout: slim sticky top nav (`TopNav.astro`) and `Footer.astro`; no sidebar
 
 ## Important Considerations
 

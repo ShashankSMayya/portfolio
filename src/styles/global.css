@@ -1,3 +1,54 @@
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
 }
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: 'Geist', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+}
+
+h1, h2, h3, h4 {
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+::selection {
+    background: oklch(var(--p) / 0.3);
+}
+
+:focus-visible {
+    outline: 2px solid oklch(var(--p));
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.link-quiet {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: oklch(var(--bc) / 0.25);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s, color 0.15s;
+}
+.link-quiet:hover {
+    color: oklch(var(--p));
+    text-decoration-color: oklch(var(--p));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

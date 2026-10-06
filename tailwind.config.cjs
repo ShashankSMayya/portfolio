@@ -3,79 +3,11 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
-			colors: {
-				// Warm color palette
-				stone: {
-					50: '#fafaf9',
-					100: '#f5f5f4',
-					200: '#e7e5e4',
-					300: '#d6d3d1',
-					400: '#a8a29e',
-					500: '#78716c',
-					600: '#57534e',
-					700: '#44403c',
-					800: '#292524',
-					900: '#1c1917',
-					950: '#0c0a09',
-				},
-				orange: {
-					50: '#fff7ed',
-					100: '#ffedd5',
-					200: '#fed7aa',
-					300: '#fdba74',
-					400: '#fb923c',
-					500: '#f97316',
-					600: '#ea580c',
-					700: '#c2410c',
-					800: '#9a3412',
-					900: '#7c2d12',
-					950: '#431407',
-				},
-				amber: {
-					50: '#fffbeb',
-					100: '#fef3c7',
-					200: '#fde68a',
-					300: '#fcd34d',
-					400: '#fbbf24',
-					500: '#f59e0b',
-					600: '#d97706',
-					700: '#b45309',
-					800: '#92400e',
-					900: '#78350f',
-					950: '#451a03',
-				},
-				red: {
-					50: '#fef2f2',
-					100: '#fee2e2',
-					200: '#fecaca',
-					300: '#fca5a5',
-					400: '#f87171',
-					500: '#ef4444',
-					600: '#dc2626',
-					700: '#b91c1c',
-					800: '#991b1b',
-					900: '#7f1d1d',
-					950: '#450a0a',
-				},
-				yellow: {
-					50: '#fefce8',
-					100: '#fef9c3',
-					200: '#fef08a',
-					300: '#fde047',
-					400: '#facc15',
-					500: '#eab308',
-					600: '#ca8a04',
-					700: '#a16207',
-					800: '#854d0e',
-					900: '#713f12',
-					950: '#422006',
-				}
-			},
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-				'display': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-				'body': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-				'mono': ['JetBrains Mono', 'Fira Code', 'monospace'],
+				'sans': ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
+				'display': ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
+				'body': ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
+				'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
 			},
 			fontSize: {
 				'xs': ['0.75rem', { lineHeight: '1rem' }],
@@ -118,10 +50,10 @@ module.exports = {
 				},
 			},
 			boxShadow: {
-				'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
-				'glow': '0 0 20px rgba(0, 0, 0, 0.1)',
-				'inner-glow': 'inset 0 0 20px rgba(0, 0, 0, 0.06)',
-				'warm': '0 10px 40px -15px rgba(245, 158, 11, 0.15)',
+				'soft': 'none',
+				'glow': 'none',
+				'inner-glow': 'none',
+				'warm': 'none',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -135,37 +67,58 @@ module.exports = {
 	daisyui: {
 		themes: [
 			{
-				// Warm Light Theme
-				"warm-light": {
-					"primary": "#f97316",      // Orange-500
-					"secondary": "#eab308",    // Yellow-500
-					"accent": "#dc2626",       // Red-600
-					"neutral": "#44403c",      // Stone-700
-					"base-100": "#fffbf7",     // Warm white
-					"base-200": "#fef3e2",     // Warm cream
-					"base-300": "#fde8d0",     // Light peach
-					"info": "#0ea5e9",
-					"success": "#16a34a",
-					"warning": "#f59e0b",
-					"error": "#dc2626",
+				ink: {
+					"primary": "#7C9CFF",
+					"primary-content": "#0B0B0D",
+					"secondary": "#7C9CFF",
+					"secondary-content": "#0B0B0D",
+					"accent": "#7C9CFF",
+					"accent-content": "#0B0B0D",
+					"neutral": "#ECECEF",
+					"neutral-content": "#0B0B0D",
+					"base-100": "#0B0B0D",
+					"base-200": "#131316",
+					"base-300": "#24242A",
+					"base-content": "#ECECEF",
+					"info": "#7C9CFF",
+					"success": "#4ADE80",
+					"warning": "#FBBF24",
+					"error": "#F87171",
+					"--rounded-box": "0.75rem",
+					"--rounded-btn": "0.5rem",
+					"--rounded-badge": "0.375rem",
+					"--animation-btn": "0",
+					"--animation-input": "0",
+					"--btn-focus-scale": "1",
 				},
-				// Warm Dark Theme
-				"warm-dark": {
-					"primary": "#fb923c",      // Orange-400
-					"secondary": "#fbbf24",    // Amber-400
-					"accent": "#f87171",       // Red-400
-					"neutral": "#fef3c7",      // Amber-100
-					"base-100": "#1c1917",     // Stone-900
-					"base-200": "#292524",     // Stone-800
-					"base-300": "#44403c",     // Stone-700
-					"info": "#38bdf8",
-					"success": "#4ade80",
-					"warning": "#fbbf24",
-					"error": "#f87171",
-				}
-			}
+			},
+			{
+				paper: {
+					"primary": "#3451D1",
+					"primary-content": "#FFFFFF",
+					"secondary": "#3451D1",
+					"secondary-content": "#FFFFFF",
+					"accent": "#3451D1",
+					"accent-content": "#FFFFFF",
+					"neutral": "#111114",
+					"neutral-content": "#FFFFFF",
+					"base-100": "#FAFAFB",
+					"base-200": "#FFFFFF",
+					"base-300": "#E6E6EB",
+					"base-content": "#111114",
+					"info": "#3451D1",
+					"success": "#15803D",
+					"warning": "#B45309",
+					"error": "#B91C1C",
+					"--rounded-box": "0.75rem",
+					"--rounded-btn": "0.5rem",
+					"--rounded-badge": "0.375rem",
+					"--animation-btn": "0",
+					"--animation-input": "0",
+					"--btn-focus-scale": "1",
+				},
+			},
 		],
-		darkTheme: "warm-dark",
-		logs: false,
-	}
-}
+		darkTheme: "ink",
+	},
+};

@@ -13,155 +13,131 @@ export async function getStaticPaths() {
 const { project }: { project: Project } = Astro.props;
 const allImages = [project.img, ...(project.images || [])].filter(Boolean);
 const overview = project.longDesc || project.desc;
+const hiddenTags = new Set(["Client", "Personal", "Consumer App"]);
+const stack = project.tags.filter((t) => !hiddenTags.has(t)).join(", ");
+const status = project.badge
+  ? project.badge.charAt(0) + project.badge.slice(1).toLowerCase()
+  : undefined;
+
+const links = [
+  project.url && project.url !== "#" && { href: project.url, label: "Website" },
+  project.appStore && { href: project.appStore, label: "App Store" },
+  project.playStore && { href: project.playStore, label: "Google Play" },
+  project.github && { href: project.github, label: "GitHub" },
+].filter(Boolean) as { href: string; label: string }[];
+
+const sections = [
+  { id: "technical-details", title: "Technical details", body: project.techDetails },
+  { id: "challenges", title: "Challenges", body: project.challenges },
+  { id: "outcomes", title: "Outcomes", body: project.outcomes },
+].filter((s) => s.body);
+const metaDescription = (text: string, max = 158) => {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:]$/, "") + "…";
+};
 ---
 
 <BaseLayout
-  title={`${project.title} | Flutter Case Study by Shashank S Mayya`}
-  description={project.desc}
+  title={`${project.title} Case Study | Shashank S Mayya`}
+  description={metaDescription(project.desc)}
   image={project.img}
   sideBarActiveItemID="projects"
 >
-  <!-- Back link -->
-  <a href="/projects" class="inline-flex items-center gap-2 text-base-content/60 hover:text-primary transition-colors duration-200 mb-8">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-    </svg>
-    All Projects
-  </a>
+  <a href="/projects" class="link-quiet text-sm text-base-content/60">All work</a>
 
-  <!-- Hero -->
-  <div class="relative rounded-2xl overflow-hidden bg-base-200 mb-8">
+  <header class="mt-8">
+    <h1 class="text-4xl font-semibold sm:text-6xl">{project.title}</h1>
+    <p class="mt-5 max-w-[60ch] text-lg leading-relaxed text-base-content/65 sm:text-xl">{project.tagline ?? project.desc}</p>
+  </header>
+
+  <div class="mt-10 aspect-[16/9] overflow-hidden rounded-xl border border-base-300 bg-base-200">
     <Image
       src={project.img}
       width={1200}
       height={675}
       format="webp"
-      alt={project.title}
-      class="w-full h-64 md:h-96 object-cover"
+      alt={`${project.title} preview`}
+      class="h-full w-full object-cover"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-base-100/95 via-base-100/20 to-transparent pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 p-6 md:p-8">
-      <h1 class="text-3xl md:text-5xl font-bold text-base-content mb-3">{project.title}</h1>
-      {project.badge && <span class="badge badge-primary font-medium">{project.badge}</span>}
-    </div>
   </div>
 
-  <!-- Tags -->
-  <div class="flex flex-wrap gap-2 mb-8">
-    {project.tags.map((tag) => (
-      <span class="badge badge-outline">{tag}</span>
-    ))}
-  </div>
+  <div class="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16">
+    <article class="min-w-0 max-w-[68ch]">
+      <section aria-labelledby="overview">
+        <h2 id="overview" class="text-2xl font-semibold">Overview</h2>
+        <p class="mt-4 text-[17px] leading-[1.7] text-base-content/75">{overview}</p>
+      </section>
 
-  <!-- Action buttons -->
-  <div class="flex flex-wrap gap-3 mb-12">
-    {project.url && project.url !== "#" && (
-      <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-        </svg>
-        Visit Site
-      </a>
-    )}
-    {project.playStore && (
-      <a href={project.playStore} target="_blank" rel="noopener noreferrer" class="btn bg-slate-900 hover:bg-slate-800 text-white border-0">
-        <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-        </svg>
-        Play Store
-      </a>
-    )}
-    {project.appStore && (
-      <a href={project.appStore} target="_blank" rel="noopener noreferrer" class="btn bg-blue-600 hover:bg-blue-700 text-white border-0">
-        <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
-        </svg>
-        App Store
-      </a>
-    )}
-    {project.github && (
-      <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-        GitHub
-      </a>
-    )}
-  </div>
-
-  <!-- Overview -->
-  <section class="mb-12" aria-label="Overview">
-    <h2 class="text-2xl font-bold mb-4">Overview</h2>
-    <p class="text-lg text-base-content/80 leading-relaxed">{overview}</p>
-  </section>
-
-  <!-- Image gallery -->
-  {allImages.length > 1 && (
-    <section class="mb-12" aria-label="Screenshots">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {allImages.slice(1).map((img) => (
-          <div class="rounded-lg overflow-hidden bg-base-200">
-            <img src={img} alt={`${project.title} screenshot`} loading="lazy" class="w-full h-full object-cover" />
+      {allImages.length > 1 && (
+        <section class="mt-12" aria-label="Screenshots">
+          <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+            {allImages.slice(1).map((img) => (
+              <div class="overflow-hidden rounded-lg border border-base-300 bg-base-200">
+                <img src={img} alt={`${project.title} screenshot`} loading="lazy" class="h-full w-full object-cover" />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
-  )}
+        </section>
+      )}
 
-  <!-- Key Features -->
-  {project.features && project.features.length > 0 && (
-    <section class="mb-12" aria-label="Key features">
-      <h2 class="text-2xl font-bold mb-4">Key Features</h2>
-      <ul class="space-y-3">
-        {project.features.map((feature) => (
-          <li class="flex items-start">
-            <svg class="w-5 h-5 text-success mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <span class="text-base-content/80">{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
+      {project.features && project.features.length > 0 && (
+        <section class="mt-14" aria-labelledby="features">
+          <h2 id="features" class="text-2xl font-semibold">Features</h2>
+          <ul class="mt-5 divide-y divide-base-300 border-y border-base-300">
+            {project.features.map((feature) => (
+              <li class="py-3.5 text-base-content/75">{feature}</li>
+            ))}
+          </ul>
+        </section>
+      )}
 
-  <!-- Technical Implementation -->
-  {project.techDetails && (
-    <section class="mb-12" aria-label="Technical implementation">
-      <h2 class="text-2xl font-bold mb-4">Technical Implementation</h2>
-      <p class="text-base-content/80 leading-relaxed">{project.techDetails}</p>
-    </section>
-  )}
+      {sections.map((s) => (
+        <section class="mt-14" aria-labelledby={s.id}>
+          <h2 id={s.id} class="text-2xl font-semibold">{s.title}</h2>
+          <p class="mt-4 text-[17px] leading-[1.7] text-base-content/75">{s.body}</p>
+        </section>
+      ))}
+    </article>
 
-  <!-- Challenges -->
-  {project.challenges && (
-    <section class="mb-12" aria-label="Challenges and solutions">
-      <h2 class="text-2xl font-bold mb-4">Challenges & Solutions</h2>
-      <p class="text-base-content/80 leading-relaxed">{project.challenges}</p>
-    </section>
-  )}
+    <aside class="lg:order-none order-first lg:sticky lg:top-24 lg:self-start">
+      <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-base-300 pt-5 text-sm lg:grid-cols-1">
+        <div>
+          <dt class="text-base-content/45">Year</dt>
+          <dd class="mt-1 text-base-content">{project.date.getFullYear()}</dd>
+        </div>
+        {status && (
+          <div>
+            <dt class="text-base-content/45">Status</dt>
+            <dd class="mt-1 text-base-content">{status}</dd>
+          </div>
+        )}
+        <div class="col-span-2 lg:col-span-1">
+          <dt class="text-base-content/45">Stack</dt>
+          <dd class="mt-1 leading-relaxed text-base-content">{stack}</dd>
+        </div>
+        {links.length > 0 && (
+          <div class="col-span-2 lg:col-span-1">
+            <dt class="text-base-content/45">Links</dt>
+            <dd class="mt-2 flex flex-wrap gap-2">
+              {links.map((l) => (
+                <a href={l.href} target="_blank" rel="noopener noreferrer" class="rounded-md border border-base-300 px-2.5 py-1 text-base-content/75 transition-colors hover:border-base-content/40 hover:text-base-content">{l.label}</a>
+              ))}
+            </dd>
+          </div>
+        )}
+      </dl>
+    </aside>
+  </div>
 
-  <!-- Outcomes -->
-  {project.outcomes && (
-    <section class="mb-12" aria-label="Results and impact">
-      <h2 class="text-2xl font-bold mb-4">Results & Impact</h2>
-      <p class="text-base-content/80 leading-relaxed">{project.outcomes}</p>
-    </section>
-  )}
-
-  <!-- CTA -->
-  <section class="py-16 -mx-6 px-6 bg-gradient-to-br from-primary/10 via-base-100 to-secondary/10 rounded-2xl text-center" aria-label="Call to action">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Want to build something like this?</h2>
-    <p class="text-lg text-base-content/70 mb-8 max-w-xl mx-auto">
+  <section class="mt-20 rounded-2xl border border-base-300 bg-base-200 px-6 py-12 sm:px-12 sm:py-14" aria-labelledby="case-cta">
+    <h2 id="case-cta" class="text-3xl font-semibold">Want to build something like this?</h2>
+    <p class="mt-3 max-w-[52ch] text-base-content/65">
       Tell me what you have in mind and I'll give you a straight answer on scope, timeline, and fit.
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <a href="/contact" class="btn btn-primary btn-lg px-8 shadow-lg hover:shadow-xl transition-all duration-300">
-        Book a Call
-      </a>
-      <a href="/projects" class="btn btn-outline btn-lg px-8">
-        More Projects
-      </a>
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a href="/contact" class="rounded-lg bg-primary px-5 py-3 font-medium text-primary-content transition-opacity hover:opacity-90">Book a call</a>
+      <a href="/projects" class="link-quiet font-medium">More work</a>
     </div>
   </section>
 </BaseLayout>

@@ -4,6 +4,7 @@ export interface Project {
   img: string;
   images?: string[]; // Additional images for gallery
   desc: string;
+  tagline?: string; // One-line summary for the home page work index
   longDesc?: string; // Extended description for dialog
   features?: string[]; // Key features list
   techDetails?: string; // Technical implementation details
@@ -26,6 +27,7 @@ export const projects: Project[] = [
         id: "outfit-formulas",
         title: "Outfit Formulas",
         img: "/projects/outfit_formulas.webp",
+        tagline: "AI styling app with paying subscribers. Flutter app, Firebase backend, community, and AI features",
         desc: "A subscription-based outfit planning and personal styling app for iOS and Android, built around an AI stylist named ALI. I work across the whole stack: the Flutter app, the Firebase backend, the community feature I designed end to end, and AI features built on OpenAI.",
         url: "https://outfitformulas.com",
         playStore: "https://play.google.com/store/apps/details?id=com.outfit.mobile.app",
@@ -63,6 +65,7 @@ export const projects: Project[] = [
         id: "tacticx",
         title: "TacticX",
         img: "/projects/tacticx.webp",
+        tagline: "Crypto options trading on Flutter Web compiled to WASM, holding 60fps on live market data",
         desc: "A crypto options trading platform built with Flutter Web (WASM), with real-time market data, a visual strategy builder, and position analysis.",
         longDesc: "TacticX is a crypto options trading platform for derivatives traders. It runs as a Progressive Web App compiled to WASM, which keeps performance close to native: traders can analyze options chains, build multi-leg strategies visually, and monitor positions with real-time Greeks calculations. Market data streams from crypto exchanges through a unified WebSocket backend with sub-second latency.",
         features: [
@@ -91,6 +94,7 @@ export const projects: Project[] = [
       id: "zontix",
       title: "Zontix",
       img: "/projects/zontix.webp",
+      tagline: "NFT event ticketing with non-custodial wallets and QR/NFC check-in",
       desc: "A cross-platform event management app that issues NFT tickets on the MultiversX blockchain, with non-custodial wallet management, QR and NFC check-ins, and built-in payments.",
       url: "https://zontix.com",
       tags: ["Flutter", "Fintech", "Client", "Flutter Bloc", "Crypto", "Event Management", "MultiversX", "NFT", "Firebase", "NFC"],
@@ -127,6 +131,7 @@ export const projects: Project[] = [
       id: "firstock",
       title: "Firstock Trading App",
       img: "/projects/firstock_trading.webp",
+      tagline: "Trading platform for a SEBI-registered broker, used by thousands of live traders",
       desc: "A stock trading and investment platform for the Indian market, with real-time market data, portfolio management, and trading across equities, F&O, IPOs, and mutual funds.",
       playStore: "https://play.google.com/store/apps/details?id=in.firstock.mobile",
       appStore: "https://apps.apple.com/us/app/firstock-trade-invest/id6746480444",
@@ -190,6 +195,7 @@ export const projects: Project[] = [
     id: "mello",
     title: "Mello",
     img: "/projects/mello.webp",
+    tagline: "Reel-based event discovery app with a Node.js and MongoDB backend",
     desc: "A reel-based event discovery app for the Bangalore audience. I built the Flutter app with a Node.js and MongoDB backend, Mixpanel for analytics, and CleverTap for push notifications.",
     playStore: "https://play.google.com/store/apps/details?id=com.mello.mello",
     appStore: "https://apps.apple.com/in/app/mello-weekend-event-guide/id6450921757",
@@ -249,6 +255,7 @@ export const projects: Project[] = [
     id: "dota2-soundboard",
     title: "Dota 2 Soundboard",
     img: "/projects/dota2sounboard.webp",
+    tagline: "Personal product with 10k+ downloads, rebuilt from scratch for 3.0",
     desc: "A fan-made soundboard app with 10k+ downloads that puts every Dota 2 sound in one place: voice lines for 120+ heroes, ability sounds, announcer packs, TI crowd moments, and a Guess the Hero quiz. Rebuilt from the ground up for its 3.0 release.",
     playStore: "https://play.google.com/store/apps/details?id=com.shashankmayya.dota2soundboard",
     badge: "3.0 RELEASE",

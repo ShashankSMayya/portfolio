@@ -3,677 +3,253 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 import AchievementElement from "../components/cv/Achievement.astro";
 import { Image } from "astro:assets";
+
+const experience = [
+  {
+    title: "Freelance Full-Stack Mobile Engineer",
+    org: "Self-Employed",
+    period: "Apr 2023 - Present",
+    summary:
+      "Freelance product engineering across fintech, consumer, and enterprise. Currently lead engineer on Outfit Formulas (app, backend, and AI).",
+    highlights: [
+      "Delivered 10+ production apps end-to-end for clients across India, Canada, Ireland, and the US",
+      "Built a stock trading platform for a SEBI-registered broker, serving thousands of live traders during market hours",
+      "Lead engineer on Outfit Formulas across mobile and backend: Flutter app, Firestore data model and security rules, and TypeScript Cloud Functions",
+      "Designed and built the Outfit Formulas community feature end to end, from data contracts to a staged, flag-gated rollout to every user",
+      "Built OpenAI-powered features with validated, scored model output, and took over the FastAPI AI backend (ALI) in Oct 2026",
+      "Wrote unit and widget test suites for Outfit Formulas and unit tests for the Pragati ERP client app",
+      "Shipped blockchain ticketing with non-custodial wallet security and QR/NFC check-in for a European events client",
+      "Integrated AI backends, real-time WebSocket pipelines, payments (RevenueCat, Stripe), and analytics (PostHog, Braze)",
+      "Daily AI-assisted workflows: Claude Code with custom project skills, shared agent rules, and cross-repo code indexing",
+    ],
+    tech: ["Flutter", "Dart", "Firebase", "Cloud Functions", "TypeScript", "OpenAI", "Supabase", "BLoC", "WebSockets", "RevenueCat", "PostHog"],
+  },
+  {
+    title: "Software Engineer",
+    org: "Realtime Innovations, Dublin, Ireland",
+    period: "Dec 2022 - Apr 2023",
+    summary: "Collaborated with an international team to build the Mevolve healthcare application using Flutter and Firebase.",
+    highlights: [
+      "Optimized Firebase operations reducing costs by 40%",
+      "Implemented custom caching with Isar Database",
+      "Worked with Cloud Functions for backend operations",
+      "Improved app performance and user experience",
+    ],
+    tech: ["Flutter", "Firebase", "Isar DB", "Cloud Functions", "Performance Optimization"],
+  },
+  {
+    title: "Flutter App Developer",
+    org: "Mindstack Technologies, Mangaluru, India",
+    period: "Jul 2021 - Dec 2022",
+    summary: "Built fintech apps from scratch, focused on payment systems and financial services.",
+    highlights: [
+      "Developed 3 fintech apps from design to production",
+      "Integrated payment gateways and financial APIs",
+      "Implemented BLOC architecture and dependency injection",
+      "Set up CI/CD pipelines and analytics tracking",
+    ],
+    tech: ["Flutter", "BLoC", "Hive", "GetIt", "Payment Gateways"],
+  },
+];
+
+const skills = [
+  { category: "Mobile Development", items: ["Flutter", "Dart", "iOS Dev", "Android Dev", "Flutter Web"] },
+  {
+    category: "Backend & Database",
+    items: ["Firebase", "Firestore Data Modeling", "Cloud Functions", "Security Rules", "Supabase", "TypeScript", "Hive DB", "Isar DB"],
+  },
+  {
+    category: "AI Integration",
+    items: ["OpenAI API", "Gemini", "Prompt Design", "LLM Output Validation", "Python / FastAPI", "AI-Assisted Development"],
+  },
+  {
+    category: "Architecture & Tools",
+    items: ["System Design", "BLoC Pattern", "Clean Architecture", "Unit & Widget Testing", "Git & CI/CD", "REST APIs", "WebSockets", "Product & UX Thinking"],
+  },
+];
+
+const education = [
+  {
+    title: "Bachelor of Engineering - Computer Science",
+    org: "AJ Institute of Engineering and Technology, Mangaluru",
+    period: "2017 - 2024",
+    body: "Computer science coursework covering software development, algorithms, and system design.",
+  },
+  {
+    title: "Pre-University Course (Science)",
+    org: "Sharada PU College, Mangaluru",
+    period: "2015 - 2017",
+    body: "Science stream with Mathematics, Physics, and Chemistry.",
+  },
+];
+
+const facts = [
+  { value: "5+", label: "Years Experience" },
+  { value: "10+", label: "Apps Shipped" },
+  { value: "3", label: "Fintech & Trading Platforms" },
+];
 ---
 
-<BaseLayout 
-  title="Resume & CV | Shashank S Mayya - Full-Stack Mobile Engineer"
-  description="Professional resume of Shashank S Mayya, full-stack mobile engineer with 5+ years experience across Flutter, backend, system architecture, and AI. View education, work experience, skills, and achievements."
+<BaseLayout
+  title="Resume | Shashank S Mayya, Full-Stack Mobile Engineer"
+  description="Resume of Shashank S Mayya, full-stack mobile engineer with 5+ years across Flutter, backend, system architecture, and AI. Download the PDF."
   sideBarActiveItemID="cv"
 >
-    <!-- Premium CV Header -->
-    <div class="relative py-16 mb-16 -mx-6 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
-        <!-- Background Effects -->
-        <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/30 to-base-100/60"></div>
-        <div class="absolute top-10 right-10 w-48 h-48 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
-        <div class="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-r from-accent/15 to-primary/15 rounded-full blur-3xl opacity-25 animate-float-medium"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <!-- Professional Avatar -->
-                <div class="flex-shrink-0">
-                    <div class="relative">
-                        <div class="w-32 h-32 rounded-2xl overflow-hidden ring-4 ring-primary/20 shadow-2xl">
-                            <Image 
-                                class="w-full h-full object-cover" 
-                                format="webp" 
-                                width={200} 
-                                height={200} 
-                                src="/profile.webp" 
-                                alt="Shashank S Mayya - Full-Stack Mobile Engineer" 
-                            />
-                        </div>
-                        <!-- Status indicator -->
-                        <div class="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-400 to-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                            Available
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Header Content -->
-                <div class="flex-1 text-center md:text-left">
-                    <h1 class="text-4xl md:text-5xl font-bold font-display mb-3">
-                        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                            Shashank S Mayya
-                        </span>
-                    </h1>
-                    
-                    <div class="text-xl md:text-2xl text-base-content/80 font-medium mb-4">
-                        Full-Stack Mobile Engineer · Flutter, Firebase & AI
-                    </div>
-                    
-                    <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                            📍 Mangalore, India
-                        </span>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-sm font-medium">
-                            💼 5+ Years Experience
-                        </span>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium">
-                            🎯 10+ Apps Shipped
-                        </span>
-                    </div>
-                    
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <a href="/contact" class="btn btn-primary btn-sm rounded-full px-6">
-                            📧 Contact Me
-                        </a>
-                        <a href="https://www.linkedin.com/in/shashank-mayya" target="_blank" class="btn btn-outline btn-sm rounded-full px-6">
-                            LinkedIn Profile
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <header class="flex flex-col gap-8 pb-14 sm:flex-row sm:items-end sm:justify-between">
+    <div class="flex items-start gap-5">
+      <Image
+        class="h-16 w-16 shrink-0 rounded-full object-cover"
+        format="webp"
+        width={128}
+        height={128}
+        src="/profile.webp"
+        alt="Shashank S Mayya - Full-Stack Mobile Engineer"
+      />
+      <div>
+        <h1 class="text-4xl font-semibold text-base-content sm:text-5xl">Shashank S Mayya</h1>
+        <p class="mt-2 text-lg text-base-content/70">Full-Stack Mobile Engineer · Flutter, Firebase & AI</p>
+        <p class="mt-1 text-sm text-base-content/50">Mangalore, India</p>
+      </div>
     </div>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a
+        href="/resume.pdf"
+        download="Shashank-S-Mayya-Resume.pdf"
+        class="rounded-lg bg-primary px-5 py-3 font-medium text-primary-content transition-opacity hover:opacity-90"
+      >
+        Download PDF
+      </a>
+      <a href="/contact" class="link-quiet text-sm font-medium">Contact Me</a>
+      <a href="https://www.linkedin.com/in/shashank-mayya" target="_blank" rel="noopener" class="link-quiet text-sm font-medium">LinkedIn Profile</a>
+    </div>
+  </header>
 
-    <!-- Professional Summary Section -->
-    <section class="mb-16" aria-label="Professional Summary">
-        <div class="premium-cv-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                    </svg>
-                </div>
-                <h2 class="section-title">Professional Summary</h2>
-            </div>
-            
-            <div class="premium-content-card">
-                <p class="text-lg leading-relaxed text-base-content/80">
-                    Full-stack mobile engineer with <strong>5+ years of experience</strong> building apps where reliability matters.
-                    I work across the stack, from Flutter apps to <strong>backend, data modeling, and system architecture</strong>,
-                    and design with the user's experience in mind.
-                    Specialized in <strong>fintech, trading platforms, and AI consumer apps</strong>, including a stock trading
-                    platform for a SEBI-registered broker that serves thousands of live traders. <strong>10+ apps shipped</strong> for
-                    clients across India, Canada, Ireland, and the US.
-                </p>
-                
-                <div class="grid md:grid-cols-3 gap-6 mt-8">
-                    <div class="stat-card">
-                        <div class="stat-number text-primary">5+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number text-secondary">10+</div>
-                        <div class="stat-label">Apps Shipped</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number text-accent">3</div>
-                        <div class="stat-label">Fintech & Trading Platforms</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="cv-section" aria-labelledby="cv-summary">
+    <h2 id="cv-summary" class="cv-heading">Professional Summary</h2>
+    <div>
+      <p class="max-w-[68ch] text-lg leading-relaxed text-base-content/75">
+        Full-stack mobile engineer with <strong class="font-medium text-base-content">5+ years of experience</strong> building apps where reliability matters.
+        I work across the stack, from Flutter apps to <strong class="font-medium text-base-content">backend, data modeling, and system architecture</strong>,
+        and design with the user's experience in mind.
+        Specialized in <strong class="font-medium text-base-content">fintech, trading platforms, and AI consumer apps</strong>, including a stock trading
+        platform for a SEBI-registered broker that serves thousands of live traders. <strong class="font-medium text-base-content">10+ apps shipped</strong> for
+        clients across India, Canada, Ireland, and the US.
+      </p>
+      <dl class="mt-8 grid grid-cols-3 gap-6 border-t border-base-300 pt-6">
+        {facts.map((f) => (
+          <div>
+            <dt class="sr-only">{f.label}</dt>
+            <dd class="text-2xl font-semibold tracking-tight text-base-content">{f.value}</dd>
+            <dd class="mt-1 text-sm text-base-content/55">{f.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
 
-    <!-- Experience Section -->
-    <section class="mb-16" aria-label="Work Experience">
-        <div class="premium-cv-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6m8 0V8a2 2 0 01-2 2H10a2 2 0 01-2-2V6"></path>
-                    </svg>
-                </div>
-                <h2 class="section-title">Professional Experience</h2>
-            </div>
-            
-            <div class="premium-timeline">
-                <TimeLineElement
-                    title="Freelance Full-Stack Mobile Engineer"
-                    subtitle="Apr 2023 - Present • Self-Employed"
-                >
-                    <div class="experience-content">
-                        <p class="mb-4">Freelance product engineering across fintech, consumer, and enterprise. Currently lead engineer on Outfit Formulas (app, backend, and AI).</p>
-                        <div class="achievement-grid">
-                            <div class="achievement-item">✅ Delivered 10+ production apps end-to-end for clients across India, Canada, Ireland, and the US</div>
-                            <div class="achievement-item">✅ Built a stock trading platform for a SEBI-registered broker, serving thousands of live traders during market hours</div>
-                            <div class="achievement-item">✅ Lead engineer on Outfit Formulas across mobile and backend: Flutter app, Firestore data model and security rules, and TypeScript Cloud Functions</div>
-                            <div class="achievement-item">✅ Designed and built the Outfit Formulas community feature end to end, from data contracts to a staged, flag-gated rollout to every user</div>
-                            <div class="achievement-item">✅ Built OpenAI-powered features with validated, scored model output, and took over the FastAPI AI backend (ALI) in Oct 2026</div>
-                            <div class="achievement-item">✅ Wrote unit and widget test suites for Outfit Formulas and unit tests for the Pragati ERP client app</div>
-                            <div class="achievement-item">✅ Shipped blockchain ticketing with non-custodial wallet security and QR/NFC check-in for a European events client</div>
-                            <div class="achievement-item">✅ Integrated AI backends, real-time WebSocket pipelines, payments (RevenueCat, Stripe), and analytics (PostHog, Braze)</div>
-                            <div class="achievement-item">✅ Daily AI-assisted workflows: Claude Code with custom project skills, shared agent rules, and cross-repo code indexing</div>
-                        </div>
-                        <div class="tech-stack mt-4">
-                            <span class="tech-badge">Flutter</span>
-                            <span class="tech-badge">Dart</span>
-                            <span class="tech-badge">Firebase</span>
-                            <span class="tech-badge">Cloud Functions</span>
-                            <span class="tech-badge">TypeScript</span>
-                            <span class="tech-badge">OpenAI</span>
-                            <span class="tech-badge">Supabase</span>
-                            <span class="tech-badge">BLoC</span>
-                            <span class="tech-badge">WebSockets</span>
-                            <span class="tech-badge">RevenueCat</span>
-                            <span class="tech-badge">PostHog</span>
-                        </div>
-                    </div>
-                </TimeLineElement>
-                
-                <TimeLineElement
-                    title="Software Engineer"
-                    subtitle="Dec 2022 - Apr 2023 • Realtime Innovations, Dublin, Ireland"
-                >
-                    <div class="experience-content">
-                        <p class="mb-4">Collaborated with an international team to build the Mevolve healthcare application using Flutter and Firebase.</p>
-                        <div class="achievement-grid">
-                            <div class="achievement-item">✅ Optimized Firebase operations reducing costs by 40%</div>
-                            <div class="achievement-item">✅ Implemented custom caching with Isar Database</div>
-                            <div class="achievement-item">✅ Worked with Cloud Functions for backend operations</div>
-                            <div class="achievement-item">✅ Improved app performance and user experience</div>
-                        </div>
-                        <div class="tech-stack mt-4">
-                            <span class="tech-badge">Flutter</span>
-                            <span class="tech-badge">Firebase</span>
-                            <span class="tech-badge">Isar DB</span>
-                            <span class="tech-badge">Cloud Functions</span>
-                            <span class="tech-badge">Performance Optimization</span>
-                        </div>
-                    </div>
-                </TimeLineElement>
-                
-                <TimeLineElement
-                    title="Flutter App Developer"
-                    subtitle="Jul 2021 - Dec 2022 • Mindstack Technologies, Mangaluru, India"
-                >
-                    <div class="experience-content">
-                        <p class="mb-4">Built fintech apps from scratch, focused on payment systems and financial services.</p>
-                        <div class="achievement-grid">
-                            <div class="achievement-item">✅ Developed 3 fintech apps from design to production</div>
-                            <div class="achievement-item">✅ Integrated payment gateways and financial APIs</div>
-                            <div class="achievement-item">✅ Implemented BLOC architecture and dependency injection</div>
-                            <div class="achievement-item">✅ Set up CI/CD pipelines and analytics tracking</div>
-                        </div>
-                        <div class="tech-stack mt-4">
-                            <span class="tech-badge">Flutter</span>
-                            <span class="tech-badge">BLoC</span>
-                            <span class="tech-badge">Hive</span>
-                            <span class="tech-badge">GetIt</span>
-                            <span class="tech-badge">Payment Gateways</span>
-                        </div>
-                    </div>
-                </TimeLineElement>
-            </div>
-        </div>
-    </section>
+  <section class="cv-section" aria-labelledby="cv-experience">
+    <h2 id="cv-experience" class="cv-heading">Professional Experience</h2>
+    <div>
+      {experience.map((job) => (
+        <TimeLineElement title={job.title} org={job.org} period={job.period}>
+          <p class="text-base-content/75">{job.summary}</p>
+          <ul class="mt-4 space-y-2">
+            {job.highlights.map((h) => (
+              <li class="relative pl-5 before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-2.5 before:bg-base-content/35">{h}</li>
+            ))}
+          </ul>
+          <p class="mt-4 text-sm text-base-content/50">{job.tech.join(", ")}</p>
+        </TimeLineElement>
+      ))}
+    </div>
+  </section>
 
-    <!-- Skills Section -->
-    <section class="mb-16" aria-label="Technical Skills">
-        <div class="premium-cv-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                </div>
-                <h2 class="section-title">Technical Expertise</h2>
-            </div>
-            
-            <div class="premium-content-card">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Mobile Development</h3>
-                        <div class="skill-list">
-                            <div class="skill-item expert">Flutter</div>
-                            <div class="skill-item expert">Dart</div>
-                            <div class="skill-item advanced">iOS Dev</div>
-                            <div class="skill-item advanced">Android Dev</div>
-                            <div class="skill-item advanced">Flutter Web</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Backend & Database</h3>
-                        <div class="skill-list">
-                            <div class="skill-item expert">Firebase</div>
-                            <div class="skill-item advanced">Firestore Data Modeling</div>
-                            <div class="skill-item advanced">Cloud Functions</div>
-                            <div class="skill-item advanced">Security Rules</div>
-                            <div class="skill-item expert">Supabase</div>
-                            <div class="skill-item intermediate">TypeScript</div>
-                            <div class="skill-item advanced">Hive DB</div>
-                            <div class="skill-item advanced">Isar DB</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">AI Integration</h3>
-                        <div class="skill-list">
-                            <div class="skill-item advanced">OpenAI API</div>
-                            <div class="skill-item intermediate">Gemini</div>
-                            <div class="skill-item advanced">Prompt Design</div>
-                            <div class="skill-item advanced">LLM Output Validation</div>
-                            <div class="skill-item intermediate">Python / FastAPI</div>
-                            <div class="skill-item expert">AI-Assisted Development</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Architecture & Tools</h3>
-                        <div class="skill-list">
-                            <div class="skill-item advanced">System Design</div>
-                            <div class="skill-item expert">BLoC Pattern</div>
-                            <div class="skill-item expert">Clean Architecture</div>
-                            <div class="skill-item advanced">Unit & Widget Testing</div>
-                            <div class="skill-item advanced">Git & CI/CD</div>
-                            <div class="skill-item advanced">REST APIs</div>
-                            <div class="skill-item advanced">WebSockets</div>
-                            <div class="skill-item advanced">Product & UX Thinking</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section class="cv-section" aria-labelledby="cv-skills">
+    <h2 id="cv-skills" class="cv-heading">Technical Expertise</h2>
+    <dl class="grid gap-8 sm:grid-cols-2">
+      {skills.map((group) => (
+        <div>
+          <dt class="font-medium text-base-content">{group.category}</dt>
+          <dd class="mt-3 flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <span class="rounded-md border border-base-300 px-2.5 py-1 text-sm text-base-content/70">{item}</span>
+            ))}
+          </dd>
         </div>
-    </section>
+      ))}
+    </dl>
+  </section>
 
-    <!-- Education Section -->
-    <section class="mb-16" aria-label="Education">
-        <div class="premium-cv-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    </svg>
-                </div>
-                <h2 class="section-title">Education</h2>
-            </div>
-            
-            <div class="premium-timeline">
-                <TimeLineElement
-                    title="Bachelor of Engineering - Computer Science"
-                    subtitle="2017 - 2024 • AJ Institute of Engineering and Technology, Mangaluru"
-                >
-                    <p class="text-base-content/70">Computer science coursework covering software development, algorithms, and system design.</p>
-                </TimeLineElement>
-                
-                <TimeLineElement
-                    title="Pre-University Course (Science)"
-                    subtitle="2015 - 2017 • Sharada PU College, Mangaluru"
-                >
-                    <p class="text-base-content/70">Science stream with Mathematics, Physics, and Chemistry.</p>
-                </TimeLineElement>
-            </div>
-        </div>
-    </section>
+  <section class="cv-section" aria-labelledby="cv-education">
+    <h2 id="cv-education" class="cv-heading">Education</h2>
+    <div>
+      {education.map((e) => (
+        <TimeLineElement title={e.title} org={e.org} period={e.period}>
+          <p>{e.body}</p>
+        </TimeLineElement>
+      ))}
+    </div>
+  </section>
 
-    <!-- Achievements Section -->
-    <section class="mb-16" aria-label="Achievements and Recognition">
-        <div class="premium-cv-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                    </svg>
-                </div>
-                <h2 class="section-title">Achievements & Recognition</h2>
-            </div>
-            
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-header">
-                        <div class="achievement-icon">🎤</div>
-                        <div>
-                            <h3 class="achievement-title">GDG Mangalore Speaker</h3>
-                            <p class="achievement-date">December 2023</p>
-                        </div>
-                    </div>
-                    <p class="achievement-description">
-                        Conducted a technical talk on "Building Scalable Flutter Applications" for Google Developer Group Mangalore community.
-                    </p>
-                    <a href="https://www.linkedin.com/posts/shashank-mayya_how-to-build-scalable-flutter-applications-activity-7145424874700808192-NVH3" 
-                       target="_blank" 
-                       class="achievement-link">
-                        View on LinkedIn →
-                    </a>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-header">
-                        <div class="achievement-icon">📱</div>
-                        <div>
-                            <h3 class="achievement-title">IEEE Mangalore Presentation</h3>
-                            <p class="achievement-date">2023</p>
-                        </div>
-                    </div>
-                    <p class="achievement-description">
-                        Presented "Flutter BLOC State Management in Production" to IEEE Mangalore Subsection, sharing real-world implementation insights.
-                    </p>
-                    <a href="http://www.youtube.com/watch?v=l5uXoizNPOA" 
-                       target="_blank" 
-                       class="achievement-link">
-                        Watch on YouTube →
-                    </a>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-header">
-                        <div class="achievement-icon">👨‍🏫</div>
-                        <div>
-                            <h3 class="achievement-title">Flutter Mentorship Program</h3>
-                            <p class="achievement-date">2022-2023</p>
-                        </div>
-                    </div>
-                    <p class="achievement-description">
-                        Mentored a team of students in developing an IoT-based Flutter application for Rosette Smart Bottles startup.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="cv-section" aria-labelledby="cv-achievements">
+    <h2 id="cv-achievements" class="cv-heading">Achievements & Recognition</h2>
+    <div>
+      <AchievementElement
+        title="GDG Mangalore Speaker"
+        subtitle="December 2023"
+        link="https://www.linkedin.com/posts/shashank-mayya_how-to-build-scalable-flutter-applications-activity-7145424874700808192-NVH3"
+        linkTitle="View on LinkedIn"
+      >
+        Conducted a technical talk on "Building Scalable Flutter Applications" for Google Developer Group Mangalore community.
+      </AchievementElement>
+      <AchievementElement
+        title="IEEE Mangalore Presentation"
+        subtitle="2023"
+        link="http://www.youtube.com/watch?v=l5uXoizNPOA"
+        linkTitle="Watch on YouTube"
+      >
+        Presented "Flutter BLOC State Management in Production" to IEEE Mangalore Subsection, sharing real-world implementation insights.
+      </AchievementElement>
+      <AchievementElement title="Flutter Mentorship Program" subtitle="2022-2023">
+        Mentored a team of students in developing an IoT-based Flutter application for Rosette Smart Bottles startup.
+      </AchievementElement>
+    </div>
+  </section>
 
-    <!-- Download CTA -->
-    <section class="text-center py-16 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 -mx-6 px-6 rounded-2xl" aria-label="Download Resume">
-        <h2 class="text-3xl font-bold font-display mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Ready to Work Together?
-        </h2>
-        <p class="text-lg text-base-content/70 mb-8 max-w-2xl mx-auto">
-            Get in touch to discuss your next Flutter project
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="/resume.pdf" download="Shashank-S-Mayya-Resume.pdf" class="btn btn-primary btn-lg px-8 rounded-full shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:scale-105">
-                📄 Download Resume
-            </a>
-            <a href="/contact" class="btn btn-outline btn-lg px-8 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10">
-                📧 Contact Me
-            </a>
-            <a href="https://www.linkedin.com/in/shashank-mayya" target="_blank" class="btn btn-outline btn-lg px-8 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10">
-                LinkedIn Profile
-            </a>
-        </div>
-    </section>
+  <section class="mt-16 rounded-2xl border border-base-300 bg-base-200 px-6 py-12 sm:px-12" aria-labelledby="cv-cta">
+    <h2 id="cv-cta" class="text-3xl font-semibold text-base-content">Ready to Work Together?</h2>
+    <p class="mt-3 max-w-[52ch] text-base-content/65">Tell me about the product you want to build.</p>
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a
+        href="/resume.pdf"
+        download="Shashank-S-Mayya-Resume.pdf"
+        class="rounded-lg bg-primary px-5 py-3 font-medium text-primary-content transition-opacity hover:opacity-90"
+      >
+        Download Resume
+      </a>
+      <a href="/contact" class="link-quiet font-medium">Contact Me</a>
+      <a href="https://www.linkedin.com/in/shashank-mayya" target="_blank" rel="noopener" class="link-quiet font-medium">LinkedIn Profile</a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-    /* Premium CV Styling */
-    .premium-cv-section {
-        margin-bottom: 3rem;
+  .cv-section {
+    display: grid;
+    gap: 1.25rem;
+    border-top: 1px solid oklch(var(--b3));
+    padding-block: 3rem;
+  }
+  @media (min-width: 768px) {
+    .cv-section {
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 3rem;
     }
-    
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid rgba(var(--p), 0.1);
-    }
-    
-    .section-icon {
-        width: 3rem;
-        height: 3rem;
-        background: linear-gradient(135deg, rgba(var(--p), 0.1), rgba(var(--info), 0.08));
-        border-radius: 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgb(var(--p));
-        border: 1px solid rgba(var(--p), 0.2);
-    }
-    
-    .section-title {
-        font-size: 2rem;
-        font-weight: 700;
-        color: rgb(var(--bc));
-        margin: 0;
-    }
-    
-    .premium-content-card {
-        background: linear-gradient(135deg, rgba(var(--b1), 0.8), rgba(var(--b2), 0.6));
-        border: 1px solid rgba(var(--bc), 0.1);
-        border-radius: 1rem;
-        padding: 2rem;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-    
-    .stat-card {
-        text-align: center;
-        padding: 1.5rem;
-        background: rgba(var(--b1), 0.5);
-        border-radius: 0.75rem;
-        border: 1px solid rgba(var(--bc), 0.1);
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-        font-size: 0.875rem;
-        color: rgba(var(--bc), 0.7);
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    
-    .premium-timeline {
-        position: relative;
-    }
-    
-    .experience-content {
-        color: rgba(var(--bc), 0.8);
-    }
-    
-    .achievement-grid {
-        display: grid;
-        gap: 0.5rem;
-        margin: 1rem 0;
-    }
-    
-    .achievement-item {
-        font-size: 0.9rem;
-        padding: 0.5rem 0;
-        color: rgba(var(--bc), 0.7);
-    }
-    
-    .tech-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    
-    .tech-badge {
-        background: linear-gradient(135deg, rgba(var(--p), 0.08), rgba(var(--info), 0.06));
-        color: rgb(var(--p));
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        border: 1px solid rgba(var(--p), 0.15);
-    }
-    
-    .skill-category {
-        background: rgba(var(--b1), 0.3);
-        border-radius: 0.75rem;
-        padding: 1.5rem;
-        border: 1px solid rgba(var(--bc), 0.1);
-    }
-    
-    .skill-category-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: rgb(var(--p));
-    }
-    
-    .skill-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .skill-item {
-        padding: 0.6rem 0.8rem;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        font-weight: 500;
-        position: relative;
-        overflow: hidden;
-        min-height: 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    .skill-item.expert {
-        background: linear-gradient(135deg, rgba(var(--p), 0.15), rgba(var(--p), 0.08));
-        color: rgb(var(--p));
-        border: 1px solid rgba(var(--p), 0.25);
-    }
-    
-    .skill-item.expert::after {
-        content: "Expert";
-        font-size: 0.625rem;
-        opacity: 0.7;
-        font-weight: 600;
-    }
-    
-    .skill-item.advanced {
-        background: linear-gradient(135deg, rgba(var(--info), 0.15), rgba(var(--info), 0.08));
-        color: rgb(var(--info));
-        border: 1px solid rgba(var(--info), 0.25);
-    }
-    
-    .skill-item.advanced::after {
-        content: "Advanced";
-        font-size: 0.625rem;
-        opacity: 0.7;
-        font-weight: 600;
-    }
-    
-    .skill-item.intermediate {
-        background: linear-gradient(135deg, rgba(var(--bc), 0.12), rgba(var(--bc), 0.04));
-        color: rgba(var(--bc), 0.8);
-        border: 1px solid rgba(var(--bc), 0.2);
-    }
-    
-    .skill-item.intermediate::after {
-        content: "Intermediate";
-        font-size: 0.625rem;
-        opacity: 0.7;
-        font-weight: 600;
-    }
-    
-    .achievements-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    
-    .achievement-card {
-        background: linear-gradient(135deg, rgba(var(--b1), 0.8), rgba(var(--b2), 0.6));
-        border: 1px solid rgba(var(--bc), 0.1);
-        border-radius: 1rem;
-        padding: 1.5rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-    }
-    
-    .achievement-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(var(--p), 0.15);
-        border-color: rgba(var(--p), 0.3);
-    }
-    
-    .achievement-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .achievement-icon {
-        font-size: 2rem;
-        width: 3rem;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, rgba(var(--p), 0.1), rgba(var(--info), 0.08));
-        border-radius: 0.75rem;
-        border: 1px solid rgba(var(--p), 0.2);
-    }
-    
-    .achievement-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: rgb(var(--bc));
-        margin: 0;
-    }
-    
-    .achievement-date {
-        font-size: 0.875rem;
-        color: rgba(var(--bc), 0.6);
-        margin: 0;
-    }
-    
-    .achievement-description {
-        color: rgba(var(--bc), 0.7);
-        line-height: 1.6;
-        margin-bottom: 1rem;
-    }
-    
-    .achievement-link {
-        color: rgb(var(--p));
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 0.875rem;
-        transition: all 0.3s ease;
-    }
-    
-    .achievement-link:hover {
-        color: rgb(var(--s));
-        text-decoration: underline;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .section-header {
-            flex-direction: column;
-            text-align: center;
-            gap: 0.5rem;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-        }
-        
-        .premium-content-card {
-            padding: 1.5rem;
-        }
-        
-        .achievements-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .skill-item {
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-            gap: 0.25rem;
-        }
-        
-        .skill-item::after {
-            position: static;
-            transform: none;
-            font-size: 0.625rem;
-        }
-    }
+  }
+  .cv-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: oklch(var(--bc));
+    line-height: 1.75rem;
+  }
 </style>
-
