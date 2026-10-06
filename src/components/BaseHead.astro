@@ -10,69 +10,55 @@ export interface Props {
 	ogType?: string;
 }
 
-const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
+const DEFAULT_IMAGE = '/og.jpg';
+const { title, description, image = DEFAULT_IMAGE, ogType = 'website' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image ?? DEFAULT_IMAGE, Astro.site);
+const isDefaultImage = (image ?? DEFAULT_IMAGE) === DEFAULT_IMAGE;
+const imageAlt = 'Shashank S Mayya, full-stack mobile engineer: "I build apps where bugs cost real money."';
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- SEO Enhancement Meta Tags -->
-<meta name="author" content="Shashank S Mayya" />
-<meta name="keywords" content="full-stack mobile engineer, Flutter developer, Firebase backend, system architecture, AI app development, mobile app developer, fintech apps, trading app development, Flutter freelancer, cross-platform development, iOS Android apps, Mangalore developer, Bangalore developer, enterprise apps" />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href={Astro.url} />
-
-<!-- Language and Location -->
-<meta name="language" content="English" />
-<meta name="geo.region" content="IN-KA" />
-<meta name="geo.placename" content="Mangalore, Karnataka, India" />
-<meta name="geo.position" content="12.9141;74.8560" />
-<meta name="ICBM" content="12.9141, 74.8560" />
-
-<!-- Additional SEO Meta Tags -->
-<meta name="theme-color" content="#3B82F6" />
-<meta name="msapplication-navbutton-color" content="#3B82F6" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-
-<!-- Freelancer and Service Keywords -->
-<meta name="subject" content="Full-Stack Mobile Engineering: Flutter, Firebase & AI" />
-<meta name="classification" content="Technology, Software Development, Mobile Apps" />
-<meta name="category" content="Software Development" />
-<meta name="coverage" content="Worldwide" />
-<meta name="distribution" content="Global" />
-<meta name="target" content="all" />
-<meta name="HandheldFriendly" content="True" />
-<meta name="MobileOptimized" content="320" />
+<!-- Icons -->
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0B0B0D" />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
-<meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content="Shashank S Mayya" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href={canonicalURL} />
+<link rel="alternate" type="application/rss+xml" title="Shashank S Mayya" href={new URL('rss.xml', Astro.site)} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content={ogType} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:site_name" content="Shashank S Mayya" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Shashank S Mayya — Full-Stack Mobile Engineer" />
+<meta property="og:image" content={imageURL} />
+{isDefaultImage && <meta property="og:image:type" content="image/jpeg" />}
+{isDefaultImage && <meta property="og:image:width" content="1200" />}
+{isDefaultImage && <meta property="og:image:height" content="630" />}
+<meta property="og:image:alt" content={isDefaultImage ? imageAlt : title} />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
-<meta property="twitter:site" content="@ShashankMayya" />
-<meta property="twitter:creator" content="@ShashankMayya" />
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageURL} />
+<meta name="twitter:image:alt" content={isDefaultImage ? imageAlt : title} />
+<meta name="twitter:site" content="@ShashankMayya" />
+<meta name="twitter:creator" content="@ShashankMayya" />
 
 <!-- Structured Data for Personal Profile -->
 <script type="application/ld+json">
@@ -82,8 +68,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   "name": "Shashank S Mayya",
   "url": "https://shashanksmayya.dev",
   "image": "https://shashanksmayya.dev/profile.webp",
+  "email": "mailto:shashanksmayya@gmail.com",
   "sameAs": [
-    "https://twitter.com/ShashankMayya",
+    "https://x.com/ShashankMayya",
     "https://github.com/ShashankSMayya",
     "https://www.linkedin.com/in/shashank-mayya"
   ],
@@ -98,7 +85,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     "addressRegion": "Karnataka",
     "addressCountry": "India"
   },
-  "alumniOf": "Engineering",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "AJ Institute of Engineering and Technology"
+  },
   "knowsAbout": [
     "Flutter Development",
     "Mobile App Development",
@@ -132,4 +122,4 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!-- Performance and Optimization -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" />

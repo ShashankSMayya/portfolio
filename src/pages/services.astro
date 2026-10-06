@@ -4,15 +4,14 @@ import ServiceCard from "../components/services/ServiceCard.astro";
 
 const packages = [
   {
-    name: "Flutter App Audit",
+    name: "App & Architecture Audit",
     tagline: "Fixed scope, about 1 week",
-    icon: "🔍",
-    desc: "A deep review of your existing Flutter app: architecture, performance, security, and code quality. You get a written report with prioritized fixes you can act on immediately, whether or not we work together after.",
-    forWho: "Teams with an app that feels slow, buggy, or hard to change, or founders who inherited a codebase and want to know what they're sitting on.",
+    desc: "A deep review of your app and the backend behind it: architecture, data model, security, performance, and code quality. You get a written report with prioritized fixes you can act on immediately, whether or not we work together after.",
+    forWho: "Teams with a product that feels slow, buggy, or hard to change, or founders who inherited a codebase and want to know what they're sitting on.",
     includes: [
-      "Architecture and state management review",
-      "Performance profiling of real problem screens",
-      "Security and data handling check",
+      "App architecture and state management review",
+      "Backend review: data model, security rules, functions, and API design",
+      "Performance profiling of real problem screens and slow queries",
       "Written report with prioritized, actionable fixes",
       "A call to walk through the findings together"
     ]
@@ -20,29 +19,27 @@ const packages = [
   {
     name: "MVP Sprint",
     tagline: "4 to 6 weeks, idea to both stores",
-    icon: "🚀",
-    desc: "Your product idea turned into a working app on the App Store and Play Store. Weekly demo builds so you see progress every week, with analytics and crash reporting wired in from day one.",
+    desc: "Your product idea turned into a working app on the App Store and Play Store, with the backend it needs to run. Weekly demo builds so you see progress every week, with analytics and crash reporting wired in from day one.",
     forWho: "Founders who need to validate a product with real users, without hiring a team or waiting six months.",
     includes: [
-      "Scope definition and technical planning",
+      "Scope definition, data model, and technical planning",
       "Flutter app for iOS and Android from one codebase",
+      "Backend on Firebase or Supabase: auth, database, rules, and functions",
       "Weekly demo builds you can put in testers' hands",
-      "Analytics and crash reporting from the first release",
-      "App Store and Play Store submission handled"
+      "Analytics, crash reporting, and store submission handled"
     ],
-    badge: "MOST POPULAR",
+    badge: "Most popular",
     highlighted: true
   },
   {
     name: "Ongoing Development",
     tagline: "Monthly retainer",
-    icon: "🔄",
-    desc: "Dedicated development capacity for a product that's already live. This is how I work with Outfit Formulas today: continuous features, releases, and maintenance as the product grows.",
-    forWho: "Products with real users that need a reliable senior developer without the overhead of a full-time hire.",
+    desc: "Dedicated engineering capacity for a product that's already live, across the app, the backend, and AI features. This is how I work with Outfit Formulas today: continuous features, releases, and maintenance as the product grows.",
+    forWho: "Products with real users that need a reliable senior engineer without the overhead of a full-time hire.",
     includes: [
-      "Feature development on a steady cadence",
-      "Store releases, monitoring, and crash triage",
-      "Flutter and dependency upgrades handled",
+      "Features shipped end to end, from data model to UI",
+      "Store releases, backend deploys, monitoring, and crash triage",
+      "Framework and dependency upgrades handled",
       "Direct async access, no account managers",
       "Priority response when something breaks"
     ]
@@ -76,306 +73,208 @@ const faqs = [
   }
 ];
 
+const steps = [
+  { title: "Discovery", desc: "Understanding your users, your goals, and what the product has to do" },
+  { title: "Planning", desc: "Architecture, data model, and the contracts between app and backend" },
+  { title: "Development", desc: "Building the app, backend, and AI features, with weekly demo builds" },
+  { title: "Delivery", desc: "Testing, store release, monitoring, and ongoing support" }
+];
+
 const services = [
   {
-    title: "Flutter App Development",
-    icon: "📱",
-    desc: "iOS and Android apps from one Flutter codebase, taken from concept through store release.",
+    title: "Mobile and web apps",
+    desc: "Flutter apps for iOS, Android, and the web, taken from concept through store release, built with care for the small UX details.",
     features: [
-      "iOS & Android from single codebase",
-      "Native performance & smooth animations",
-      "Implementation from provided UI designs",
-      "App Store & Play Store deployment",
-      "Post-launch maintenance & updates"
+      "iOS and Android from one Flutter codebase",
+      "Flutter Web, including WASM builds",
+      "Implementation from your designs, or UX input where there are none",
+      "Payments and subscriptions with RevenueCat and Stripe",
+      "App Store and Play Store releases"
     ],
-    badge: "MOST POPULAR",
+    badge: "Most popular",
     highlighted: true
   },
   {
-    title: "Enterprise Mobile Apps",
-    icon: "🏢",
-    desc: "Mobile apps for businesses with complex logic: third-party integrations, real-time data, and security handled properly.",
+    title: "Backend and APIs",
+    desc: "The server side your app depends on: data models, security, and business logic that hold up as usage grows.",
     features: [
-      "Complex business logic implementation",
-      "Third-party API integrations",
-      "Real-time data synchronization",
-      "Advanced security & authentication",
-      "Performance optimization at scale"
-    ],
-    badge: "ENTERPRISE"
-  },
-  {
-    title: "Web Development",
-    icon: "🌐",
-    desc: "Responsive web apps and sites built with Astro and React: landing pages, portfolios, and progressive web apps.",
-    features: [
-      "Responsive design for all devices",
-      "SEO optimization & performance",
-      "Modern framework implementation (Astro, React)",
-      "Static site generation",
-      "Analytics & tracking setup"
-    ],
-    badge: "NEW"
-  },
-  {
-    title: "Code Optimization",
-    icon: "⚡",
-    desc: "Performance work and refactoring on existing Flutter apps, from profiling slow screens to untangling architecture.",
-    features: [
-      "Performance analysis & optimization",
-      "Code refactoring & clean architecture",
-      "Memory leak detection & fixes",
-      "UI/UX implementation improvements",
-      "Testing & quality assurance"
+      "Firestore and Supabase data modeling",
+      "Security rules and ownership checks",
+      "Cloud Functions in TypeScript and REST APIs",
+      "Webhooks, scheduled jobs, and migrations on live data",
+      "Real-time sync with WebSockets and listeners"
     ]
   },
   {
-    title: "Technical Consulting",
-    icon: "💡",
-    desc: "A second opinion on your mobile app: architecture, technology choices, and what to build next.",
+    title: "AI features",
+    desc: "AI that does a real job inside your product, with output checked before it reaches users.",
     features: [
-      "Flutter architecture review",
-      "Technology stack recommendations",
-      "Code quality audits",
-      "Performance optimization strategies",
-      "Development best practices guidance"
+      "AI chat, tagging, and content generation with OpenAI and Gemini",
+      "Prompt design with versioned prompts",
+      "Validation and scoring of model output",
+      "Timeouts and batch limits on every model call",
+      "Privacy prompts before user content goes to AI providers"
+    ],
+    badge: "New"
+  },
+  {
+    title: "System design and architecture",
+    desc: "Structure that keeps a product easy to change: clear boundaries between app, backend, and admin tools.",
+    features: [
+      "Architecture for new products and rewrites",
+      "Data contracts shared across app, backend, and admin panel",
+      "Feature flags and staged rollouts",
+      "Offline-first and cache-first data patterns",
+      "Testing strategy for the parts that matter"
     ]
   },
   {
-    title: "Maintenance & Support",
-    icon: "🛠️",
-    desc: "Ongoing maintenance for live Flutter apps: bug fixes, version upgrades, and support when something breaks.",
+    title: "Performance and code health",
+    desc: "Performance work and refactoring on existing apps, from profiling slow screens to untangling architecture.",
     features: [
-      "Bug fixes & issue resolution",
-      "Flutter version upgrades",
-      "Performance monitoring",
-      "Feature enhancements",
-      "Technical support & troubleshooting"
+      "Profiling and fixing slow screens and queries",
+      "Refactoring toward clean architecture",
+      "Memory leak detection and fixes",
+      "Reducing backend read and compute costs",
+      "Unit and widget test coverage"
+    ]
+  },
+  {
+    title: "Consulting and maintenance",
+    desc: "A second opinion on your product, or a steady hand keeping a live app healthy.",
+    features: [
+      "Architecture and technology choices",
+      "Code quality reviews",
+      "Bug fixes and issue resolution",
+      "Framework and dependency upgrades",
+      "Monitoring and support when something breaks"
     ]
   }
 ];
 ---
 
 <BaseLayout
-  title="Flutter, Backend & AI Development Services | App Audit, MVP Sprint & Retainer"
-  description="Three ways to work with me: a fixed-scope Flutter App Audit, a 4-6 week MVP Sprint from idea to both stores, or ongoing development on retainer. Book a call to discuss your project."
+  title="Services | Full-Stack App Development, Flutter & AI"
+  description="Flutter apps, backends, AI features, and system design. Start with a fixed-scope audit, a 4-6 week MVP Sprint, or ongoing development on retainer."
   sideBarActiveItemID="services"
 >
-  <!-- Premium Services Header -->
-  <div class="relative py-16 mb-16 -mx-6 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-radial from-transparent via-base-100/30 to-base-100/60"></div>
-    <div class="absolute top-10 right-10 w-48 h-48 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
-    <div class="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-r from-accent/15 to-primary/15 rounded-full blur-3xl opacity-25 animate-float-medium"></div>
-    
-    <div class="relative z-10 text-center max-w-4xl mx-auto">
-      <div class="mb-6 animate-fade-in">
-        <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm">
-          <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
-          Professional Services
-        </span>
-      </div>
-      
-      <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 animate-slide-up">
-        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-          Services Offered
-        </span>
-      </h1>
-      
-      <p class="text-xl md:text-2xl text-base-content/70 max-w-3xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
-        App, backend, and AI development for founders and teams: audits, MVPs, and long-term product work
-      </p>
-    </div>
-  </div>
+  <header class="pb-16 pt-4 sm:pb-20">
+    <h1 class="text-4xl font-semibold sm:text-5xl">Services</h1>
+    <p class="mt-5 max-w-[60ch] text-lg leading-relaxed text-base-content/65 sm:text-xl">
+      App, backend, and AI development for founders and teams: audits, MVPs, and long-term product work
+    </p>
+  </header>
 
-  <!-- Engagement Packages -->
-  <div class="max-w-7xl mx-auto px-6 mb-24">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold font-display mb-4">Three Ways to Work With Me</h2>
-      <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
-        Every engagement starts with a call. You tell me what you're building, I tell you honestly what it takes.
-      </p>
-    </div>
+  <section aria-labelledby="packages-title">
+    <h2 id="packages-title" class="text-2xl font-semibold sm:text-3xl">Three ways to work with me</h2>
+    <p class="mt-3 max-w-[60ch] text-base-content/60">
+      Every engagement starts with a call. You tell me what you're building, I tell you honestly what it takes.
+    </p>
 
-    <div class="grid gap-8 lg:grid-cols-3">
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
       {packages.map((pkg) => (
-        <div class={`card bg-base-100 border transition-all duration-300 hover:shadow-xl relative ${pkg.highlighted ? 'border-primary/40 shadow-lg shadow-primary/10' : 'border-base-content/10 hover:border-primary/30'}`}>
-          {pkg.badge && (
-            <div class="absolute -top-3 inset-x-0 flex justify-center">
-              <span class="badge badge-primary font-semibold px-4 whitespace-nowrap">{pkg.badge}</span>
-            </div>
-          )}
-          <div class="card-body">
-            <div class="text-4xl mb-2">{pkg.icon}</div>
-            <h3 class="text-2xl font-bold">{pkg.name}</h3>
-            <p class="text-sm font-medium text-primary mb-3">{pkg.tagline}</p>
-            <p class="text-base-content/70 mb-4">{pkg.desc}</p>
-
-            <div class="mb-4">
-              <p class="text-xs font-semibold uppercase tracking-wide text-base-content/50 mb-2">Who it's for</p>
-              <p class="text-sm text-base-content/70">{pkg.forWho}</p>
-            </div>
-
-            <div class="mb-6">
-              <p class="text-xs font-semibold uppercase tracking-wide text-base-content/50 mb-2">What's included</p>
-              <ul class="space-y-2">
-                {pkg.includes.map((item) => (
-                  <li class="flex items-start text-sm">
-                    <svg class="w-4 h-4 text-success mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="text-base-content/80">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div class="card-actions mt-auto">
-              <a href="/contact" class={`btn w-full ${pkg.highlighted ? 'btn-primary' : 'btn-outline'}`}>
-                Book a Call
-              </a>
-            </div>
+        <article class:list={[
+          "flex flex-col rounded-xl border bg-base-200 p-6 sm:p-7",
+          pkg.highlighted ? "border-primary/60" : "border-base-300",
+        ]}>
+          <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <h3 class="text-xl font-semibold">{pkg.name}</h3>
+            {pkg.badge && <span class="whitespace-nowrap text-sm font-medium text-primary">{pkg.badge}</span>}
           </div>
-        </div>
+          <p class="mt-1 text-sm text-base-content/55">{pkg.tagline}</p>
+          <p class="mt-5 text-[15px] leading-relaxed text-base-content/75">{pkg.desc}</p>
+
+          <h4 class="mt-6 text-sm font-medium text-base-content">Who it's for</h4>
+          <p class="mt-1.5 text-[15px] leading-relaxed text-base-content/60">{pkg.forWho}</p>
+
+          <h4 class="mt-6 text-sm font-medium text-base-content">What's included</h4>
+          <ul class="mt-2 space-y-2 text-[15px] text-base-content/70">
+            {pkg.includes.map((item) => (
+              <li class="flex gap-3">
+                <span class="mt-[0.6em] h-px w-3 flex-shrink-0 bg-base-content/35" aria-hidden="true"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-auto pt-8">
+            {pkg.highlighted ? (
+              <a href="/contact" class="block rounded-lg bg-primary px-5 py-3 text-center font-medium text-primary-content transition-opacity hover:opacity-90">Book a call</a>
+            ) : (
+              <a href="/contact" class="block rounded-lg border border-base-300 px-5 py-3 text-center font-medium text-base-content transition-colors hover:border-base-content/40">Book a call</a>
+            )}
+          </div>
+        </article>
       ))}
     </div>
-  </div>
+  </section>
 
-  <!-- Services Grid -->
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Everything I Cover</h2>
-      <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
-        The full range of what these engagements can include
-      </p>
-    </div>
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {services.map((service, index) => (
-        <div class="opacity-0 translate-y-8 service-card-container" style={`animation-delay: ${index * 0.1}s`}>
+  <section class="mt-28" aria-labelledby="cover-title">
+    <h2 id="cover-title" class="text-2xl font-semibold sm:text-3xl">Everything I cover</h2>
+    <p class="mt-3 max-w-[60ch] text-base-content/60">The full range of what these engagements can include</p>
+    <ul class="mt-8 border-t border-base-300">
+      {services.map((service) => (
+        <li class="border-b border-base-300">
           <ServiceCard
             title={service.title}
-            icon={service.icon}
             desc={service.desc}
             features={service.features}
             badge={service.badge}
             highlighted={service.highlighted}
           />
-        </div>
+        </li>
       ))}
-    </div>
-  </div>
+    </ul>
+  </section>
 
-  <!-- Process Section -->
-  <div class="py-20 mt-20 bg-gradient-to-b from-base-100 to-base-200">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-          My Development Process
-        </h2>
-        <p class="text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-          The same four steps on every project, whether it's a one-week audit or an ongoing retainer
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center group">
-          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <span class="text-3xl font-bold text-primary">1</span>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Discovery</h3>
-          <p class="text-sm text-base-content/70">Understanding your requirements and goals</p>
-        </div>
-        
-        <div class="text-center group">
-          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <span class="text-3xl font-bold text-secondary">2</span>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Planning</h3>
-          <p class="text-sm text-base-content/70">Architecture planning and technical specifications</p>
-        </div>
-        
-        <div class="text-center group">
-          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-accent/20 to-accent/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <span class="text-3xl font-bold text-accent">3</span>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Development</h3>
-          <p class="text-sm text-base-content/70">Flutter implementation with best practices and clean code</p>
-        </div>
-        
-        <div class="text-center group">
-          <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <span class="text-3xl font-bold text-primary">4</span>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Delivery</h3>
-          <p class="text-sm text-base-content/70">Testing, deployment, and ongoing support</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <section class="mt-28" aria-labelledby="process-title">
+    <h2 id="process-title" class="text-2xl font-semibold sm:text-3xl">My development process</h2>
+    <p class="mt-3 max-w-[60ch] text-base-content/60">
+      The same four steps on every project, whether it's a one-week audit or an ongoing retainer
+    </p>
+    <ol class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((step, i) => (
+        <li class="border-t border-base-300 pt-5">
+          <span class="text-sm tabular-nums text-base-content/45">Step {i + 1}</span>
+          <h3 class="mt-1 font-medium">{step.title}</h3>
+          <p class="mt-1.5 text-[15px] leading-relaxed text-base-content/60">{step.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
 
-  <!-- FAQ Section -->
-  <div class="max-w-3xl mx-auto px-6 py-20">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Questions Clients Ask</h2>
-      <p class="text-lg text-base-content/70">
-        The practical stuff, answered upfront
-      </p>
+  <section class="mt-28 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16" aria-labelledby="faq-title">
+    <div>
+      <h2 id="faq-title" class="text-2xl font-semibold sm:text-3xl">Questions clients ask</h2>
+      <p class="mt-3 text-base-content/60">The practical stuff, answered upfront</p>
     </div>
-
-    <div class="space-y-3">
+    <div class="border-t border-base-300">
       {faqs.map((faq) => (
-        <div class="collapse collapse-arrow bg-base-100 border border-base-content/10 rounded-xl">
-          <input type="radio" name="services-faq" />
-          <div class="collapse-title text-lg font-semibold">{faq.q}</div>
-          <div class="collapse-content">
-            <p class="text-base-content/70 leading-relaxed">{faq.a}</p>
-          </div>
-        </div>
+        <details class="faq group border-b border-base-300">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-medium">
+            <span>{faq.q}</span>
+            <svg class="h-4 w-4 flex-shrink-0 text-base-content/50 transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </summary>
+          <p class="max-w-[62ch] pb-6 leading-relaxed text-base-content/65">{faq.a}</p>
+        </details>
       ))}
     </div>
-  </div>
+  </section>
 
-  <!-- CTA Section -->
-  <div class="py-20 mt-20 -mx-6 px-6 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent animate-glow"></div>
+  <section class="mt-28 rounded-2xl border border-base-300 bg-base-200 px-6 py-12 sm:px-12 sm:py-16" aria-labelledby="cta-title">
+    <h2 id="cta-title" class="max-w-[20ch] text-3xl font-semibold sm:text-4xl">Ready to start your project?</h2>
+    <p class="mt-4 max-w-[52ch] text-base-content/65">
+      A short call is enough to scope most projects. Get a quote, or just ask questions.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a href="/contact" class="rounded-lg bg-primary px-5 py-3 font-medium text-primary-content transition-opacity hover:opacity-90">Get a quote</a>
+      <a href="/projects" class="link-quiet font-medium">View portfolio</a>
     </div>
-    
-    <div class="relative z-10 max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl md:text-5xl font-bold font-display mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-        Ready to Start Your Project?
-      </h2>
-      
-      <p class="text-lg md:text-xl text-base-content/70 mb-10 leading-relaxed">
-        A short call is enough to scope most projects. Get a quote, or just ask questions.
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-        <a href="/contact" class="btn btn-primary btn-lg px-10 py-3 rounded-full shadow-xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 hover:scale-105 group">
-          <span class="mr-2 font-semibold">Get a Quote</span>
-          <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-        
-        <a href="/projects" class="btn btn-outline btn-lg px-10 py-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105">
-          View Portfolio
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Animation Styles -->
-  <style>
-    .service-card-container {
-      animation: slideInUp 0.6s ease-out forwards;
-    }
-    
-    @keyframes slideInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  </section>
 </BaseLayout>
+
+<style>
+  .faq summary::-webkit-details-marker { display: none; }
+</style>
