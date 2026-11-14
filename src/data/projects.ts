@@ -28,7 +28,7 @@ export const projects: Project[] = [
         title: "ShuttlePass",
         img: "/projects/shuttlepass.webp",
         images: ["/projects/shuttlepass/desk.webp", "/projects/shuttlepass/auction.webp", "/projects/shuttlepass/umpire.webp"],
-        tagline: "My own badminton platform: tournaments, live scoring, and real-time auction leagues on Flutter and Serverpod",
+        tagline: "My own badminton platform on Flutter and Serverpod. A club runs its monthly auction league and live scoring on it",
         desc: "A badminton platform for clubs and players in India. Organisers run tournaments and auction leagues from their phone, umpires score rally by rally, and anyone can follow draws, courts, and auctions live. I'm building the whole product: Flutter app, Dart server, database, and landing site.",
         url: "https://shuttlepass.in",
         badge: "ACTIVE",
@@ -36,9 +36,9 @@ export const projects: Project[] = [
         date: new Date("2026-11-10"),
         featured: true,
         resumeHighlights: [
-          "Own product, built solo: Flutter app (web on Wasm, Android) and a Dart Serverpod backend on PostgreSQL",
-          "Real-time auction room, court desk, and umpire scoring over two-way WebSocket streams, with snapshot-then-delta sync and gap recovery",
-          "Row-locked transactions stop concurrent bids both winning; idempotent score events make undo and retries safe",
+          "Own product, built solo on Flutter and Dart Serverpod with PostgreSQL; a club runs its monthly auction league on it",
+          "First live league: 169 bids in a real-time auction, then 34 matches scored rally by rally by 3 umpires (1,454 points)",
+          "Two-way WebSocket streams with snapshot-then-delta sync; row-locked bids and idempotent score events keep data correct",
         ],
         longDesc: "Badminton clubs in India still run tournaments on WhatsApp groups, paper draws, and spreadsheets, and auction leagues are run by someone shouting bids at a spreadsheet. ShuttlePass replaces all of that with one app. Each player has a permanent passport with their level, history, and stats, which stops people entering categories below their real level. Organisers set up tournaments, take entries with partner invites, generate draws, and run the day from a court desk that calls matches to courts. Umpires score each rally on their phone, and the public can watch draws, courts, and matches live without signing in. Auction leagues get a live auction room where team owners bid against a purse, followed by team ties, lineups, and a league table. I designed and built the whole product, from the database schema to the landing page.",
         features: [
@@ -55,7 +55,7 @@ export const projects: Project[] = [
         ],
         techDetails: "The repo is a Dart pub workspace with four packages: the Flutter app, a Serverpod 4 server, the generated client, and a pure-Dart domain package that holds the score engine, draw generator, eligibility rules, court queue, bid rules, and permissions. The app and server both run that package, and the server has the final say. The app uses flutter_bloc (Cubits by default, Blocs with bloc_concurrency where event order matters), get_it and injectable, auto_route, and the Forui component library with a custom design system. Web compiles to Wasm and is served by the Serverpod server; Android builds an App Bundle. Data lives in PostgreSQL through the Serverpod ORM, with 300+ models and versioned migrations. Real-time features are Serverpod streaming endpoints over WebSocket: the auction, desk, scoring, and tie feeds are two-way command streams, and every stream sends a snapshot first and then versioned changes, so a client that misses one reloads the snapshot. Image uploads go to cloud storage, the landing site runs on a Cloudflare Worker, and the backend is deployed to Serverpod Cloud.",
         challenges: "Two team owners can bid on the same player within milliseconds of each other. Each bid locks the lot and the team rows in one transaction, so only one can win and a purse can never go negative. Live updates are published only after the transaction commits, so no screen ever shows a change that was rolled back. Scoring has the same problem on bad venue Wi-Fi: each rally is an append-only event with a client-generated id, so a retried tap counts once, and undo is just another event. Keeping rules identical on client and server was solved by putting them in one shared Dart package instead of writing them twice.",
-        outcomes: "The web app and landing site are live, with an Android build on the way. 1,200+ commits in the first month, covered by 440+ test files, including integration tests for simultaneous bids and duplicate score events, and end-to-end flows that drive the real app against the real server."
+        outcomes: "A local club now runs its monthly auction league on ShuttlePass. At the first edition in October 2026, four team owners bought 40 of 42 players in a live auction with 169 bids, and on match day three umpires scored all 34 matches rally by rally on their phones, 1,454 points in total, with every result confirmed in the app. The club has already set up its November edition. The web app and landing site are live, with an Android build on the way. 1,200+ commits in the first month, covered by 440+ test files, including integration tests for simultaneous bids and duplicate score events, and end-to-end flows that drive the real app against the real server."
       },
 
       {
