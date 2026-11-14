@@ -43,7 +43,8 @@ export const cv = {
     "Full-stack mobile engineer with 5+ years across Flutter apps, backend, and system architecture, " +
     "designing with the user's experience in mind. Specialized in fintech, trading, and AI consumer apps, " +
     "including a trading platform for a SEBI-registered broker serving thousands of live traders. " +
-    "10+ apps shipped for clients across India, Canada, Ireland, and the US.",
+    "10+ apps shipped for clients across India, Canada, Ireland, and the US. " +
+    "I also build my own products, including a Bluetooth LE companion app for a wearable device and a real-time sports platform.",
 
   experience: [
     {
@@ -61,7 +62,7 @@ export const cv = {
         "Integrated AI backends, real-time WebSocket pipelines, payments (RevenueCat, Stripe), and analytics (PostHog, Braze)",
         "Daily AI-assisted workflows: Claude Code with custom project skills, shared agent rules, and cross-repo code indexing",
       ],
-      tech: ["Flutter", "Dart", "Firebase", "Cloud Functions", "TypeScript", "OpenAI", "Supabase", "BLoC", "WebSockets", "RevenueCat", "PostHog"],
+      tech: ["Flutter", "Dart", "Firebase", "Cloud Functions", "TypeScript", "OpenAI", "Supabase", "BLoC", "WebSockets", "Bluetooth LE", "RevenueCat", "PostHog"],
     },
     {
       title: "Software Engineer",
