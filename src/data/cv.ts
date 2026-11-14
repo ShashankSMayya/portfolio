@@ -62,7 +62,7 @@ export const cv = {
         "Integrated AI backends, real-time WebSocket pipelines, payments (RevenueCat, Stripe), and analytics (PostHog, Braze)",
         "Daily AI-assisted workflows: Claude Code with custom project skills, shared agent rules, and cross-repo code indexing",
       ],
-      tech: ["Flutter", "Dart", "Firebase", "Cloud Functions", "TypeScript", "OpenAI", "Supabase", "BLoC", "WebSockets", "Bluetooth LE", "RevenueCat", "PostHog"],
+      tech: ["Flutter", "Dart", "Firebase", "Cloud Functions", "TypeScript", "OpenAI", "Supabase", "BLoC", "WebSockets", "Bluetooth LE", "Serverpod", "PostgreSQL", "RevenueCat", "PostHog"],
     },
     {
       title: "Software Engineer",
@@ -103,7 +103,7 @@ export const cv = {
     },
     {
       category: "Backend & Database",
-      skills: ["Firebase", "Firestore Modeling", "Cloud Functions", "Security Rules", "Supabase", "TypeScript", "Hive / Isar"],
+      skills: ["Firebase", "Firestore Modeling", "Cloud Functions", "Security Rules", "PostgreSQL", "Serverpod", "SQL Transactions & Migrations", "Supabase", "TypeScript", "Hive / Isar"],
     },
     {
       category: "AI Integration",
