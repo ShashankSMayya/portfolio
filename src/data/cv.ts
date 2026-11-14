@@ -37,7 +37,7 @@ export const cv = {
   linkedin: "https://www.linkedin.com/in/shashank-mayya",
 
   // Ids from src/data/projects.ts (must have resumeHighlights), in resume display order
-  resumeProjectIds: ["firstock", "outfit-formulas", "zontix", "tacticx", "dota2-soundboard"],
+  resumeProjectIds: ["outfit-formulas", "firstock", "shuttlepass", "vagus", "zontix"],
 
   summary:
     "Full-stack mobile engineer with 5+ years across Flutter apps, backend, and system architecture, " +
@@ -98,7 +98,7 @@ export const cv = {
   skills: [
     {
       category: "Mobile Development",
-      skills: ["Flutter", "Dart", "iOS Dev", "Android Dev", "Flutter Web"],
+      skills: ["Flutter", "Dart", "iOS Dev", "Android Dev", "Flutter Web", "Bluetooth LE", "NFC", "Health Connect"],
     },
     {
       category: "Backend & Database",

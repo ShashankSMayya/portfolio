@@ -71,10 +71,10 @@ const metaDescription = (text: string, max = 158) => {
 
       {allImages.length > 1 && (
         <section class="mt-12" aria-label="Screenshots">
-          <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+          <div class="grid grid-cols-2 items-start gap-4 md:grid-cols-3">
             {allImages.slice(1).map((img) => (
               <div class="overflow-hidden rounded-lg border border-base-300 bg-base-200">
-                <img src={img} alt={`${project.title} screenshot`} loading="lazy" class="h-full w-full object-cover" />
+                <img src={img} alt={`${project.title} screenshot`} loading="lazy" class="h-auto w-full" />
               </div>
             ))}
           </div>
