@@ -168,7 +168,8 @@ export const projects: Project[] = [
    {
       id: "zontix",
       title: "Zontix",
-      img: "/projects/zontix.webp",
+      img: "/projects/zontix_cover.webp",
+      images: ["/projects/zontix.webp"],
       tagline: "NFT event ticketing with non-custodial wallets and QR/NFC check-in",
       desc: "A cross-platform event management app that issues NFT tickets on the MultiversX blockchain, with non-custodial wallet management, QR and NFC check-ins, and built-in payments.",
       url: "https://zontix.com",
