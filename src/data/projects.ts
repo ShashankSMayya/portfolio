@@ -139,7 +139,8 @@ export const projects: Project[] = [
       {
         id: "tacticx",
         title: "TacticX",
-        img: "/projects/tacticx.webp",
+        img: "/projects/tacticx_cover.webp",
+        images: ["/projects/tacticx.webp"],
         tagline: "Crypto options trading on Flutter Web compiled to WASM, holding 60fps on live market data",
         desc: "A crypto options trading platform built with Flutter Web (WASM), with real-time market data, a visual strategy builder, and position analysis.",
         longDesc: "TacticX is a crypto options trading platform for derivatives traders. It runs as a Progressive Web App compiled to WASM, which keeps performance close to native: traders can analyze options chains, build multi-leg strategies visually, and monitor positions with real-time Greeks calculations. Market data streams from crypto exchanges through a unified WebSocket backend with sub-second latency.",
