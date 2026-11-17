@@ -32,7 +32,7 @@ export const cv = {
   name: "Shashank S Mayya",
   role: "Full-Stack Mobile Engineer · Flutter, Firebase & AI",
   location: "Mangalore, India",
-  email: "shashanksmayya@gmail.com",
+  email: "hello@shashanksmayya.dev",
   website: "https://shashanksmayya.dev",
   linkedin: "https://www.linkedin.com/in/shashank-mayya",
 
