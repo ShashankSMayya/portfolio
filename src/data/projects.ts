@@ -2,6 +2,11 @@ export interface Project {
   id: string;
   title: string;
   img: string;
+  cover?: {
+    accent: string; // hex, tints the background in both themes
+    layout: "phone" | "split" | "panels" | "tablet" | "browser" | "combo" | "logo";
+    shots: string[];
+  };
   images?: string[]; // Additional images for gallery
   desc: string;
   tagline?: string; // One-line summary for the home page work index
@@ -27,6 +32,7 @@ export const projects: Project[] = [
         id: "shuttlepass",
         title: "ShuttlePass",
         img: "/projects/shuttlepass_cover.webp",
+        cover: { accent: "#3FBF7F", layout: "combo", shots: ["/projects/shuttlepass/desk.webp",  "/projects/shuttlepass/umpire.webp"] },
         images: ["/projects/shuttlepass.webp", "/projects/shuttlepass/desk.webp", "/projects/shuttlepass/auction.webp", "/projects/shuttlepass/umpire.webp"],
         tagline: "My own badminton platform on Flutter and Serverpod. A club runs its monthly auction league and live scoring on it",
         desc: "A badminton platform for clubs and players in India. Organisers run tournaments and auction leagues from their phone, umpires score rally by rally, and anyone can follow draws, courts, and auctions live. I'm building the whole product: Flutter app, Dart server, database, and landing site.",
@@ -62,6 +68,7 @@ export const projects: Project[] = [
         id: "vagus",
         title: "Vagus",
         img: "/projects/vagus.webp",
+        cover: { accent: "#4FC3A1", layout: "split", shots: ["/projects/vagus/06_trends.webp",  "/projects/vagus/01_session.webp"] },
         images: ["/projects/vagus/01_session.webp", "/projects/vagus/02_setup.webp", "/projects/vagus/03_summary.webp", "/projects/vagus/04_sounds.webp", "/projects/vagus/05_session_hr.webp", "/projects/vagus/06_trends.webp", "/projects/vagus/07_sleep.webp", "/projects/vagus/08_home.webp", "/projects/vagus/09_reminders.webp"],
         tagline: "My own Bluetooth LE companion app: controls a wearable stimulation patch over its custom GATT protocol, with smartwatch heart-rate insight",
         desc: "A personal Android app that controls a wearable neurostimulation patch over Bluetooth LE. The official app kept failing and the vendor never answered support requests, so I mapped the custom GATT protocol of my own device and built a replacement with safe session control, background sessions, and heart-rate insight from my smartwatch through Health Connect.",
@@ -96,6 +103,7 @@ export const projects: Project[] = [
         id: "outfit-formulas",
         title: "Outfit Formulas",
         img: "/projects/outfit_formulas_cover.webp",
+        cover: { accent: "#F2557D", layout: "logo", shots: ["/projects/covers/outfit-formulas.webp"] },
         tagline: "AI styling app with paying subscribers. Flutter app, Firebase backend, community, and AI features",
         desc: "A subscription-based outfit planning and personal styling app for iOS and Android, built around an AI stylist named ALI. I work across the whole stack: the Flutter app, the Firebase backend, the community feature I designed end to end, and AI features built on OpenAI.",
         url: "https://outfitformulas.com",
@@ -140,6 +148,7 @@ export const projects: Project[] = [
         id: "tacticx",
         title: "TacticX",
         img: "/projects/tacticx_cover.webp",
+        cover: { accent: "#8B6CF6", layout: "browser", shots: ["/projects/covers/tacticx.webp"] },
         images: ["/projects/tacticx.webp"],
         tagline: "Crypto options trading on Flutter Web compiled to WASM, holding 60fps on live market data",
         desc: "A crypto options trading platform built with Flutter Web (WASM), with real-time market data, a visual strategy builder, and position analysis.",
@@ -169,6 +178,7 @@ export const projects: Project[] = [
       id: "zontix",
       title: "Zontix",
       img: "/projects/zontix_cover.webp",
+      cover: { accent: "#E0529C", layout: "panels", shots: ["/projects/covers/zontix-1.webp",  "/projects/covers/zontix-2.webp"] },
       images: ["/projects/zontix.webp"],
       tagline: "NFT event ticketing with non-custodial wallets and QR/NFC check-in",
       desc: "A cross-platform event management app that issues NFT tickets on the MultiversX blockchain, with non-custodial wallet management, QR and NFC check-ins, and built-in payments.",
@@ -207,6 +217,7 @@ export const projects: Project[] = [
       id: "firstock",
       title: "Firstock Trading App",
       img: "/projects/firstock_trading_cover.webp",
+      cover: { accent: "#2FBF71", layout: "split", shots: ["/projects/covers/firstock-1.webp",  "/projects/covers/firstock-2.webp"] },
     images: ["/projects/firstock_trading.webp"],
       tagline: "Trading platform for a SEBI-registered broker, used by thousands of live traders",
       desc: "A stock trading and investment platform for the Indian market, with real-time market data, portfolio management, and trading across equities, F&O, IPOs, and mutual funds.",
@@ -242,6 +253,7 @@ export const projects: Project[] = [
     id: "indy",
     title: "Indy App",
     img: "/projects/indy_consumer_cover.webp",
+    cover: { accent: "#6D5BD0", layout: "split", shots: ["/projects/covers/indy-1.webp",  "/projects/covers/indy-2.webp"] },
     images: ["/projects/indy_consumer.webp"],
     desc: "A fintech app built in Flutter for a client, including UPI payments and a wallet.",
     tags: ["Flutter", "Fintech", "Client", "Flutter Bloc"],
@@ -257,6 +269,7 @@ export const projects: Project[] = [
     id: "pragati",
     title: "Pragati ERP",
     img: "/projects/pragati_cover.webp",
+    cover: { accent: "#F07A2E", layout: "tablet", shots: ["/projects/covers/pragati.webp"] },
     images: ["/projects/pragati.webp"],
     desc: "A Flutter tablet ERP app for a jewellery client, used for billing and inventory management. In production and maintained by me.",
     badge: "MAINTENANCE",
@@ -273,6 +286,7 @@ export const projects: Project[] = [
     id: "mello",
     title: "Mello",
     img: "/projects/mello_cover.webp",
+    cover: { accent: "#FF4D6D", layout: "phone", shots: ["/projects/covers/mello.webp"] },
     images: ["/projects/mello.webp"],
     tagline: "Reel-based event discovery app with a Node.js and MongoDB backend",
     desc: "A reel-based event discovery app for the Bangalore audience. I built the Flutter app with a Node.js and MongoDB backend, Mixpanel for analytics, and CleverTap for push notifications.",
@@ -292,6 +306,7 @@ export const projects: Project[] = [
     id: "auto-finance",
     title: "Auto Finance Canada",
     img: "/projects/van_auto_cover.webp",
+    cover: { accent: "#C8A15A", layout: "browser", shots: ["/projects/covers/auto-finance.webp"] },
     images: ["/projects/van_auto.webp"],
     desc: "A CRM web application for Auto Finance Canada, built with Flutter Web and backed by Supabase, used to run their automotive financing operations.",
     tags: ["Flutter", "Flutter Bloc", "Flutter Web", "Supabase", "CRM", "Client"],
@@ -307,6 +322,7 @@ export const projects: Project[] = [
     id: "rosette",
     title: "Rosette",
     img: "/projects/rosette_cover.webp",
+    cover: { accent: "#2BB5A0", layout: "phone", shots: ["/projects/covers/rosette.webp"] },
     images: ["/projects/rosette.webp"],
     desc: "A health monitoring app for a client, built for patient care and data management, with smart data syncing and local storage on Isar.",
     tags: ["Flutter", "Flutter Bloc", "IOT", "Health", "Client"],
@@ -322,6 +338,7 @@ export const projects: Project[] = [
     id: "haqdarshaq",
     title: "Haqdarshaq Wallet App",
     img: "/projects/haqdarsahaq_cover.webp",
+    cover: { accent: "#E0529C", layout: "phone", shots: ["/projects/covers/haqdarshaq.webp"] },
     images: ["/projects/haqdarsahaq.webp"],
     desc: "A responsive Flutter Web app for Haqdarshaq that lets their customers manage wallets and cards.",
     tags: ["Flutter", "Flutter Bloc", "Flutter Web", "Fintech", "Client"],
@@ -337,6 +354,7 @@ export const projects: Project[] = [
     id: "dota2-soundboard",
     title: "Dota 2 Soundboard",
     img: "/projects/dota2sounboard.webp",
+    cover: { accent: "#D9A441", layout: "split", shots: ["/projects/dota2/screen_1.webp",  "/projects/dota2/screen_2.webp"] },
     images: ["/projects/dota2/screen_1.webp", "/projects/dota2/screen_2.webp", "/projects/dota2/screen_3.webp", "/projects/dota2/screen_5.webp"],
     tagline: "Personal product with 10k+ downloads: 4,600+ sounds in 5 languages, rebuilt from scratch for 3.0",
     desc: "A fan-made soundboard app with 10k+ downloads that puts every Dota 2 sound in one place: 4,600+ sounds covering all 127 heroes, ability sounds, announcer packs, TI moments from 2017 to 2026, and a Guess the Hero quiz. Rebuilt from the ground up for 3.0 and now available in five languages.",
@@ -372,6 +390,7 @@ export const projects: Project[] = [
     id: "bridgeman",
     title: "The Bridgeman",
     img: "/projects/bridgeman_cover.webp",
+    cover: { accent: "#C9A45C", layout: "phone", shots: ["/projects/covers/bridgeman.webp"] },
     images: ["/projects/bridgeman.webp"],
     desc: "A contact website for The Bridgeman, built with Flutter Web.",
     url: "https://hello.thebridgeman.in/",
@@ -388,6 +407,7 @@ export const projects: Project[] = [
     id: "hr-designs",
     title: "HR Designs",
     img: "/projects/hrdesigns_cover.webp",
+    cover: { accent: "#D4A24C", layout: "browser", shots: ["/projects/covers/hr-designs.webp"] },
     images: ["/projects/hrdesigns.webp"],
     desc: "A website for HR Designs, built with Bootstrap and HTML/CSS.",
     url: "https://hrdesigns.in/",
