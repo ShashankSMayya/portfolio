@@ -26,8 +26,8 @@ export const projects: Project[] = [
       {
         id: "shuttlepass",
         title: "ShuttlePass",
-        img: "/projects/shuttlepass.webp",
-        images: ["/projects/shuttlepass/desk.webp", "/projects/shuttlepass/auction.webp", "/projects/shuttlepass/umpire.webp"],
+        img: "/projects/shuttlepass_cover.webp",
+        images: ["/projects/shuttlepass.webp", "/projects/shuttlepass/desk.webp", "/projects/shuttlepass/auction.webp", "/projects/shuttlepass/umpire.webp"],
         tagline: "My own badminton platform on Flutter and Serverpod. A club runs its monthly auction league and live scoring on it",
         desc: "A badminton platform for clubs and players in India. Organisers run tournaments and auction leagues from their phone, umpires score rally by rally, and anyone can follow draws, courts, and auctions live. I'm building the whole product: Flutter app, Dart server, database, and landing site.",
         url: "https://shuttlepass.in",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
       {
         id: "outfit-formulas",
         title: "Outfit Formulas",
-        img: "/projects/outfit_formulas.webp",
+        img: "/projects/outfit_formulas_cover.webp",
         tagline: "AI styling app with paying subscribers. Flutter app, Firebase backend, community, and AI features",
         desc: "A subscription-based outfit planning and personal styling app for iOS and Android, built around an AI stylist named ALI. I work across the whole stack: the Flutter app, the Firebase backend, the community feature I designed end to end, and AI features built on OpenAI.",
         url: "https://outfitformulas.com",
@@ -204,7 +204,8 @@ export const projects: Project[] = [
    {
       id: "firstock",
       title: "Firstock Trading App",
-      img: "/projects/firstock_trading.webp",
+      img: "/projects/firstock_trading_cover.webp",
+    images: ["/projects/firstock_trading.webp"],
       tagline: "Trading platform for a SEBI-registered broker, used by thousands of live traders",
       desc: "A stock trading and investment platform for the Indian market, with real-time market data, portfolio management, and trading across equities, F&O, IPOs, and mutual funds.",
       playStore: "https://play.google.com/store/apps/details?id=in.firstock.mobile",
@@ -238,7 +239,8 @@ export const projects: Project[] = [
   {
     id: "indy",
     title: "Indy App",
-    img: "/projects/indy_consumer.webp",
+    img: "/projects/indy_consumer_cover.webp",
+    images: ["/projects/indy_consumer.webp"],
     desc: "A fintech app built in Flutter for a client, including UPI payments and a wallet.",
     tags: ["Flutter", "Fintech", "Client", "Flutter Bloc"],
     date: new Date("2023-11-20"),
@@ -252,7 +254,8 @@ export const projects: Project[] = [
   {
     id: "pragati",
     title: "Pragati ERP",
-    img: "/projects/pragati.webp",
+    img: "/projects/pragati_cover.webp",
+    images: ["/projects/pragati.webp"],
     desc: "A Flutter tablet ERP app for a jewellery client, used for billing and inventory management. In production and maintained by me.",
     badge: "MAINTENANCE",
     tags: ["Flutter", "ERP", "Client", "Flutter Bloc"],
@@ -267,7 +270,8 @@ export const projects: Project[] = [
   {
     id: "mello",
     title: "Mello",
-    img: "/projects/mello.webp",
+    img: "/projects/mello_cover.webp",
+    images: ["/projects/mello.webp"],
     tagline: "Reel-based event discovery app with a Node.js and MongoDB backend",
     desc: "A reel-based event discovery app for the Bangalore audience. I built the Flutter app with a Node.js and MongoDB backend, Mixpanel for analytics, and CleverTap for push notifications.",
     playStore: "https://play.google.com/store/apps/details?id=com.mello.mello",
@@ -285,7 +289,8 @@ export const projects: Project[] = [
   {
     id: "auto-finance",
     title: "Auto Finance Canada",
-    img: "/projects/van_auto.webp",
+    img: "/projects/van_auto_cover.webp",
+    images: ["/projects/van_auto.webp"],
     desc: "A CRM web application for Auto Finance Canada, built with Flutter Web and backed by Supabase, used to run their automotive financing operations.",
     tags: ["Flutter", "Flutter Bloc", "Flutter Web", "Supabase", "CRM", "Client"],
     date: new Date("2023-05-20"),
@@ -299,7 +304,8 @@ export const projects: Project[] = [
   {
     id: "rosette",
     title: "Rosette",
-    img: "/projects/rosette.webp",
+    img: "/projects/rosette_cover.webp",
+    images: ["/projects/rosette.webp"],
     desc: "A health monitoring app for a client, built for patient care and data management, with smart data syncing and local storage on Isar.",
     tags: ["Flutter", "Flutter Bloc", "IOT", "Health", "Client"],
     date: new Date("2023-03-15"),
@@ -313,7 +319,8 @@ export const projects: Project[] = [
   {
     id: "haqdarshaq",
     title: "Haqdarshaq Wallet App",
-    img: "/projects/haqdarsahaq.webp",
+    img: "/projects/haqdarsahaq_cover.webp",
+    images: ["/projects/haqdarsahaq.webp"],
     desc: "A responsive Flutter Web app for Haqdarshaq that lets their customers manage wallets and cards.",
     tags: ["Flutter", "Flutter Bloc", "Flutter Web", "Fintech", "Client"],
     date: new Date("2023-01-10"),
@@ -362,7 +369,8 @@ export const projects: Project[] = [
   {
     id: "bridgeman",
     title: "The Bridgeman",
-    img: "/projects/bridgeman.webp",
+    img: "/projects/bridgeman_cover.webp",
+    images: ["/projects/bridgeman.webp"],
     desc: "A contact website for The Bridgeman, built with Flutter Web.",
     url: "https://hello.thebridgeman.in/",
     tags: ["Flutter Web", "Client"],
@@ -377,7 +385,8 @@ export const projects: Project[] = [
   {
     id: "hr-designs",
     title: "HR Designs",
-    img: "/projects/hrdesigns.webp",
+    img: "/projects/hrdesigns_cover.webp",
+    images: ["/projects/hrdesigns.webp"],
     desc: "A website for HR Designs, built with Bootstrap and HTML/CSS.",
     url: "https://hrdesigns.in/",
     tags: ["HTML", "Bootstrap", "Client"],
